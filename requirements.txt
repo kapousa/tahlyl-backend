@@ -7,3 +7,4 @@ starlette
 google-generativeai
 pdfminer.six
 fastapi-cors
+python-multipart
