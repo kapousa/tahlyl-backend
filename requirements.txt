@@ -8,3 +8,5 @@ google-generativeai
 pdfminer.six
 fastapi-cors
 python-multipart
+reportlab
+python-multipart
