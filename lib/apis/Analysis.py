@@ -1,5 +1,8 @@
 import os
 import io
+from typing import List
+import re
+import json
 import google.generativeai as genai
 from pdfminer.high_level import extract_text  # Correct import
 from dotenv import load_dotenv
@@ -25,9 +28,6 @@ def extract_text_from_pdf(pdf_file: UploadFile):
         return text
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error extracting text from PDF: {e}")
-
-import json
-from fastapi import HTTPException
 
 def analyze_blood_test(blood_test_text: str, arabic: bool = False):
     if arabic:
@@ -73,14 +73,61 @@ def analyze_blood_test(blood_test_text: str, arabic: bool = False):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error analyzing blood test: {e}")
 
-# Example endpoint (you'll need to create a route for file upload and analysis)
-# @app.post("/analyze_pdf/")
-# async def analyze_pdf(pdf_file: UploadFile):
-#     try:
-#         pdf_text = extract_text_from_pdf(pdf_file)
-#         analysis = analyze_blood_test(pdf_text)
-#         return {"analysis": analysis}
-#     except HTTPException as e:
-#         raise e
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+def compare_reports(reports: list[str], arabic: bool):
+    """Compares blood test reports using Gemini with language option."""
+    if arabic:
+        prompt = f"""
+        قارن بين تقارير اختبار الدم التالية وقدم ملخصًا موجزًا لتقدم حالة المريض في صيغة JSON.
+        {{ "summary": "ملخص مقارنة التقارير..." }}
+
+        {' '.join(reports)}
+        """
+    else:
+        prompt = f"""
+        Compare the following blood test reports and provide a brief summary of the patient's progress in JSON format.
+        {{ "summary": "Summary of report comparison..." }}
+
+        {' '.join(reports)}
+        """
+    try:
+        response = model.generate_content(prompt)
+        print(f"Gemini Response: {response.text!r}")
+
+        # Check for empty response
+        if not response.text.strip():
+            raise ValueError("Gemini returned an empty response.")
+
+        # Attempt to find JSON pattern
+        json_match = re.search(r'\{.*\}', response.text, re.DOTALL)
+
+        if json_match:
+            try:
+                response_dict = json.loads(json_match.group(0))
+                summary = response_dict.get("summary", "")  # get the summary or empty string if it does not exist.
+
+                # Convert newlines to <br> tags
+                summary_html = summary.replace('\n', '<br>')
+
+                # Convert Markdown bold to <strong> tags
+                summary_html = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', summary_html)
+
+                # Convert Markdown bold to <li> tags
+                summary_html = re.sub(r'\*(.*?)\*', r'<li>\1</li>', summary_html)
+
+                response_dict["summary"] = summary_html  # update the dictionary with the html summary.
+
+                return response_dict
+            except json.JSONDecodeError as e:
+                # Log the raw response for debugging
+                print(f"JSONDecodeError: {e}. Raw response: {response.text!r}")
+                raise ValueError(f"Gemini did not return valid JSON: {e}")
+        else:
+            # Log the raw response for debugging
+            print(f"Gemini did not return JSON. Raw response: {response.text!r}")
+            raise ValueError("Gemini did not return JSON.")
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
+
