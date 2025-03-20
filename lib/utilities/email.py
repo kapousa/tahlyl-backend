@@ -101,7 +101,7 @@ def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool):
 def send_compare_report_email(email_to: str, body: str, arabic: bool):
         """Sends an email with RTL support for Arabic content."""
         msg = MIMEMultipart()
-        msg['From'] = os.getenv('EMAIL_FROM')
+        msg['From'] = os.getenv('EMAIL_SENDER')
         msg['To'] = email_to
         msg['Subject'] = "Compare Blood Tests Analysis Report"
 
@@ -118,8 +118,7 @@ def send_compare_report_email(email_to: str, body: str, arabic: bool):
             </div>
             """
 
-        part = MIMEText(html, 'html')
-        msg.attach(part)
+        msg.attach(MIMEText(html, 'html'))
 
         try:
             server = smtplib.SMTP(os.getenv("SMTP_SERVER"), int(os.getenv("SMTP_PORT")))
