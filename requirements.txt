@@ -16,3 +16,4 @@ opentelemetry-exporter-prometheus # For Prometheus exporter for OpenTelemetry
 opentelemetry-exporter-jaeger # For Jaeger exporter for OpenTelemetry (if using Jaeger)
 #loguru # For enhanced logging
 prometheus-fastapi-instrumentator
+opentelemetry-exporter-otlp
