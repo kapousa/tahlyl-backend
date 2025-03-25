@@ -8,14 +8,16 @@ from pdfminer.high_level import extract_text  # Correct import
 from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile, HTTPException
 
+from lib.constants import prompts
+
 load_dotenv()
 
 app = FastAPI()
 
 # Configure Gemini API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))  # Ensure GOOGLE_API_KEY is in .env
-model = genai.GenerativeModel('models/gemini-2.0-pro-exp')
-
+model = genai.GenerativeModel('models/gemini-1.5-pro')
+#model = genai.GenerativeModel('models/gemini-2.0-pro-exp')
 # for model in genai.list_models():
 #     print(model)
 
@@ -29,46 +31,55 @@ def extract_text_from_pdf(pdf_file: UploadFile):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error extracting text from PDF: {e}")
 
-def analyze_blood_test(blood_test_text: str, arabic: bool = False):
+def analyze_blood_test(blood_test_text: str, arabic: bool = False, tone : str = 'General' ):
+    tone = tone.lower()
     if arabic:
-        prompt = f"""
-                حلل نتائج اختبار الدم التالية وقدم باللغة العربية استجابة بتنسيق JSON.
-                يجب أن يحتوي JSON على المفاتيح التالية:
-                - "summary": ملخص موجز لنتائج اختبار الدم.
-                - "lifestyle_changes": قائمة بالتغييرات المقترحة في نمط الحياة لتحسين النتائج.
-                - "diet_routine": قائمة بالتوصيات الغذائية بناءً على النتائج.
-
-                نتائج اختبار الدم:
-                {blood_test_text}
-
-                JSON:
-                """
+        if tone == 'doctor':
+            prompt = prompts.ARABIC_BLOOD_TEST_DOCTOR_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'executive':
+            prompt = prompts.ARABIC_BLOOD_TEST_EXECUTIVE_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'educational':
+            prompt = prompts.ARABIC_BLOOD_TEST_EDUCATIONAL_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'preventative':
+            prompt = prompts.ARABIC_BLOOD_TEST_PREVENTATIVE_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'technical':
+            prompt = prompts.ARABIC_BLOOD_TEST_TECHNICAL_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'empathetic':
+            prompt = prompts.ARABIC_BLOOD_TEST_EMPATHETIC_PROMPT.format(blood_test_text=blood_test_text)
+        else:  # Default to General tone
+            prompt = prompts.ARABIC_BLOOD_TEST_GENERAL_PROMPT.format(blood_test_text=blood_test_text)
     else:
-        prompt = f"""
-            Analyze the following blood test results and provide a response in JSON format.
-            The JSON should contain the following keys:
-            - "summary": A concise summary of the blood test results.
-            - "lifestyle_changes": A list of suggested lifestyle changes to improve the results.
-            - "diet_routine": A list of dietary recommendations based on the results.
+        if tone == 'doctor':
+            prompt = prompts.ENGLISH_BLOOD_TEST_DOCTOR_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'executive':
+            prompt = prompts.ENGLISH_BLOOD_TEST_EXECUTIVE_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'educational':
+            prompt = prompts.ENGLISH_BLOOD_TEST_EDUCATIONAL_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'preventative':
+            prompt = prompts.ENGLISH_BLOOD_TEST_PREVENTATIVE_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'technical':
+            prompt = prompts.ENGLISH_BLOOD_TEST_TECHNICAL_PROMPT.format(blood_test_text=blood_test_text)
+        elif tone == 'empathetic':
+            prompt = prompts.ENGLISH_BLOOD_TEST_EMPATHETIC_PROMPT.format(blood_test_text=blood_test_text)
+        else:  # Default to General tone
+            prompt = prompts.ENGLISH_BLOOD_TEST_GENERAL_PROMPT.format(blood_test_text=blood_test_text)
 
-            Blood test results:
-            {blood_test_text}
-
-            JSON:
-            """
     try:
         response = model.generate_content(prompt)
-        response_text = response.text
+        if response.text:
+            response_text = response.text
 
-        # Remove the ```json and ``` that Gemini sometimes adds.
-        response_text = response_text.replace("```json", "").replace("```", "").strip()
+            # Remove the ```json and ``` that Gemini sometimes adds.
+            response_text = response_text.replace("```json", "").replace("```", "").strip()
 
-        try:
-            analysis_json = json.loads(response_text)
-            return analysis_json
-        except json.JSONDecodeError as e:
-            # Handle cases where Gemini's response is not valid JSON
-            return {"error": f"Invalid JSON response from Gemini: {e}", "raw_response": response_text}
+            try:
+                analysis_json = json.loads(response_text)
+                return analysis_json
+            except json.JSONDecodeError as e:
+                # Handle cases where Gemini's response is not valid JSON
+                return {"error": f"Invalid JSON response from Gemini: {e}", "raw_response": response_text}
+        else:
+            return {"error": "There is no response text. This could be due to safety or copyright issues."}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error analyzing blood test: {e}")

@@ -29,65 +29,96 @@ def send_email_with_pdf(email: str, pdf_path: str):
     except Exception as e:
         print(f"Error sending email: {e}")
 
-def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool):
+def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool, tone: str):
     """Sends an email with the analysis results in the body (HTML)."""
     msg = MIMEMultipart()
     msg['From'] = os.getenv("EMAIL_SENDER")
     msg['To'] = email
-    msg['Subject'] = "Blood Test Analysis Report"
+    msg['Subject'] = "تقرير تحليل نتائج اختبار الدم" if arabic else "Blood Test Analysis Report"
 
+    body = ""
     if arabic:
-        body = f"""
-        <div style="direction: rtl; text-align: right;">
-            <h2>تقرير تحليل نتائج اختبار الدم:</h2>
+        body += "<div style=\"direction: rtl; text-align: right;\">"
+        body += f"<h2>{ 'تقرير تحليل نتائج اختبار الدم:' if arabic else 'Blood Test Analysis Report:'}</h2>"
 
-            <p><strong>ملخص:</strong> {analysis_dict['summary']}</p>
+        for key, value in analysis_dict.items():
+            if value is not None:
+                if key == 'lifestyle_changes' or key == 'diet_routine' or key == 'recommendations' or key == 'key_findings' or key == "potential_causes" or key == "scientific_references" or key == "individualized_recommendations":
+                    if isinstance(value, list):
+                        body += f"<h3>{key.replace('_', ' ').capitalize()}:</h3><ul>"
+                        for item in value:
+                            if isinstance(item, dict):
+                                for inner_key, inner_value in item.items():
+                                    body += f"<li>{inner_key.capitalize()}: {inner_value}</li>"
+                            else:
+                                body += f"<li>{item}</li>"
+                        body += "</ul>"
+                    elif isinstance(value, dict):
+                        body += f"<h3>{key.replace('_', ' ').capitalize()}:</h3><ul>"
+                        for inner_key, inner_value in value.items():
+                            if isinstance(inner_value, list):
+                                for inner_item in inner_value:
+                                    body += f"<li>{inner_key.capitalize()}: {inner_item}</li>"
+                            else:
+                                body += f"<li>{inner_key.capitalize()}: {inner_value}</li>"
+                        body += "</ul>"
+                    else:
+                        body += f"<p><strong>{key.replace('_', ' ').capitalize()}:</strong> {value}</p>"
+                elif isinstance(value, dict):
+                    body += f"<h3>{key.replace('_', ' ').capitalize()}:</h3><ul>"
+                    for inner_key, inner_value in value.items():
+                        if isinstance(inner_value, list):
+                            for inner_item in inner_value:
+                                body += f"<li>{inner_key.capitalize()}: {inner_item}</li>"
+                        else:
+                            body += f"<li>{inner_key.capitalize()}: {inner_value}</li>"
+                    body += "</ul>"
+                else:
+                    body += f"<p><strong>{key.replace('_', ' ').capitalize()}:</strong> {value}</p>"
 
-            <h3>تغييرات نمط الحياة المقترحة:</h3>
-            <ul>
-        """
-        for change in analysis_dict['lifestyle_changes']:
-            body += f"<li>{change}</li>"
-
-        body += f"""
-            </ul>
-            <h3>روتين الحمية المقترح:</h3>
-            <ul>
-        """
-        for routine in analysis_dict['diet_routine']:
-            body += f"<li>{routine}</li>"
-
-        body += """
-            </ul>
-        </div>
-        """
+        body += "</div>"
     else:
-        body = f"""
-        <div>
-            <h2>Blood Test Analysis Report:</h2>
+        body += "<div>"
+        body += "<h2>Blood Test Analysis Report:</h2>"
 
-            <p><strong>Summary:</strong> {analysis_dict['summary']}</p>
+        for key, value in analysis_dict.items():
+            if value is not None:
+                if key == 'lifestyle_changes' or key == 'diet_routine' or key == 'recommendations' or key == 'key_findings' or key == "potential_causes" or key == "scientific_references" or key == "individualized_recommendations":
+                    if isinstance(value, list):
+                        body += f"<h3>{key.replace('_', ' ').capitalize()}:</h3><ul>"
+                        for item in value:
+                            if isinstance(item, dict):
+                                for inner_key, inner_value in item.items():
+                                    body += f"<li>{inner_key.capitalize()}: {inner_value}</li>"
+                            else:
+                                body += f"<li>{item}</li>"
+                        body += "</ul>"
+                    elif isinstance(value, dict):
+                        body += f"<h3>{key.replace('_', ' ').capitalize()}:</h3><ul>"
+                        for inner_key, inner_value in value.items():
+                            if isinstance(inner_value, list):
+                                for inner_item in inner_value:
+                                    body += f"<li>{inner_key.capitalize()}: {inner_item}</li>"
+                            else:
+                                body += f"<li>{inner_key.capitalize()}: {inner_value}</li>"
+                        body += "</ul>"
+                    else:
+                        body += f"<p><strong>{key.replace('_', ' ').capitalize()}:</strong> {value}</p>"
+                elif isinstance(value, dict):
+                    body += f"<h3>{key.replace('_', ' ').capitalize()}:</h3><ul>"
+                    for inner_key, inner_value in value.items():
+                        if isinstance(inner_value, list):
+                            for inner_item in inner_value:
+                                body += f"<li>{inner_key.capitalize()}: {inner_item}</li>"
+                        else:
+                            body += f"<li>{inner_key.capitalize()}: {inner_value}</li>"
+                    body += "</ul>"
+                else:
+                    body += f"<p><strong>{key.replace('_', ' ').capitalize()}:</strong> {value}</p>"
 
-            <h3>Suggested Lifestyle Changes:</h3>
-            <ul>
-        """
-        for change in analysis_dict['lifestyle_changes']:
-            body += f"<li>{change}</li>"
+        body += "</div>"
 
-        body += f"""
-            </ul>
-            <h3>Suggested Diet Routine:</h3>
-            <ul>
-        """
-        for routine in analysis_dict['diet_routine']:
-            body += f"<li>{routine}</li>"
-
-        body += """
-            </ul>
-        </div>
-        """
-
-    msg.attach(MIMEText(body, 'html'))  # Set subtype to 'html'
+    msg.attach(MIMEText(body, 'html'))
 
     try:
         server = smtplib.SMTP(os.getenv("SMTP_SERVER"), int(os.getenv("SMTP_PORT")))
@@ -107,16 +138,16 @@ def send_compare_report_email(email_to: str, body: str, arabic: bool):
 
         if arabic:
             html = f"""
-            <div dir="rtl">
-                {body}
-            </div>
-            """
+                        <div dir="rtl">
+                            {body}
+                        </div>
+                        """
         else:
             html = f"""
-            <div>
-                {body}
-            </div>
-            """
+                        <div>
+                            {body}
+                        </div>
+                        """
 
         msg.attach(MIMEText(html, 'html'))
 

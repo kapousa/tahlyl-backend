@@ -9,4 +9,9 @@ pdfminer.six
 fastapi-cors
 python-multipart
 reportlab
-python-multipart
+#prometheus-client # For Prometheus instrumentation
+opentelemetry-api # For OpenTelemetry API
+opentelemetry-sdk # For OpenTelemetry SDK
+opentelemetry-exporter-prometheus # For Prometheus exporter for OpenTelemetry
+opentelemetry-exporter-jaeger # For Jaeger exporter for OpenTelemetry (if using Jaeger)
+#loguru # For enhanced logging
