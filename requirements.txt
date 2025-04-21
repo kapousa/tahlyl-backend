@@ -15,8 +15,6 @@ opentelemetry-sdk
 opentelemetry-exporter-prometheus
 opentelemetry-exporter-jaeger
 opentelemetry-exporter-otlp
-
-
 sqlalchemy
 jose
 passlib
