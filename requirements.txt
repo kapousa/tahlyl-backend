@@ -4,7 +4,7 @@ fastapi
 pydantic
 uvicorn
 starlette
-google-generativeai
+google-generativeai==0.1.0  # Explicitly pin to the latest stable version as of my knowledge
 pdfminer.six
 fastapi-cors
 python-multipart
@@ -17,4 +17,3 @@ opentelemetry-exporter-jaeger
 opentelemetry-exporter-otlp
 sqlalchemy
 jose
-passlib
