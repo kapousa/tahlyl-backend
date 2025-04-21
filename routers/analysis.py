@@ -5,11 +5,12 @@ from typing import List, Union
 from fastapi import APIRouter, HTTPException, File, Form, UploadFile
 from pdfminer.high_level import extract_text
 
-from lib.apis.Analysis import extract_text_from_pdf, analyze_blood_test, compare_reports
-from lib.models.AnalysisResult import AnalysisResult
-from lib.models.CompareReports import CompareReports
-from lib.utils.email import send_analysis_results_email, send_compare_report_email
-from lib.utils.logger import logger
+from lib.libs.Analysis import analyze_blood_test, compare_reports, model
+from lib.utils.Helper import extract_text_from_pdf
+from lib.schemas.AnalysisResult import AnalysisResult
+from lib.schemas.CompareReports import CompareReports
+from lib.utils.Email import send_analysis_results_email, send_compare_report_email
+from lib.utils.Logger import logger
 #
 router = APIRouter(prefix="/analysis", tags=["analysis"])
 
@@ -70,3 +71,114 @@ async def compare_blood_tests(
     except Exception as e:
         logger.error(f"Error processing Gemini response: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response: {e}")
+
+
+def analyze_blood_test_trends_gemini(blood_test_reports_text):
+    """Simulates trend analysis using Gemini."""
+    prompt = f"""
+    Analyze the following blood test reports to identify trends and potential future risks.
+    Provide the analysis in JSON format, including:
+    - "trends": A description of any observed trends in the blood test values.
+    - "forecast": A brief prediction of potential future values or health risks based on the trends.
+
+    Blood Test Reports:
+    {blood_test_reports_text}
+
+    JSON:
+    """
+
+    try:
+        response = model.generate_content(prompt)
+        response_text = response.text
+        response_text = response_text.replace("```json", "").replace("```", "").strip()
+        return json.loads(response_text)
+    except Exception as e:
+        return {"error": f"Error analyzing trends: {e}"}
+
+def get_supplement_recommendations_gemini(blood_test_results_text):
+    """Simulates supplement recommendations using Gemini."""
+    prompt = f"""
+    Analyze the following blood test results to identify potential nutrient deficiencies and recommend appropriate supplements or dietary changes.
+    Provide the recommendations in JSON format, including:
+    - "deficiencies": A list of identified nutrient deficiencies.
+    - "recommendations": A list of recommended supplements or dietary changes, including dosages.
+
+    Blood Test Results:
+    {blood_test_results_text}
+
+    JSON:
+    """
+    try:
+        response = model.generate_content(prompt)
+        response_text = response.text
+        response_text = response_text.replace("```json", "").replace("```", "").strip()
+        return json.loads(response_text)
+    except Exception as e:
+        return {"error": f"Error getting supplement recommendations: {e}"}
+
+def check_drug_interactions_gemini(medications_text, blood_test_results_text):
+    """Simulates drug interaction checks using Gemini."""
+    prompt = f"""
+    Analyze the following list of medications and blood test results to identify potential drug interactions and medication effects.
+    Provide the analysis in JSON format, including:
+    - "interactions": A list of potential drug interactions.
+    - "medication_effects": A description of the potential effects of the medications on the blood test results.
+
+    Medications:
+    {medications_text}
+
+    Blood Test Results:
+    {blood_test_results_text}
+
+    JSON:
+    """
+    try:
+        response = model.generate_content(prompt)
+        response_text = response.text
+        response_text = response_text.replace("```json", "").replace("```", "").strip()
+        return json.loads(response_text)
+    except Exception as e:
+        return {"error": f"Error checking drug interactions: {e}"}
+
+def get_lab_value_interpretation_gemini(lab_value_text, blood_test_results_text):
+    """Simulates lab value interpretation using Gemini."""
+    prompt = f"""
+    Provide an interpretation of the following lab values based on the blood test results.
+    Provide the interpretation in JSON format, including:
+    - "interpretation": An explanation of the lab values and their significance.
+
+    Lab Values:
+    {lab_value_text}
+
+    Blood Test Results:
+    {blood_test_results_text}
+
+    JSON:
+    """
+    try:
+        response = model.generate_content(prompt)
+        response_text = response.text
+        response_text = response_text.replace("```json", "").replace("```", "").strip()
+        return json.loads(response_text)
+    except Exception as e:
+        return {"error": f"Error getting lab value interpretation: {e}"}
+
+@router.post("/analyze_trends")
+async def analyze_trends(pdf_file: UploadFile = File(...)):
+    blood_test_text = extract_text_from_pdf(pdf_file)
+    return analyze_blood_test_trends_gemini(blood_test_text)
+
+@router.post("/supplement_recommendations")
+async def supplement_recommendations(pdf_file: UploadFile = File(...)):
+    blood_test_text = extract_text_from_pdf(pdf_file)
+    return get_supplement_recommendations_gemini(blood_test_text)
+
+@router.post("/drug_interactions")
+async def drug_interactions(pdf_file: UploadFile = File(...), medications: str = Form(...)):
+    blood_test_text = extract_text_from_pdf(pdf_file)
+    return check_drug_interactions_gemini(medications, blood_test_text)
+
+@router.post("/lab_interpretation")
+async def lab_interpretation(pdf_file: UploadFile = File(...), lab_values: str = Form(...)):
+    blood_test_text = extract_text_from_pdf(pdf_file)
+    return get_lab_value_interpretation_gemini(lab_values, blood_test_text)
