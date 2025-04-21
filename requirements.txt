@@ -1,14 +1,14 @@
-dotenv~=0.9.9
-python-dotenv~=1.1.0
-fastapi~=0.115.12
-pydantic~=2.11.3
-uvicorn~=0.34.1
-starlette~=0.46.2
+dotenv
+python-dotenv
+fastapi
+pydantic
+uvicorn
+starlette
 google-generativeai
 pdfminer.six
 fastapi-cors
 python-multipart
-reportlab~=4.3.1
+reportlab
 prometheus-fastapi-instrumentator
 opentelemetry-api
 opentelemetry-sdk
@@ -17,6 +17,6 @@ opentelemetry-exporter-jaeger
 opentelemetry-exporter-otlp
 
 
-sqlalchemy~=2.0.40
-jose~=1.0.0
-passlib~=1.7.4
+sqlalchemy
+jose
+passlib
