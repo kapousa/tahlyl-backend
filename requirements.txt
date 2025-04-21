@@ -4,7 +4,7 @@ fastapi
 pydantic
 uvicorn
 starlette
-google-generativeai==0.6.17  # Explicitly pin to the latest stable version as of my knowledge
+google-generativeai==0.7.0  # Explicitly pin to the latest stable version as of my knowledge
 pdfminer.six
 fastapi-cors
 python-multipart
