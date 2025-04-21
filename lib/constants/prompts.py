@@ -193,3 +193,294 @@ ARABIC_BLOOD_TEST_EMPATHETIC_PROMPT = """
 
 JSON:
 """
+
+
+# New Prompts
+ARABIC_CBC_PROMPT = """
+بصفتك {tone}، حلل نتائج فحص تعداد الدم الكامل (CBC) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج فحص تعداد الدم الكامل، مع الإشارة إلى أي قيم خارج النطاق الطبيعي.
+- "potential_implications": شرح محتمل لأي قيم غير طبيعية تم العثور عليها، مع ذكر الحالات الصحية المحتملة المرتبطة بها (مثل فقر الدم، الالتهابات، إلخ).
+- "next_steps": توصيات للخطوات التالية بناءً على النتائج، مثل استشارة الطبيب أو إجراء فحوصات إضافية.
+
+نتائج فحص تعداد الدم الكامل:
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_CBC_PROMPT = """
+As a {tone}, analyze the following Complete Blood Count (CBC) results and provide a response in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the CBC results, highlighting any values outside the normal range.
+- "potential_implications": Potential explanations for any abnormal values found, mentioning possible related health conditions (e.g., anemia, infections, etc.).
+- "next_steps": Recommendations for the next steps based on the results, such as consulting a doctor or further testing.
+
+Complete Blood Count results:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_COMPARE_PROMPT = """
+بصفتك {tone}، قارن بين نتائج تقارير اختبارات الدم المتعددة التالية وقدم باللغة العربية ملخصًا للتقدم أو التغييرات الملحوظة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "comparison_summary": ملخص لأوجه التشابه والاختلاف والاتجاهات الرئيسية بين التقارير المقدمة.
+- "parameter_changes": تفصيل للتغيرات الهامة في قيم المعلمات الرئيسية عبر التقارير (زيادة أو نقصان).
+- "overall_progress": تقييم عام للتقدم أو التغييرات في صحة المريض بناءً على مقارنة التقارير.
+- "recommendations": توصيات بناءً على مقارنة التقارير، مثل الاستمرار في الخطة الحالية أو إجراء تعديلات.
+
+تقارير اختبارات الدم:
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_COMPARE_PROMPT = """
+As a {tone}, compare the results of the following multiple blood test reports and provide a progress summary in English in JSON format.
+The JSON should contain the following keys:
+- "comparison_summary": A summary of the similarities, differences, and key trends across the provided reports.
+- "parameter_changes": Details of significant changes in key parameter values across the reports (increases or decreases).
+- "overall_progress": An overall assessment of the progress or changes in the patient's health based on the report comparison.
+- "recommendations": Recommendations based on the comparison, such as continuing the current plan or making adjustments.
+
+Blood test reports:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_GLUCOSE_PROMPT = """
+بصفتك {tone}، حلل نتيجة اختبار مستوى السكر في الدم (صائم أو عشوائي) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "glucose_level": قيمة مستوى السكر في الدم.
+- "interpretation": تفسير للنتيجة بناءً على ما إذا كان الاختبار صائمًا أم عشوائيًا، مع الإشارة إلى النطاقات الطبيعية وما إذا كانت النتيجة تشير إلى سكري أو مقدمات سكري أو طبيعية.
+- "recommendations": توصيات بناءً على النتيجة، مثل مراقبة مستويات السكر، استشارة الطبيب، أو إجراء اختبارات إضافية (مثل HbA1c).
+
+نتيجة اختبار مستوى السكر في الدم:
+{blood_test_text}
+نوع الاختبار: (صائم/عشوائي)
+
+JSON:
+"""
+ENGLISH_GLUCOSE_PROMPT = """
+As a {tone}, analyze the following blood glucose test result (fasting or random) and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "glucose_level": The blood glucose level value.
+- "interpretation": An interpretation of the result based on whether it was a fasting or random test, referencing normal ranges and indicating if the result suggests diabetes, pre-diabetes, or is normal.
+- "recommendations": Recommendations based on the result, such as monitoring glucose levels, consulting a doctor, or further testing (e.g., HbA1c).
+
+Blood glucose test result:
+{blood_test_text}
+Test type: (Fasting/Random)
+
+JSON:
+"""
+
+ARABIC_LIVER_PROMPT = """
+بصفتك {tone}، حلل نتائج اختبارات وظائف الكبد (LFTs) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج اختبارات وظائف الكبد، مع الإشارة إلى أي قيم خارج النطاق الطبيعي (ALT، AST، ALP، بيليروبين).
+- "affected_markers": قائمة بالعلامات الحيوية الكبدية التي أظهرت قيمًا غير طبيعية.
+- "potential_implications": شرح محتمل لأي قيم غير طبيعية تم العثور عليها، مع ذكر الحالات الصحية المحتملة المرتبطة بها (مثل التهاب الكبد، تلف الكبد).
+- "next_steps": توصيات للخطوات التالية بناءً على النتائج، مثل استشارة الطبيب أو إجراء فحوصات إضافية.
+
+نتائج اختبارات وظائف الكبد:
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_LIVER_PROMPT = """
+As a {tone}, analyze the following Liver Function Tests (LFTs) results and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the LFTs results, highlighting any values outside the normal range (ALT, AST, ALP, Bilirubin).
+- "affected_markers": A list of the liver function markers that showed abnormal values.
+- "potential_implications": Potential explanations for any abnormal values found, mentioning possible related health conditions (e.g., hepatitis, liver damage).
+- "next_steps": Recommendations for the next steps based on the results, such as consulting a doctor or further testing.
+
+Liver Function Tests results:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_KIDNEY_PROMPT = """
+بصفتك {tone}، حلل نتائج اختبارات وظائف الكلى التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج اختبارات وظائف الكلى، مع الإشارة إلى قيم الكرياتينين ونيتروجين اليوريا في الدم (BUN) وما إذا كانت ضمن النطاق الطبيعي.
+- "interpretation": تفسير للنتائج وما إذا كانت تشير إلى وجود مشاكل في وظائف الكلى.
+- "recommendations": توصيات بناءً على النتائج، مثل مراقبة وظائف الكلى، استشارة الطبيب، أو إجراء فحوصات إضافية.
+
+نتائج اختبارات وظائف الكلى:
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_KIDNEY_PROMPT = """
+As a {tone}, analyze the following Kidney Function Tests results and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the kidney function tests results, highlighting the Creatinine and Blood Urea Nitrogen (BUN) values and whether they are within the normal range.
+- "interpretation": An interpretation of the results and whether they suggest any issues with kidney function.
+- "recommendations": Recommendations based on the results, such as monitoring kidney function, consulting a doctor, or further testing.
+
+Kidney Function Tests results:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_LIPID_PROMPT = """
+بصفتك {tone}، حلل نتائج فحص الدهون (الكوليسترول) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج فحص الدهون، مع الإشارة إلى قيم الكوليسترول الكلي، والكوليسترول الضار (LDL)، والكوليسترول الجيد (HDL)، والدهون الثلاثية وما إذا كانت ضمن النطاقات الصحية.
+- "risk_assessment": تقييم لمخاطر الإصابة بأمراض القلب والسكتة الدماغية بناءً على مستويات الدهون.
+- "recommendations": توصيات بناءً على النتائج، مثل تغييرات في نمط الحياة، النظام الغذائي، أو استشارة الطبيب بشأن العلاج.
+
+نتائج فحص الدهون:
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_LIPID_PROMPT = """
+As a {tone}, analyze the following Lipid Profile (Cholesterol Test) results and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the lipid profile results, highlighting the values for Total Cholesterol, LDL (bad cholesterol), HDL (good cholesterol), and Triglycerides and whether they are within healthy ranges.
+- "risk_assessment": An assessment of the risk for heart disease and stroke based on the lipid levels.
+- "recommendations": Recommendations based on the results, such as lifestyle changes, dietary modifications, or consulting a doctor about treatment.
+
+Lipid Profile results:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_HBA1C_PROMPT = """
+بصفتك {tone}، حلل نتيجة اختبار الهيموجلوبين السكري (HbA1c) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "hba1c_level": قيمة مستوى الهيموجلوبين السكري.
+- "average_glucose": تقدير لمستوى السكر في الدم المتوسط على مدى 2-3 أشهر الماضية بناءً على نتيجة HbA1c.
+- "interpretation": تفسير للنتيجة وما إذا كانت تشير إلى تحكم جيد في السكر، أو مقدمات سكري، أو سكري.
+- "recommendations": توصيات بناءً على النتيجة، خاصة لمرضى السكري بشأن إدارة مستويات السكر في الدم.
+
+نتيجة اختبار الهيموجلوبين السكري (HbA1c):
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_HBA1C_PROMPT = """
+As a {tone}, analyze the following Hemoglobin A1c (HbA1c) test result and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "hba1c_level": The Hemoglobin A1c level value.
+- "average_glucose": An estimation of the average blood glucose level over the past 2-3 months based on the HbA1c result.
+- "interpretation": An interpretation of the result and whether it indicates good blood sugar control, pre-diabetes, or diabetes.
+- "recommendations": Recommendations based on the result, especially for diabetic patients regarding blood sugar management.
+
+Hemoglobin A1c (HbA1c) result:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_VITAMIN_D_PROMPT = """
+بصفتك {tone}، حلل نتيجة اختبار فيتامين د (25-هيدروكسي فيتامين د) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "vitamin_d_level": قيمة مستوى فيتامين د.
+- "interpretation": تفسير للنتيجة وما إذا كانت تشير إلى نقص حاد، نقص، اكتفاء، أو مستويات عالية من فيتامين د.
+- "potential_implications": شرح محتمل لتأثير مستويات فيتامين د على صحة العظام ووظيفة المناعة.
+- "recommendations": توصيات بناءً على النتيجة، مثل تناول مكملات فيتامين د أو التعرض لأشعة الشمس.
+
+نتيجة اختبار فيتامين د (25-هيدروكسي فيتامين د):
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_VITAMIN_D_PROMPT = """
+As a {tone}, analyze the following Vitamin D Test (25-hydroxy Vitamin D) result and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "vitamin_d_level": The Vitamin D level value.
+- "interpretation": An interpretation of the result and whether it indicates severe deficiency, deficiency, sufficiency, or high levels of Vitamin D.
+- "potential_implications": Potential explanations for the impact of the Vitamin D level on bone health and immune function.
+- "recommendations": Recommendations based on the result, such as taking Vitamin D supplements or sun exposure.
+
+Vitamin D Test (25-hydroxy Vitamin D) result:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_THYROID_PROMPT = """
+بصفتك {tone}، حلل نتائج اختبارات وظائف الغدة الدرقية التالية (TSH، T3، T4) وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج اختبارات وظائف الغدة الدرقية، مع الإشارة إلى قيم TSH، T3، و T4 وما إذا كانت ضمن النطاقات الطبيعية.
+- "affected_hormones": قائمة بالهرمونات الدرقية التي أظهرت قيمًا غير طبيعية.
+- "potential_implications": شرح محتمل لأي قيم غير طبيعية تم العثور عليها، مع ذكر الحالات الصحية المحتملة المرتبطة بها (مثل قصور الغدة الدرقية أو فرط نشاط الغدة الدرقية).
+- "next_steps": توصيات للخطوات التالية بناءً على النتائج، مثل استشارة الطبيب أو إجراء فحوصات إضافية.
+
+نتائج اختبارات وظائف الغدة الدرقية:
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_THYROID_PROMPT = """
+As a {tone}, analyze the following Thyroid Function Tests results (TSH, T3, and T4) and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the thyroid function tests results, highlighting the values for TSH, T3, and T4 and whether they are within normal ranges.
+- "affected_hormones": A list of the thyroid hormones that showed abnormal values.
+- "potential_implications": Potential explanations for any abnormal values found, mentioning possible related health conditions (e.g., hypothyroidism or hyperthyroidism).
+- "next_steps": Recommendations for the next steps based on the results, such as consulting a doctor or further testing.
+
+Thyroid Function Tests results:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_IRON_PROMPT = """
+بصفتك {tone}، حلل نتائج فحوصات الحديد (الحديد والفيريتين) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج فحوصات الحديد، مع الإشارة إلى قيم الحديد والفيريتين وما إذا كانت ضمن النطاقات الطبيعية.
+- "interpretation": تفسير للنتائج وما إذا كانت تشير إلى نقص الحديد (فقر الدم الناجم عن نقص الحديد) أو زيادة الحديد.
+- "recommendations": توصيات بناءً على النتائج، مثل تغييرات في النظام الغذائي أو تناول مكملات الحديد أو إجراء فحوصات إضافية.
+
+نتائج فحوصات الحديد (الحديد والفيريتين):
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_IRON_PROMPT = """
+As a {tone}, analyze the following Iron Studies (Iron & Ferritin) results and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the iron studies results, highlighting the Iron and Ferritin values and whether they are within normal ranges.
+- "interpretation": An interpretation of the results and whether they suggest iron deficiency (iron deficiency anemia) or iron overload.
+- "recommendations": Recommendations based on the results, such as dietary changes, iron supplementation, or further testing.
+
+Iron Studies (Iron & Ferritin) results:
+{blood_test_text}
+
+JSON:
+"""
+
+ARABIC_INFLAMMATION_PROMPT = """
+بصفتك {tone}، حلل نتائج علامات الالتهاب (CRP و ESR) التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "summary": ملخص موجز لنتائج علامات الالتهاب، مع الإشارة إلى قيم CRP و ESR وما إذا كانت مرتفعة.
+- "interpretation": تفسير للنتائج وما إذا كانت تشير إلى وجود التهاب في الجسم.
+- "potential_causes": ذكر بعض الأسباب المحتملة لارتفاع علامات الالتهاب (مثل العدوى، أمراض المناعة الذاتية).
+- "next_steps": توصيات للخطوات التالية بناءً على النتائج، مثل استشارة الطبيب لتحديد سبب الالتهاب.
+
+نتائج علامات الالتهاب (CRP و ESR):
+{blood_test_text}
+
+JSON:
+"""
+ENGLISH_INFLAMMATION_PROMPT = """
+As a {tone}, analyze the following Inflammation Markers (CRP and ESR) results and provide a response in English in JSON format.
+The JSON should contain the following keys:
+- "summary": A concise summary of the inflammation markers results, highlighting the CRP and ESR values and whether they are elevated.
+- "interpretation": An interpretation of the results and whether they suggest the presence of inflammation in the body.
+- "potential_causes": Mention some potential underlying causes for elevated inflammation markers (e.g., infection, autoimmune conditions).
+- "next_steps": Recommendations for the next steps based on the results, such as consulting a doctor to determine the cause of inflammation.
+
+Inflammation Markers (CRP and ESR) results:
+{blood_test_text}
+
+JSON:
+"""

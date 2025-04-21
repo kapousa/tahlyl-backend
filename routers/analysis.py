@@ -1,28 +1,46 @@
 # analysis.py
+import json
 import os
-from typing import List, Union
+from typing import List, Union, Optional
 
-from fastapi import APIRouter, HTTPException, File, Form, UploadFile
+from fastapi import APIRouter, HTTPException, File, Form, UploadFile, Depends
 from pdfminer.high_level import extract_text
+from sqlalchemy.orm import Session
+from starlette.responses import JSONResponse
 
-from lib.libs.Analysis import analyze_blood_test, compare_reports, model
+from config import get_db
+from lib.engine.analysis import analyze_blood_test, compare_reports, model, analyze_blood_test_trends_gemini, \
+    get_supplement_recommendations_gemini, check_drug_interactions_gemini, get_lab_value_interpretation_gemini, \
+    reportAnalyzer
+from lib.engine.security import get_current_user, fake_current_user
+from lib.schemas.result import ResultCreate
 from lib.utils.Helper import extract_text_from_pdf
-from lib.schemas.AnalysisResult import AnalysisResult
-from lib.schemas.CompareReports import CompareReports
+from lib.schemas.analysisResult import AnalysisResult
+from lib.schemas.compareReports import CompareReports
 from lib.utils.Email import send_analysis_results_email, send_compare_report_email
 from lib.utils.Logger import logger
+from lib.utils.Report import save_report, save_analysis_result
+from lib.models.User import User as SQLUser
+
 #
 router = APIRouter(prefix="/analysis", tags=["analysis"])
+
 
 @router.get("/")
 async def base_analysis():
     logger.info("Base analysis endpoint hit.")
     return {"Hello": "Analysis"}
 
-@router.post("/analyze", response_model=AnalysisResult)
-async def analyze_blood_test_endpoint(pdf_file: UploadFile = File(...), arabic: bool = Form(False),
-                                      email: str = Form(...), tone: str = Form(...)):
-    logger.info(f"Analyze blood test endpoint hit. Email: {email}, Arabic: {arabic}, Tone: {tone}")
+@router.post("/analyze1", response_model=AnalysisResult)
+async def __analyze_blood_test_endpoint(
+    pdf_file: UploadFile = File(...),
+    arabic: bool = Form(False),
+    email: str = Form(...),
+    tone: str = Form(...),
+    current_user: SQLUser = Depends(get_current_user),  # Inject the logged-in user as a parameter
+    db: Session = Depends(get_db),  # Inject the database session as a parameter
+):
+    logger.info(f"Analyze blood test endpoint hit. Email: {email}, Arabic: {arabic}, Tone: {tone}, User ID: {current_user.id}")
     tone = tone.lower()
     try:
         if pdf_file.content_type != "application/pdf":
@@ -32,6 +50,23 @@ async def analyze_blood_test_endpoint(pdf_file: UploadFile = File(...), arabic: 
         blood_test_text = extract_text_from_pdf(pdf_file)
         analysis_dict = analyze_blood_test(blood_test_text, arabic, tone)
 
+        # # Save the report using the logged-in user's ID
+        # report_data = {
+        #     "name": pdf_file.filename,
+        #     "content": blood_test_text,
+        # }
+        # report = save_report(report_data, current_user.id, db)
+        # logger.info(f"Report saved to database with ID: {report.id} for user: {current_user.id}")
+        #
+        # # Save the analysis result
+        # result_data = ResultCreate(
+        #     result=analysis_dict.get("interpretation", "Analysis Result"),
+        #     report_id=report.id,
+        #     tone_id=tone,  # Assuming 'tone' string is what you want to save
+        # )
+        # saved_result = save_analysis_result(result_data, db)
+        # logger.info(f"Analysis result saved to database with ID: {saved_result.id} for report: {report.id}")
+
         send_analysis_results_email(email, analysis_dict, arabic, tone)
         logger.info(f"Email sent successfully to {email}.")
         return AnalysisResult(**analysis_dict)
@@ -40,8 +75,8 @@ async def analyze_blood_test_endpoint(pdf_file: UploadFile = File(...), arabic: 
         logger.error(f"HTTPException: {e}")
         raise e
     except Exception as e:
-        logger.error(f"Error processing Gemini response: {e}")
-        raise HTTPException(status_code=500, detail=f"Error processing Gemini response: {e}")
+        logger.error(f"Error processing Gemini response or saving report: {e}")
+        raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
 
 @router.post("/compare", response_model=CompareReports)
 async def compare_blood_tests(
@@ -72,113 +107,23 @@ async def compare_blood_tests(
         logger.error(f"Error processing Gemini response: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response: {e}")
 
-
-def analyze_blood_test_trends_gemini(blood_test_reports_text):
-    """Simulates trend analysis using Gemini."""
-    prompt = f"""
-    Analyze the following blood test reports to identify trends and potential future risks.
-    Provide the analysis in JSON format, including:
-    - "trends": A description of any observed trends in the blood test values.
-    - "forecast": A brief prediction of potential future values or health risks based on the trends.
-
-    Blood Test Reports:
-    {blood_test_reports_text}
-
-    JSON:
-    """
-
+@router.post("/analyze", response_model=AnalysisResult)
+async def analyze_report_endpoint(
+    pdf_file: UploadFile = File(...),
+    report_type: Optional[str] = Form(None),
+    arabic: bool = Form(False),
+    tone: str = Form("General"),
+    current_user: SQLUser = Depends(fake_current_user),
+    db: Session = Depends(get_db),
+):
+    logger.info(f"Analyze report endpoint hit. User ID: {current_user.id}, Report Type: {report_type}, Arabic: {arabic}, Tone: {tone}", current_user, db)
     try:
-        response = model.generate_content(prompt)
-        response_text = response.text
-        response_text = response_text.replace("```json", "").replace("```", "").strip()
-        return json.loads(response_text)
+        AnalysisResult = reportAnalyzer(pdf_file, report_type, arabic, tone, current_user, db)
+        return AnalysisResult
+
+    except HTTPException as e:
+        logger.error(f"HTTPException: {e}")
+        raise e
     except Exception as e:
-        return {"error": f"Error analyzing trends: {e}"}
-
-def get_supplement_recommendations_gemini(blood_test_results_text):
-    """Simulates supplement recommendations using Gemini."""
-    prompt = f"""
-    Analyze the following blood test results to identify potential nutrient deficiencies and recommend appropriate supplements or dietary changes.
-    Provide the recommendations in JSON format, including:
-    - "deficiencies": A list of identified nutrient deficiencies.
-    - "recommendations": A list of recommended supplements or dietary changes, including dosages.
-
-    Blood Test Results:
-    {blood_test_results_text}
-
-    JSON:
-    """
-    try:
-        response = model.generate_content(prompt)
-        response_text = response.text
-        response_text = response_text.replace("```json", "").replace("```", "").strip()
-        return json.loads(response_text)
-    except Exception as e:
-        return {"error": f"Error getting supplement recommendations: {e}"}
-
-def check_drug_interactions_gemini(medications_text, blood_test_results_text):
-    """Simulates drug interaction checks using Gemini."""
-    prompt = f"""
-    Analyze the following list of medications and blood test results to identify potential drug interactions and medication effects.
-    Provide the analysis in JSON format, including:
-    - "interactions": A list of potential drug interactions.
-    - "medication_effects": A description of the potential effects of the medications on the blood test results.
-
-    Medications:
-    {medications_text}
-
-    Blood Test Results:
-    {blood_test_results_text}
-
-    JSON:
-    """
-    try:
-        response = model.generate_content(prompt)
-        response_text = response.text
-        response_text = response_text.replace("```json", "").replace("```", "").strip()
-        return json.loads(response_text)
-    except Exception as e:
-        return {"error": f"Error checking drug interactions: {e}"}
-
-def get_lab_value_interpretation_gemini(lab_value_text, blood_test_results_text):
-    """Simulates lab value interpretation using Gemini."""
-    prompt = f"""
-    Provide an interpretation of the following lab values based on the blood test results.
-    Provide the interpretation in JSON format, including:
-    - "interpretation": An explanation of the lab values and their significance.
-
-    Lab Values:
-    {lab_value_text}
-
-    Blood Test Results:
-    {blood_test_results_text}
-
-    JSON:
-    """
-    try:
-        response = model.generate_content(prompt)
-        response_text = response.text
-        response_text = response_text.replace("```json", "").replace("```", "").strip()
-        return json.loads(response_text)
-    except Exception as e:
-        return {"error": f"Error getting lab value interpretation: {e}"}
-
-@router.post("/analyze_trends")
-async def analyze_trends(pdf_file: UploadFile = File(...)):
-    blood_test_text = extract_text_from_pdf(pdf_file)
-    return analyze_blood_test_trends_gemini(blood_test_text)
-
-@router.post("/supplement_recommendations")
-async def supplement_recommendations(pdf_file: UploadFile = File(...)):
-    blood_test_text = extract_text_from_pdf(pdf_file)
-    return get_supplement_recommendations_gemini(blood_test_text)
-
-@router.post("/drug_interactions")
-async def drug_interactions(pdf_file: UploadFile = File(...), medications: str = Form(...)):
-    blood_test_text = extract_text_from_pdf(pdf_file)
-    return check_drug_interactions_gemini(medications, blood_test_text)
-
-@router.post("/lab_interpretation")
-async def lab_interpretation(pdf_file: UploadFile = File(...), lab_values: str = Form(...)):
-    blood_test_text = extract_text_from_pdf(pdf_file)
-    return get_lab_value_interpretation_gemini(lab_values, blood_test_text)
+        logger.error(f"Error processing Gemini response or saving report: {e}")
+        raise HTTPException(status_code=500, detail=f"Error processing report analysis: {e}")

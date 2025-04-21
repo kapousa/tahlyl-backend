@@ -1,4 +1,5 @@
-# service_schema.py (Recommended file name)
+# Service.py (Recommended file name)
+from typing import List
 from pydantic import BaseModel, ConfigDict  # Import ConfigDict for V2
 
 
@@ -33,3 +34,6 @@ class Service(ServiceBase):
     # Pydantic V1:
     # class Config:
     #     orm_mode = True
+
+class ServicesList(BaseModel):
+    services: List[Service]

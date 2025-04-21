@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from config import get_db
 from lib.schemas.service import Service, ServiceBase, ServiceCreate
-from lib.models.service import Service as SQLService  # Import SQLAlchemy model
+from lib.models.Service import Service as SQLService  # Import SQLAlchemy model
 
 router = APIRouter(prefix="/services", tags=["services"])
 

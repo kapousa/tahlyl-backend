@@ -7,16 +7,16 @@ import os
 import json
 import time
 
-from lib.utils.logger import logger
-from routers import users_router, analysis_router
+from lib.utils.Logger import logger
+from routers import users_router, analysis_router, services_router
 
 # OpenTelemetry imports #########################################
-from opentelemetry import trace
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter #Change to this.
-from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+# from opentelemetry import trace
+# from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter #Change to this.
+# from opentelemetry.sdk.resources import SERVICE_NAME, Resource
+# from opentelemetry.sdk.trace import TracerProvider
+# from opentelemetry.sdk.trace.export import BatchSpanProcessor
+# from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 #########################################
 
 # Load .env
@@ -26,12 +26,13 @@ app = FastAPI()
 
 app.include_router(users_router)
 app.include_router(analysis_router)
+app.include_router(services_router)
 
-origins = ["*"]
+origins = ["http://localhost:3000/"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins= ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

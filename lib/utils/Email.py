@@ -29,7 +29,7 @@ def send_email_with_pdf(email: str, pdf_path: str):
     except Exception as e:
         print(f"Error sending email: {e}")
 
-def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool, tone: str):
+def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool):
     """Sends an email with the analysis results in the body (HTML)."""
     msg = MIMEMultipart()
     msg['From'] = os.getenv("EMAIL_SENDER")

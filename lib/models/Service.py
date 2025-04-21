@@ -1,14 +1,21 @@
-# models.py
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
-from config import Base # Import your declarative base from config.py
+from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 
-class SQLService(Base): # Give it a distinct name or keep as Service if Pydantic is in schemas.py
+Base = declarative_base()
+
+class Service(Base):
     __tablename__ = "service"
 
-    id = Column(Integer, primary_key=True, index=True) # Match SQL type
-    api_name = Column(Text, nullable=False)            # Match SQL type & constraints
-    description = Column(Text, nullable=True)
-    url = Column(Text, nullable=False, default="#")
-    # Ensure column names match corrected SQL table
-    category_id = Column(Text, ForeignKey("lookup.key"), nullable=True)
-    beneficiary_id = Column(Text, ForeignKey("lookup.key"), nullable=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    api_name = Column(String, nullable=False)
+    description = Column(Text)
+    category_id = Column(String, ForeignKey("category.id"))  # Assuming category table exists
+    url = Column(String)
+    beneficiary_id = Column(String, ForeignKey("beneficiary.id")) # Assuming beneficiary table exists
+    keyAICapabilities = Column(Text)
+
+    # Optional: Relationships (assuming you have Category and Beneficiary models)
+    # category = relationship("Category", back_populates="services")
+    # beneficiary = relationship("Beneficiary", back_populates="services")
