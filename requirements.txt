@@ -4,7 +4,7 @@ fastapi
 pydantic
 uvicorn
 starlette
-google-generativeai
+google-generativeai --upgrade
 pdfminer.six
 fastapi-cors
 python-multipart
