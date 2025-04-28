@@ -4,6 +4,8 @@ from typing import Optional
 class UserBase(BaseModel):
     username: str
     email: str #EmailStr
+    role: str
+    avatar: str
 
 class UserCreate(UserBase):
     password: str
@@ -19,4 +21,4 @@ class Token(BaseModel):
     token_type: str
 
 class TokenData(BaseModel):
-    username: Optional[str] = None
+    name: Optional[str] = None

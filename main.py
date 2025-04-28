@@ -8,16 +8,7 @@ import json
 import time
 
 from lib.utils.Logger import logger
-from routers import users_router, analysis_router, services_router
-
-# OpenTelemetry imports #########################################
-# from opentelemetry import trace
-# from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter #Change to this.
-# from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-# from opentelemetry.sdk.trace import TracerProvider
-# from opentelemetry.sdk.trace.export import BatchSpanProcessor
-# from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
-#########################################
+from routers import users_router, analysis_router, services_router, report_router, bloodtest_router
 
 # Load .env
 load_dotenv()
@@ -27,6 +18,8 @@ app = FastAPI()
 app.include_router(users_router)
 app.include_router(analysis_router)
 app.include_router(services_router)
+app.include_router(report_router)
+app.include_router(bloodtest_router)
 
 origins = ["http://localhost:3000/"]
 

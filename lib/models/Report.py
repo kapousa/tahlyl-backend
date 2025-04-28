@@ -1,3 +1,4 @@
+from fastapi import APIRouter
 from sqlalchemy import Column, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from config import Base  # Assuming you have your Base defined in config.py

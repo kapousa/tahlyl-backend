@@ -46,13 +46,13 @@ async def read_services(db: sqlite3.Connection = Depends(get_db)):
 @router.post("/add", response_model=Service)
 async def create_service(service: ServiceCreate, db: sqlite3.Connection = Depends(get_db)):
     """Creates a new service using raw SQL."""
-    logger.info(f"Attempting to add service: {service.api_name}")
+    logger.info(f"Attempting to add service: {service.name}")
     query = """
         INSERT INTO service (api_name, description, url, category_id, beneficiary_id)
         VALUES (?, ?, ?, ?, ?);
     """
     data_tuple = (
-        service.api_name,
+        service.name,
         service.description,
         service.url,
         service.category_id,
@@ -62,7 +62,7 @@ async def create_service(service: ServiceCreate, db: sqlite3.Connection = Depend
         cursor = db.execute(query, data_tuple)
         db.commit()
         inserted_id = cursor.lastrowid
-        logger.info(f"Service '{service.api_name}' added with ID: {inserted_id}")
+        logger.info(f"Service '{service.name}' added with ID: {inserted_id}")
         fetch_query = "SELECT id, api_name, description, url, category_id, beneficiary_id FROM service WHERE id = ?;"
         cursor = db.execute(fetch_query, (inserted_id,))
         new_service_row = cursor.fetchone()
@@ -72,7 +72,7 @@ async def create_service(service: ServiceCreate, db: sqlite3.Connection = Depend
         return Service(**new_service_row)
     except sqlite3.IntegrityError as e:
         db.rollback()
-        logger.warning(f"Integrity error adding service '{service.api_name}': {e}")
+        logger.warning(f"Integrity error adding service '{service.name}': {e}")
         raise HTTPException(status_code=400, detail=f"Service may already exist or invalid foreign key: {e}")
     except sqlite3.Error as e:
         db.rollback()

@@ -20,9 +20,9 @@ DISABLE_AUTH = True
 
 # --- Fake User and Token Generation for Temporary Bypass ---
 class FakeUser:
-    def __init__(self, id="test_user", username="kapo", email="hatemn2001@yahoo.com"):
+    def __init__(self, id="test_user", name="kapo", email="hatemn2001@yahoo.com"):
         self.id = id
-        self.username = username
+        self.name = name
         self.email = email
 
 def fake_create_access_token(data: dict, expires_delta: timedelta = None):
@@ -40,7 +40,7 @@ def user_index():
 @router.post("/register/", response_model=User, status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     hashed_password = get_password_hash(user.password)
-    db_user = SQLUser(id=str(uuid.uuid4()), username=user.username, email=user.email, password=hashed_password)
+    db_user = SQLUser(id=str(uuid.uuid4()), name=user.name, email=user.email, password=hashed_password)
     try:
         db.add(db_user)
         db.commit()
@@ -48,24 +48,24 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
         return db_user
     except IntegrityError:
         db.rollback()
-        raise HTTPException(status_code=400, detail="Username or email already registered")
+        raise HTTPException(status_code=400, detail="name or email already registered")
 
 @router.post("/login/", response_model=Token)
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     if DISABLE_AUTH:
-        fake_user = FakeUser(username=form_data.username)
+        fake_user = FakeUser(name=form_data.username)
         access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-        access_token = fake_create_access_token(data={"sub": fake_user.username}, expires_delta=access_token_expires)
+        access_token = fake_create_access_token(data={"sub": fake_user.name}, expires_delta=access_token_expires)
         return {"access_token": access_token, "token_type": "bearer"}
     else:
         try:
-            db_user = db.query(SQLUser).filter(SQLUser.username == form_data.username).first()
+            db_user = db.query(SQLUser).filter(SQLUser.name == form_data.username).first()
 
             if db_user is None or not verify_password(form_data.password, db_user.password):
-                raise HTTPException(status_code=401, detail="Incorrect username or password", headers={"WWW-Authenticate": "Bearer"})
+                raise HTTPException(status_code=401, detail="Incorrect name or password", headers={"WWW-Authenticate": "Bearer"})
 
             access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-            access_token = create_access_token(data={"sub": db_user.username}, expires_delta=access_token_expires)
+            access_token = create_access_token(data={"sub": db_user.name}, expires_delta=access_token_expires)
 
             return {"access_token": access_token, "token_type": "bearer"}
 
@@ -78,7 +78,7 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
 async def read_users_me(current_user: User = Depends(get_fake_current_user) if DISABLE_AUTH else Depends(get_current_user)):
     return current_user
 
-@router.get("/", response_model=List[User])
+@router.get("/all", response_model=List[User])
 async def read_users(db: Session = Depends(get_db)):
     users = db.query(SQLUser).all()
     return users

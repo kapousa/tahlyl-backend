@@ -48,7 +48,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
         token_data = TokenData(username=username)
     except (JWTError, ValidationError):
         raise credentials_exception
-    user = db.query(SQLUser).filter(SQLUser.username == token_data.username).first()
+    user = db.query(SQLUser).filter(SQLUser.username == token_data.name).first()
     try:
         if user is None:
             raise credentials_exception
