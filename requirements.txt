@@ -11,11 +11,11 @@ fastapi-cors
 python-multipart
 reportlab==4.3.1
 prometheus-fastapi-instrumentator
-opentelemetry-api
-opentelemetry-sdk
-opentelemetry-exporter-prometheus
-opentelemetry-exporter-jaeger
-opentelemetry-exporter-otlp
+#opentelemetry-api
+#opentelemetry-sdk
+#opentelemetry-exporter-prometheus
+#opentelemetry-exporter-jaeger
+#opentelemetry-exporter-otlp
 sqlalchemy==2.0.40
 jose==1.0.0
 passlib==1.7.4
