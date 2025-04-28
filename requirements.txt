@@ -17,5 +17,6 @@ prometheus-fastapi-instrumentator
 #opentelemetry-exporter-jaeger
 #opentelemetry-exporter-otlp
 sqlalchemy==2.0.40
-jose>=1.0.0
+#jose>=1.0.0
+PyJWT
 passlib==1.7.4
