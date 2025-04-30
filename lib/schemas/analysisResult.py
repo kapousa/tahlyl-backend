@@ -1,5 +1,12 @@
+from datetime import datetime
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Union
+
+class AnalysisDetailedResult(BaseModel):
+    value: Union[float, str]
+    unit: Optional[str] = None
+    normal_range: Optional[str] = None
+    status: Optional[str] = None
 
 class AnalysisResult(BaseModel):
     summary: Optional[Union[str, Dict, List]] = None
@@ -24,3 +31,5 @@ class AnalysisResult(BaseModel):
     personal_summary: Optional[Union[str, Dict, List]] = None
     emotional_support: Optional[Union[str, Dict, List]] = None
     individualized_recommendations: Optional[Union[str, Dict, List]] = None
+    date: datetime = datetime.now()
+    detailed_results: Optional[Dict[str, AnalysisDetailedResult]] = None  # Add this line

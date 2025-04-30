@@ -29,17 +29,17 @@ def send_email_with_pdf(email: str, pdf_path: str):
     except Exception as e:
         print(f"Error sending email: {e}")
 
-def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool):
+def send_analysis_results_email(report_type: str, email: str, analysis_dict: dict, arabic: bool):
     """Sends an email with the analysis results in the body (HTML)."""
     msg = MIMEMultipart()
     msg['From'] = os.getenv("EMAIL_SENDER")
     msg['To'] = email
-    msg['Subject'] = "تقرير تحليل نتائج اختبار الدم" if arabic else "Blood Test Analysis Report"
+    msg['Subject'] = f"تقرير تحليل نتائج {report_type}" if arabic else f"{report_type} Analysis Report"
 
     body = ""
     if arabic:
         body += "<div style=\"direction: rtl; text-align: right;\">"
-        body += f"<h2>{ 'تقرير تحليل نتائج اختبار الدم:' if arabic else 'Blood Test Analysis Report:'}</h2>"
+        body += f"<h2>{ 'تقرير تحليل نتائج {report_type}:' if arabic else '{report_type} Analysis Report:'}</h2>"
 
         for key, value in analysis_dict.items():
             if value is not None:
@@ -79,7 +79,7 @@ def send_analysis_results_email(email: str, analysis_dict: dict, arabic: bool):
         body += "</div>"
     else:
         body += "<div>"
-        body += "<h2>Blood Test Analysis Report:</h2>"
+        body += f"<h2>{report_type} Analysis Report:</h2>"
 
         for key, value in analysis_dict.items():
             if value is not None:

@@ -15,7 +15,7 @@ from lib.engine.security import get_current_user, fake_current_user
 from lib.schemas.analysisResult import AnalysisResult
 from lib.schemas.result import ResultCreate
 from lib.utils.Email import send_analysis_results_email
-from lib.utils.Helper import extract_text_from_pdf
+from lib.utils.Helper import extract_text_from_uploaded_report
 from lib.utils.Report import save_analysis_result, save_report, detect_report_type
 from lib.constants.prompts import (
     ENGLISH_CBC_PROMPT, ARABIC_CBC_PROMPT,
@@ -56,8 +56,8 @@ REPORT_TYPE_PROMPT_MAP = {
 }
 
 
-def analyze_blood_test(blood_test_text: str, arabic: bool = False, tone: str = 'General'):
-    tone = tone.lower()
+def analyze_blood_test(blood_test_text: str):
+    # tone = tone.lower()
     # if arabic:
     #     if tone == 'doctor':
     #         prompt = prompts.ARABIC_BLOOD_TEST_DOCTOR_PROMPT.format(blood_test_text=blood_test_text, tone=tone)
@@ -291,47 +291,45 @@ def get_lab_value_interpretation_gemini(lab_value_text, blood_test_results_text)
 
 
 def reportAnalyzer(
-        report_file,
-        report_type,
+        medical_test_content,
         arabic,
         tone: str,
         current_user,
-        db: Session,
+        report_type: str = "unknown",
+        db: Session = get_db(),
 ):
-    print(current_user)
     tone = tone.lower()
     language = "ar" if arabic else "en"
 
     try:
-        medical_test_text = extract_text_from_pdf(report_file)
         detected_report_type = report_type
-        if report_type == "unknown":
-            detected_report_type = detect_report_type(medical_test_text)
+        if detected_report_type == "unknown":
+            detected_report_type = detect_report_type(medical_test_content)
             logger.info(f"Detected report type: {detected_report_type}")
             if not detected_report_type:
                 logger.warning("Could not automatically detect report type. Using general prompt.")
                 prompt = REPORT_TYPE_PROMPT_MAP.get("general", {"en": ENGLISH_BLOOD_TEST_GENERAL_PROMPT,
                                                                 "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(language)
-            else:
+            elif detected_report_type:
                 prompt = REPORT_TYPE_PROMPT_MAP.get(detected_report_type, {"en": ENGLISH_BLOOD_TEST_GENERAL_PROMPT,
-                                                                           "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(
-                    language)
-        elif report_type:
-            prompt = REPORT_TYPE_PROMPT_MAP.get(report_type, {"en": ENGLISH_BLOOD_TEST_GENERAL_PROMPT,
-                                                              "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(language)
+                                                                  "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(language)
+            else:
+                logger.warning("No report type specified. Using general prompt.")
+                prompt = REPORT_TYPE_PROMPT_MAP.get("general", {"en": ENGLISH_BLOOD_TEST_GENERAL_PROMPT,
+                                                                "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(language)
         else:
-            logger.warning("No report type specified. Using general prompt.")
-            prompt = REPORT_TYPE_PROMPT_MAP.get("general", {"en": ENGLISH_BLOOD_TEST_GENERAL_PROMPT,
-                                                            "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(language)
+            detected_report_type = detect_report_type(report_type)
+            prompt = REPORT_TYPE_PROMPT_MAP.get(detected_report_type, {"en": ENGLISH_BLOOD_TEST_GENERAL_PROMPT,
+                                                                       "ar": ARABIC_BLOOD_TEST_GENERAL_PROMPT}).get(language)
 
         if not prompt:
             logger.error(f"No prompt found for report type: {detected_report_type} and language: {language}")
             raise HTTPException(status_code=500, detail="Error: Could not find the appropriate analysis prompt.")
 
-        formatted_prompt = prompt.format(blood_test_text=medical_test_text, tone=tone)
+        formatted_prompt = prompt.format(blood_test_text=medical_test_content, tone=tone)
         logger.info(f"Using prompt: {formatted_prompt[:150]}...")  # Log first 150 chars of prompt
 
-        analysis_dict = analyze_blood_test(prompt, arabic, tone)  # Call Gemini
+        analysis_dict = analyze_blood_test(prompt)  # Call Gemini
 
         # Save the report
         # report_data = {
@@ -352,8 +350,8 @@ def reportAnalyzer(
         # saved_result = save_analysis_result(result_data, db)
         # logger.info(f"Analysis result saved to database with ID: {saved_result.id} for report: {report.id}")
 
-
-        send_analysis_results_email(current_user.email, analysis_dict, arabic)
+        # Send email with the analysis results
+        send_analysis_results_email(report_type, current_user.email, analysis_dict, arabic)
 
         return AnalysisResult(**analysis_dict)
 

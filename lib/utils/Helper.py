@@ -4,7 +4,7 @@ from fastapi import UploadFile, HTTPException
 from pdfminer.high_level import extract_text
 
 
-def extract_text_from_pdf(pdf_file: UploadFile):
+def extract_text_from_uploaded_report(pdf_file: UploadFile):
     """Extracts text from a PDF file."""
     try:
         pdf_content = pdf_file.file.read()

@@ -115,7 +115,7 @@ def save_analysis_result(result_data: ResultCreate, db: Session):
             detail=f"Unexpected error while saving analysis result: {e}"
         )
 
-async def detect_report_type(extracted_text: str) -> Optional[str]:
+def detect_report_type(extracted_text: str):
     """
     Rudimentary function to detect report type from text.
     This is a placeholder and needs a more robust implementation.
@@ -143,4 +143,5 @@ async def detect_report_type(extracted_text: str) -> Optional[str]:
         return "iron"
     elif "c-reactive protein" in text_lower or "crp" in text_lower or "erythrocyte sedimentation rate" in text_lower or "esr" in text_lower:
         return "inflammation"
-    return None
+
+    return text_lower

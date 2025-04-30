@@ -14,7 +14,7 @@ from lib.engine.analysis import analyze_blood_test, compare_reports, model, anal
     reportAnalyzer
 from lib.engine.security import get_current_user, fake_current_user
 from lib.schemas.result import ResultCreate
-from lib.utils.Helper import extract_text_from_pdf
+from lib.utils.Helper import extract_text_from_uploaded_report
 from lib.schemas.analysisResult import AnalysisResult
 from lib.schemas.compareReports import CompareReports
 from lib.utils.Email import send_analysis_results_email, send_compare_report_email
@@ -31,24 +31,26 @@ async def base_analysis():
     logger.info("Base analysis endpoint hit.")
     return {"Hello": "Analysis"}
 
+
 @router.post("/analyze1", response_model=AnalysisResult)
 async def __analyze_blood_test_endpoint(
-    pdf_file: UploadFile = File(...),
-    arabic: bool = Form(False),
-    email: str = Form(...),
-    tone: str = Form(...),
-    current_user: SQLUser = Depends(get_current_user),  # Inject the logged-in user as a parameter
-    db: Session = Depends(get_db),  # Inject the database session as a parameter
+        pdf_file: UploadFile = File(...),
+        arabic: bool = Form(False),
+        email: str = Form(...),
+        tone: str = Form(...),
+        current_user: SQLUser = Depends(get_current_user),  # Inject the logged-in user as a parameter
+        db: Session = Depends(get_db),  # Inject the database session as a parameter
 ):
-    logger.info(f"Analyze blood test endpoint hit. Email: {email}, Arabic: {arabic}, Tone: {tone}, User ID: {current_user.id}")
+    logger.info(
+        f"Analyze blood test endpoint hit. Email: {email}, Arabic: {arabic}, Tone: {tone}, User ID: {current_user.id}")
     tone = tone.lower()
     try:
         if pdf_file.content_type != "application/pdf":
             logger.error("Invalid file type. Only PDF files are allowed.")
             raise HTTPException(status_code=400, detail="Invalid file type. Only PDF files are allowed.")
 
-        blood_test_text = extract_text_from_pdf(pdf_file)
-        analysis_dict = analyze_blood_test(blood_test_text, arabic, tone)
+        blood_test_text = extract_text_from_uploaded_report(pdf_file)
+        analysis_dict = analyze_blood_test(blood_test_text)
 
         # # Save the report using the logged-in user's ID
         # report_data = {
@@ -77,6 +79,7 @@ async def __analyze_blood_test_endpoint(
     except Exception as e:
         logger.error(f"Error processing Gemini response or saving report: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
+
 
 @router.post("/compare", response_model=CompareReports)
 async def compare_blood_tests(
@@ -107,23 +110,36 @@ async def compare_blood_tests(
         logger.error(f"Error processing Gemini response: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response: {e}")
 
+
 @router.post("/analyze", response_model=AnalysisResult)
 async def analyze_report_endpoint(
-    pdf_file: UploadFile = File(...),
-    report_type: Optional[str] = Form(None),
-    arabic: bool = Form(False),
-    tone: str = Form("General"),
-    current_user: SQLUser = Depends(fake_current_user),
-    db: Session = Depends(get_db),
+        serviceId: Optional[str] = Form(None),
+        reportFile: Optional[UploadFile] = File(None),  # Make reportFile optional
+        testReportId: Optional[str] = Form(None),  # Add bloodTestId
+        report_type: Optional[str] = Form(None),
+        arabic: bool = Form(False),
+        tone: str = Form("General"),
+        current_user: SQLUser = Depends(fake_current_user),
+        db: Session = Depends(get_db),
 ):
-    logger.info(f"Analyze report endpoint hit. User ID: {current_user.id}, Report Type: {report_type}, Arabic: {arabic}, Tone: {tone}", current_user, db)
+    logger.info(
+        f"Analyze report endpoint hit. User ID: {current_user.id}, Service ID: {serviceId}, Blood Test ID: {testReportId}, Report Type: {report_type}, Arabic: {arabic}, Tone: {tone}",
+        current_user, db)
     try:
-        AnalysisResult = reportAnalyzer(pdf_file, report_type, arabic, tone, current_user, db)
-        return AnalysisResult
+        if reportFile:
+            medical_test_content = extract_text_from_uploaded_report(reportFile)
+        elif testReportId:  # testReportId exist
+            raise HTTPException(status_code=200, detail="Please provide a blood test ID.")  # for testing purpose only
+        else:
+            raise HTTPException(status_code=422, detail="Please provide either a report file or a blood test ID.")
+
+        analysis_dict = reportAnalyzer(medical_test_content, arabic, tone, current_user, report_type)
+        logger.info(f"Email sent successfully to {current_user.email}.")
+        return analysis_dict    #AnalysisResult(**analysis_dict)
 
     except HTTPException as e:
         logger.error(f"HTTPException: {e}")
         raise e
     except Exception as e:
-        logger.error(f"Error processing Gemini response or saving report: {e}")
+        logger.error(f"Error processing analysis: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing report analysis: {e}")
