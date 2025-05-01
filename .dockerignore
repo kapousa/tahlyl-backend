@@ -3,5 +3,5 @@ __pycache__
 *.pyc
 *.log
 .env
-venv
-node_modules
+venv/
+node_modules/
