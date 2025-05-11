@@ -19,11 +19,3 @@ class BloodTest(Base):
     updated_by = Column(String(255), nullable=True)
     updated_date = Column(DateTime, nullable=True)
     content = Column(Text, nullable=True)  # Added content column
-
-
-    metrics = relationship(
-        "Metric",
-        back_populates="blood_test",
-        cascade="all, delete-orphan",
-        primaryjoin="BloodTest.id == Metric.bloodTestId"
-    )

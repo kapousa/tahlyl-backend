@@ -1,15 +1,20 @@
-from typing import Optional
+from typing import List
 
-from fastapi import HTTPException, status, Depends
-from sqlalchemy.exc import IntegrityError
-from uuid import uuid4
+from fastapi import HTTPException, status
 from reportlab.pdfgen import canvas
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-from config import get_db
-from lib.models import Report as SQLReport
-from lib.models import Result as SQLResult
+
+from config import logger
+from lib.curds.Metric import create_metric, create_metrics
+from lib.models.Tone import Tone as SQLTone
+from lib.models.Report import Report as SQLReport
+from lib.models.Result import Result as SQLResult
+from lib.models.Metric import Metric as SQLMetric
 from lib.schemas.report import Report
 from lib.schemas.result import ResultCreate, Result
+from lib.utils import Helper
+from lib.utils.Metrice import extract_min_max, matric_string_to_dict
 
 
 def generate_pdf_report(analysis_dict: dict, output_path: str):
@@ -30,14 +35,14 @@ def generate_pdf_report(analysis_dict: dict, output_path: str):
         y -= 20
     c.save()
 
-def save_report(report_data: dict, user_id: str, db):
+
+def save_report(report_data: dict, db: Session):
     """
     Saves a new report to the database based on extracted text data.
 
     Args:
         report_data (dict): A dictionary containing the extracted report data.
                                   Expected keys: 'name', 'location' (optional), 'content' (optional).
-        user_id (str): The ID of the user who owns the report.
         db (Session): The database session.
 
     Returns:
@@ -55,19 +60,20 @@ def save_report(report_data: dict, user_id: str, db):
         )
 
     db_report = SQLReport(
-        id=str(uuid4()),
-        name=report_data.name,
-        location=report_data.location,
-        user_id=report_data.user_id,
-        content=report_data.content
+        id=report_data.get("id"),
+        name=report_data.get("name"),
+        location=report_data.get("location"),
+        user_id=report_data.get("user_id"),
+        content=report_data.get("content")
     )
 
     try:
         db.add(db_report)
         db.commit()
         db.refresh(db_report)
-        return Report.from_orm(db_report)
+        return Report.from_orm(report_data)
     except IntegrityError as e:
+        logger.info(f"DB IntegrityError {e.args[0]}")
         db.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -80,7 +86,8 @@ def save_report(report_data: dict, user_id: str, db):
             detail=f"Unexpected error while saving report: {e}"
         )
 
-def save_analysis_result(result_data: ResultCreate, db: Session):
+
+def save_analysis_result(result_data: dict, db: Session):
     """
     Saves the analysis result to the database.
 
@@ -91,16 +98,44 @@ def save_analysis_result(result_data: ResultCreate, db: Session):
     Returns:
         Result: The created result object.
     """
+
+    result_id = Helper.generate_id()
     db_result = SQLResult(
-        id=str(uuid4()),
-        result=result_data.result,
-        report_id=result_data.report_id,
-        tone_id=result_data.tone_id,
+        id=result_id,
+        result=result_data.get("result"),
+        report_id=result_data.get("report_id"),
+        tone_id=result_data.get("tone_id"),
+        language=result_data.get("language")
     )
     try:
         db.add(db_result)
         db.commit()
         db.refresh(db_result)
+
+        # Save metrics
+        detailed_results = find_detailed_results(result_data)
+        if detailed_results is  not None:
+            metrics_to_create: List[SQLMetric] = []
+            detailed_results_metrics = matric_string_to_dict(detailed_results)
+            report_id = result_data.get("report_id")  # Assuming report_id is the same for all detailed results
+            for metric_item in detailed_results_metrics:
+                metric_id = Helper.generate_id()
+                min_max_range = extract_min_max(str(metric_item))
+                db_metric = SQLMetric(
+                    id=metric_id,
+                    name=metric_item.get("name"),
+                    value=metric_item.get("value"),
+                    unit=metric_item.get("unit"),
+                    reference_range_min=min_max_range.get("min"),
+                    reference_range_max=min_max_range.get("max"),
+                    status=metric_item.get("status"),
+                    report_id=report_id
+                    # You might need a way to link this detailed metric back to the main result
+                    # Perhaps a foreign key to the SQLMetric you created earlier, or a different structure
+                )
+                metrics_to_create.append(db_metric)
+            saved_metrics = create_metrics(db=db, metrics=metrics_to_create)
+
         return Result.from_orm(db_result)
     except IntegrityError as e:
         db.rollback()
@@ -114,6 +149,7 @@ def save_analysis_result(result_data: ResultCreate, db: Session):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Unexpected error while saving analysis result: {e}"
         )
+
 
 def detect_report_type(extracted_text: str):
     """
@@ -145,3 +181,56 @@ def detect_report_type(extracted_text: str):
         return "inflammation"
 
     return text_lower
+
+
+import json
+
+def find_detailed_results(data):
+    """
+    Checks if a dictionary or a JSON string contains the key "detailed_results"
+    at any level and returns its value as a JSON string.
+
+    Args:
+        data: A dictionary or a JSON formatted string.
+
+    Returns:
+        A JSON string representing the value of "detailed_results" if found,
+        otherwise None.
+    """
+    if isinstance(data, str):
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return None  # Invalid JSON string
+
+    if isinstance(data, dict):
+        if "detailed_results" in data:
+            return json.dumps(data["detailed_results"])
+        for value in data.values():
+            result = find_detailed_results(value)
+            if result:
+                return result
+    elif isinstance(data, list):
+        for item in data:
+            result = find_detailed_results(item)
+            if result:
+                return result
+    return None
+
+# # Your dictionary object as a string
+# data_string = '{"result": "{\\"summary\\": \\"The patient\'s erythrocyte sedimentation rate (ESR) is significantly elevated, indicating potential inflammation.\\u00a0 The provided CRP value is missing.\\", \\"detailed_results\\": {\\"ESR\\": {\\"value\\": {\\"first_hour\\": 38, \\"second_hour\\": 75}, \\"unit\\": \\"mms\\", \\"normal_range\\": \\"Up to 10 mms (first hour), Up to 20 mms (second hour)\\", \\"status\\": \\"high\\"}}, \\"interpretation\\": \\"The ESR results are markedly elevated, strongly suggesting the presence of inflammation in the body.\\u00a0 The absence of a CRP value prevents a complete assessment of the inflammatory process.\\u00a0 The high ESR could indicate various conditions.\\", \\"potential causes\\": [\\"Infection (bacterial, viral, or fungal)\\", \\"Autoimmune diseases (rheumatoid arthritis, lupus)\\", \\"Inflammation of tissues (e.g., vasculitis)\\", \\"Malignancy\\", \\"Tissue damage or necrosis\\", \\"Anemia\\", \\"Certain medications\\"], \\"next steps\\": [\\"A complete blood count (CBC) should be ordered to further investigate potential causes of the elevated ESR.\\", \\"CRP testing is crucial to obtain a more comprehensive picture of the inflammatory process.\\u00a0 A high CRP would strengthen the indication of inflammation.\\", \\"The patient should consult a physician to discuss the elevated ESR and potential underlying causes. Further investigations, such as imaging studies or specialized blood tests, might be necessary to identify the specific condition.\\" ]}, \\"report_id\\": \\"1xKCKezE70g5uI\\", \\"tone_id\\": \\"general\\", \\"language\\": \\"en\\"}"}'
+#
+# # Parse the main JSON string
+# try:
+#     main_data = json.loads(data_string)
+# except json.JSONDecodeError:
+#     print("Error: Invalid main JSON string")
+#     main_data = None
+
+# if main_data:
+#     detailed_results_json = find_detailed_results(main_data)
+#
+#     if detailed_results_json:
+#         print(detailed_results_json)
+#     else:
+#         print("Key 'detailed_results' not found at any level.")

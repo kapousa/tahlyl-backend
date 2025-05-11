@@ -9,9 +9,8 @@ from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 
 from config import get_db
-from lib.engine.analysis import analyze_blood_test, compare_reports, model, analyze_blood_test_trends_gemini, \
-    get_supplement_recommendations_gemini, check_drug_interactions_gemini, get_lab_value_interpretation_gemini, \
-    reportAnalyzer
+from lib.engine.analysis import report_analyzer
+from lib.utils.AI import analyze_report_by_gemini
 from lib.engine.security import get_current_user, fake_current_user
 from lib.schemas.result import ResultCreate
 from lib.utils.Helper import extract_text_from_uploaded_report
@@ -50,7 +49,7 @@ async def __analyze_blood_test_endpoint(
             raise HTTPException(status_code=400, detail="Invalid file type. Only PDF files are allowed.")
 
         blood_test_text = extract_text_from_uploaded_report(pdf_file)
-        analysis_dict = analyze_blood_test(blood_test_text)
+        analysis_dict = analyze_report_by_gemini(blood_test_text)
 
         # # Save the report using the logged-in user's ID
         # report_data = {
@@ -98,7 +97,7 @@ async def compare_blood_tests(
                 raise HTTPException(status_code=400, detail="Invalid file type. Only PDF files are allowed.")
             reports.append(extract_text(file.file))
 
-        result = compare_reports(reports, arabic)
+        result = ""  # compare_reports(reports, arabic)
         send_compare_report_email(email, result['summary'], arabic)
         logger.info(f"Email sent successfully to {email}.")
         return CompareReports(**result)
@@ -114,8 +113,8 @@ async def compare_blood_tests(
 @router.post("/analyze", response_model=AnalysisResult)
 async def analyze_report_endpoint(
         serviceId: Optional[str] = Form(None),
-        reportFile: Optional[UploadFile] = File(None),  # Make reportFile optional
-        testReportId: Optional[str] = Form(None),  # Add bloodTestId
+        reportFile: Optional[UploadFile] = File(None),
+        testReportId: Optional[str] = Form(None),
         report_type: Optional[str] = Form(None),
         arabic: bool = Form(False),
         tone: str = Form("General"),
@@ -126,19 +125,21 @@ async def analyze_report_endpoint(
         f"Analyze report endpoint hit. User ID: {current_user.id}, Service ID: {serviceId}, Blood Test ID: {testReportId}, Report Type: {report_type}, Arabic: {arabic}, Tone: {tone}",
         current_user, db)
     try:
+        file_name = ""
         if reportFile:
+            file_name = reportFile.filename
             medical_test_content = extract_text_from_uploaded_report(reportFile)
         elif testReportId:  # testReportId exist
             raise HTTPException(status_code=200, detail="Please provide a blood test ID.")  # for testing purpose only
         else:
             raise HTTPException(status_code=422, detail="Please provide either a report file or a blood test ID.")
 
-        analysis_dict = reportAnalyzer(medical_test_content, arabic, tone, current_user, report_type)
+        analysis_dict = report_analyzer(db, medical_test_content, arabic, tone, current_user, file_name, testReportId)
         logger.info(f"Email sent successfully to {current_user.email}.")
-        return analysis_dict    #AnalysisResult(**analysis_dict)
+        return analysis_dict  # AnalysisResult(**analysis_dict)
 
     except HTTPException as e:
-        logger.error(f"HTTPException: {e}")
+        logger.error(f"HTTPException: {e} ")
         raise e
     except Exception as e:
         logger.error(f"Error processing analysis: {e}")

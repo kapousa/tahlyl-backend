@@ -9,6 +9,8 @@ from lib.schemas.service import Service, ServiceBase, ServiceCreate
 from lib.models.Service import Service as SQLService  # Import SQLAlchemy model
 from typing import List, Optional # Import Optional
 
+from lib.utils.Decorators import log_activity
+
 router = APIRouter(prefix="/services", tags=["services"])
 
 # Setup logger if not already configured globally
@@ -18,6 +20,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Now, depend on the new get_db dependency
 @router.get("/", response_model=List[Service])
+@log_activity(log_level=logging.INFO, message="Listing all services")
 async def read_services(db: Session = Depends(get_db)):
     """Retrieves all services from the database using SQLAlchemy ORM.  Returns an empty list if no services are found."""
     logger.info("Attempting to read all services")

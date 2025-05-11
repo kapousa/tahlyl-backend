@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from datetime import datetime
+
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class ReportBase(BaseModel):
@@ -6,9 +8,14 @@ class ReportBase(BaseModel):
     location: Optional[str] = None
     content: Optional[str] = None
     user_id: Optional[str] = None
+    added_datetime: str = Field(default_factory=lambda: datetime.now().isoformat())
+
+
+    class Config:
+        from_attributes = True
 
 class ReportCreate(ReportBase):
-    pass
+    id: str
 
 class ReportUpdate(ReportBase):
     pass

@@ -1,12 +1,29 @@
 from datetime import datetime
-from pydantic import BaseModel
-from typing import List, Optional, Dict, Union
+from pydantic import BaseModel, field_validator
+from typing import List, Optional, Dict, Union, Any, Literal
 
-class AnalysisDetailedResult(BaseModel):
-    value: Union[float, str]
+
+arabic_status_map = {
+    "مرتفع": "high",
+    "طبيعي": "normal",
+    "منخفض": "low",
+    "حرج": "critical",
+    "تحذير": "warning",
+    "غير متوفر": "not available",
+}
+
+class AnalysisDetailedResultItem(BaseModel):
+    value: Optional[Union[str, float, int, Dict[str, Any]]] = None
     unit: Optional[str] = None
-    normal_range: Optional[str] = None
-    status: Optional[str] = None
+    normal_range: Optional[Union[str, Dict[str, str]]] = None
+    status: Optional[str] = None  # Change Literal to str
+
+    @field_validator("status", mode="before")
+    @classmethod
+    def translate_arabic_status(cls, value):
+        if isinstance(value, str) and value in arabic_status_map:
+            return arabic_status_map[value]
+        return value
 
 class AnalysisResult(BaseModel):
     summary: Optional[Union[str, Dict, List]] = None
@@ -32,4 +49,4 @@ class AnalysisResult(BaseModel):
     emotional_support: Optional[Union[str, Dict, List]] = None
     individualized_recommendations: Optional[Union[str, Dict, List]] = None
     date: datetime = datetime.now()
-    detailed_results: Optional[Dict[str, AnalysisDetailedResult]] = None  # Add this line
+    detailed_results: Optional[Dict[str, AnalysisDetailedResultItem]] = None

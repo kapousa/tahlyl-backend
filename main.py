@@ -8,6 +8,7 @@ import json
 import time
 
 from lib.utils.Logger import logger
+from lib.utils.Decorators import log_activity
 from routers import users_router, analysis_router, services_router, report_router, bloodtest_router
 
 # Load .env
@@ -21,8 +22,6 @@ app.include_router(services_router)
 app.include_router(report_router)
 app.include_router(bloodtest_router)
 
-origins = ["http://localhost:3000/"]
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins= ["*"],
@@ -31,49 +30,45 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# OpenTelemetry Setup #########################################
-# resource = Resource(attributes={
-#     SERVICE_NAME: "tahlyl-services"
-# })
-#
-# provider = TracerProvider(resource=resource)
-# trace.set_tracer_provider(provider)
-#
-# otlp_exporter = OTLPSpanExporter(endpoint="http://127.0.0.1:4317") # Change to this.
-# print(f"OTLP exporter: {otlp_exporter}") #print the exporter object.
-#
-# processor = BatchSpanProcessor(otlp_exporter) #Change to otlp_exporter
-# provider.add_span_processor(processor)
-#
-# FastAPIInstrumentor.instrument_app(app)
-# logger.info("OpenTelemetry Jaeger exporter initialized.")
-#
-# tracer = trace.get_tracer(__name__)
-###################################################################################
+# Assume you have some way to identify the user, e.g., from a token or session
+async def get_user_id_from_request(request: Request) -> str | None:
+    """
+    Example function to extract user ID from the request.
+    This will depend on your authentication mechanism.
+    """
+    # Example: Try to get user ID from a header
+    user_id = request.headers.get("X-User-Id")
+    if user_id:
+        return user_id
+
+    # Example: Try to get user ID from a query parameter (less common for auth)
+    # user_id = request.query_params.get("user_id")
+    # if user_id:
+    #     return user_id
+
+    # Example: If you have authentication middleware that stores user info in state
+    # if hasattr(request.state, "user") and request.state.user:
+    #     return request.state.user.get("id")
+
+    return None
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     start_time = time.time()
+    user_id = await get_user_id_from_request(request)
     response = await call_next(request)
     process_time = time.time() - start_time
-    logger.info(json.dumps({
+    log_data = {
+        "url": str(request.url),  # Include the full URL
         "path": request.url.path,
         "method": request.method,
         "status_code": response.status_code,
         "process_time": process_time,
-    }))
+    }
+    if user_id:
+        log_data["user_id"] = user_id
+    logger.info(json.dumps(log_data))
     return response
-
-instrumentator = Instrumentator(
-    should_group_status_codes=False,
-    should_ignore_untemplated=True,
-    should_respect_env_var=True,
-    should_instrument_requests_inprogress=True,
-    excluded_handlers=[".*admin.*", "/metrics"],
-    env_var_name="ENABLE_METRICS",
-    inprogress_name="inprogress",
-    inprogress_labels=True
-).instrument(app)
 
 @app.on_event("startup")
 async def startup():
