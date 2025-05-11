@@ -1,35 +1,9 @@
 import json
-import logging
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
-from fastapi import HTTPException
-from openai import OpenAI
 
 load_dotenv()
-
-
-def analyze_report_by_deep_seek(prompt: str, tone: str = "General"):
-    try:
-        api_key = os.getenv("DEEPSEEK_API_KEY")
-        base_url = os.getenv("DEEPSEEK_BASE_URL")
-        client = OpenAI(api_key=api_key, base_url=base_url)
-
-        response = client.chat.completions.create(
-            model="deepseek-chat",
-            messages=[
-                {"role": "system", "content": f"You are a helpful assistant as {tone}"},
-                {"role": "user", "content": prompt},
-            ],
-            stream=False
-        )
-        response = response.choices[0].message.content
-        analysis_json = json.loads(response)
-
-        return analysis_json
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error analyzing blood test: {e}")
 
 
 def analyze_report_by_gemini(blood_test_text: str):
