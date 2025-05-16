@@ -7,7 +7,7 @@ from fastapi import HTTPException, APIRouter, Depends, Request
 from config import get_db_connection
 
 # Import your Pydantic schemas
-from lib.schemas.service import Service, ServiceBase, ServiceCreate
+from com.schemas.service import Service, ServiceBase, ServiceCreate
 
 # Setup logger if not already configured globally
 logger = logging.getLogger(__name__)

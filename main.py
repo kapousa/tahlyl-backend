@@ -1,15 +1,22 @@
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
-from prometheus_fastapi_instrumentator import Instrumentator, metrics
 from starlette.middleware.cors import CORSMiddleware
 import uvicorn
 import os
 import json
 import time
+import traceback
+from datetime import datetime
 
-from lib.utils.Logger import logger
-from lib.utils.Decorators import log_activity
+from com.models.APILog import APILog
+from com.utils.Logger import logger  # Your existing logger
 from routers import users_router, analysis_router, services_router, report_router, bloodtest_router
+
+from config import SessionLocal, Base, engine  # Your DB config
+
+
+# Create tables if not exist
+Base.metadata.create_all(bind=engine)
 
 # Load .env
 load_dotenv()
@@ -24,50 +31,49 @@ app.include_router(bloodtest_router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins= ["*"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Assume you have some way to identify the user, e.g., from a token or session
 async def get_user_id_from_request(request: Request) -> str | None:
-    """
-    Example function to extract user ID from the request.
-    This will depend on your authentication mechanism.
-    """
-    # Example: Try to get user ID from a header
     user_id = request.headers.get("X-User-Id")
-    if user_id:
-        return user_id
-
-    # Example: Try to get user ID from a query parameter (less common for auth)
-    # user_id = request.query_params.get("user_id")
-    # if user_id:
-    #     return user_id
-
-    # Example: If you have authentication middleware that stores user info in state
-    # if hasattr(request.state, "user") and request.state.user:
-    #     return request.state.user.get("id")
-
-    return None
+    return user_id
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     start_time = time.time()
     user_id = await get_user_id_from_request(request)
-    response = await call_next(request)
-    process_time = time.time() - start_time
+    db = SessionLocal()
     log_data = {
-        "url": str(request.url),  # Include the full URL
-        "path": request.url.path,
         "method": request.method,
-        "status_code": response.status_code,
-        "process_time": process_time,
+        "path": request.url.path,
+        "timestamp": datetime.utcnow(),
+        "user_id": user_id
     }
-    if user_id:
-        log_data["user_id"] = user_id
-    logger.info(json.dumps(log_data))
+    try:
+        response = await call_next(request)
+        log_data["status_code"] = response.status_code
+    except Exception as e:
+        log_data["status_code"] = 500
+        log_data["error_message"] = str(e)
+        log_data["traceback"] = traceback.format_exc()
+        raise
+    finally:
+        log_data["duration"] = time.time() - start_time
+        try:
+            db.add(APILog(**log_data))
+            db.commit()
+        except Exception as db_exc:
+            logger.error(f"Failed to save log to DB: {db_exc}")
+            db.rollback()
+        finally:
+            db.close()
+
+        # Log to your existing logger as JSON string for easier parsing
+        logger.info(json.dumps(log_data, default=str))
+
     return response
 
 @app.on_event("startup")
@@ -76,10 +82,8 @@ async def startup():
 
 @app.get("/")
 def read_root():
-    # with tracer.start_as_current_span("base_analysis_route"):
-    #     return {"Hello": "World"}
     return {"Hello": "World"}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Get PORT from env, default to 8000
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)

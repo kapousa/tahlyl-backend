@@ -5,12 +5,12 @@ from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
 from config import get_db
-from lib.models.BloodTest import BloodTest
-from lib.models.Metric import Metric
-from lib.models.Report import Report
-from lib.schemas.report import Report as ReportSchema
-from lib.schemas.bloodTest import BloodTestSchema, BloodTestCreateSchema, BloodTestUpdateSchema
-from lib.schemas.metric import MetricCreate, MetricUpdate, MetricSchema
+from com.models.BloodTest import BloodTest
+from com.models.Metric import Metric
+from com.models.Report import Report
+from com.schemas.report import Report as ReportSchema
+from com.schemas.bloodTest import BloodTestSchema, BloodTestCreateSchema, BloodTestUpdateSchema
+from com.schemas.metric import MetricCreate, MetricUpdate, MetricSchema
 
 router = APIRouter(prefix="/bloodtest", tags=["bloodtest"])
 

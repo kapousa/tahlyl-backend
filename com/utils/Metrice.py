@@ -11,7 +11,7 @@ def extract_min_max(range_string: str) -> dict:
         max_value = float(max_value_str)
         return {"min": min_value, "max": max_value}
     else:
-        return {"message": "Could not extract the range from the string."}
+        return {"min": "Undefined", "max": "Undefined"}
 
 
 def matric_string_to_dict(input_string):

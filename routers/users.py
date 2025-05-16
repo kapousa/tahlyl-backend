@@ -8,15 +8,15 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from config import get_db
-from lib.engine.security import create_access_token, verify_password, get_password_hash, ACCESS_TOKEN_EXPIRE_MINUTES, \
+from com.engine.security import create_access_token, verify_password, get_password_hash, ACCESS_TOKEN_EXPIRE_MINUTES, \
     get_current_user
-from lib.models.User import User as SQLUser
-from lib.schemas.user import User, UserCreate, Token
+from com.models.User import User as SQLUser
+from com.schemas.user import User, UserCreate, Token
 
 router = APIRouter(prefix="/users", tags=["users"])
 
 # --- Temporary Flag to Disable Authentication ---
-DISABLE_AUTH = True
+DISABLE_AUTH = False
 
 # --- Fake User and Token Generation for Temporary Bypass ---
 class FakeUser:

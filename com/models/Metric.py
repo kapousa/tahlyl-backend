@@ -11,8 +11,8 @@ class Metric(Base):
 
     id = Column(String, primary_key=True)
     name = Column(String, nullable=False)
-    value = Column(String, nullable=False)
-    unit = Column(String, nullable=False)
+    value = Column(String, nullable=True)
+    unit = Column(String, nullable=True)
     reference_range_min = Column(String, nullable=True)
     reference_range_max = Column(String, nullable=True)
     status = Column(String, nullable=True)

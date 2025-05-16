@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from pydantic import BaseModel
 import datetime
 
-from lib.schemas.metric import MetricSchema
+from com.schemas.metric import MetricSchema
 
 Base = declarative_base()
 

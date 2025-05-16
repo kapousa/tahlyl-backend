@@ -9,17 +9,17 @@ from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 
 from config import get_db
-from lib.engine.analysis import report_analyzer
-from lib.utils.AI import analyze_report_by_gemini
-from lib.engine.security import get_current_user, fake_current_user
-from lib.schemas.result import ResultCreate
-from lib.utils.Helper import extract_text_from_uploaded_report
-from lib.schemas.analysisResult import AnalysisResult
-from lib.schemas.compareReports import CompareReports
-from lib.utils.Email import send_analysis_results_email, send_compare_report_email
-from lib.utils.Logger import logger
-from lib.utils.Report import save_report, save_analysis_result
-from lib.models.User import User as SQLUser
+from com.engine.analysis import report_analyzer
+from com.utils.AI import analyze_report_by_gemini
+from com.engine.security import get_current_user, fake_current_user
+from com.schemas.result import ResultCreate
+from com.utils.Helper import extract_text_from_uploaded_report
+from com.schemas.analysisResult import AnalysisResult
+from com.schemas.compareReports import CompareReports
+from com.utils.Email import send_analysis_results_email, send_compare_report_email
+from com.utils.Logger import logger
+from com.utils.Report import save_report, save_analysis_result
+from com.models.User import User as SQLUser
 
 #
 router = APIRouter(prefix="/analysis", tags=["analysis"])

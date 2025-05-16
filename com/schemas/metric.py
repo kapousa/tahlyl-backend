@@ -5,10 +5,10 @@ from pydantic import BaseModel
 
 
 class MetricSchema(BaseModel):
-    id: int
-    name: str
-    value: str
-    unit: str
+    id: str
+    name: Optional[str] = None
+    value: Optional[str] = None
+    unit: Optional[str] = None
     reference_range_min: Optional[str] = None
     reference_range_max: Optional[str] = None
     status: Optional[str] = None

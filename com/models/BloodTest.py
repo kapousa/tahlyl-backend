@@ -3,7 +3,7 @@ import datetime
 from sqlalchemy import Column, String, Date, Text, DateTime
 from sqlalchemy.orm import relationship
 
-from lib.schemas.bloodTest import Base
+from com.schemas.bloodTest import Base
 
 
 class BloodTest(Base):

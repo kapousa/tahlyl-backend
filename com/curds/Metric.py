@@ -3,9 +3,9 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from starlette import status
 from config import logger
-from lib.models.Metric import Metric
-from lib.schemas.metric import MetricCreate, MetricUpdate
-from lib.utils import Helper
+from com.models.Metric import Metric
+from com.schemas.metric import MetricCreate, MetricUpdate
+from com.utils import Helper
 
 
 from sqlalchemy.orm import Session
@@ -27,7 +27,7 @@ def create_metrics(db: Session, metrics: List[MetricCreate]) -> List[Metric]:
         db_metric = Metric(
             id=Helper.generate_id(),
             name=metric.name,
-            value=metric.value,  # Assuming 'email' should be 'value' based on your original method
+            value=metric.value,
             unit=metric.unit,
             reference_range_min=metric.reference_range_min,
             reference_range_max=metric.reference_range_max,
