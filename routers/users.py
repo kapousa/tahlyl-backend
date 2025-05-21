@@ -1,3 +1,4 @@
+import logging
 import uuid
 from datetime import timedelta
 from typing import List
@@ -40,7 +41,7 @@ def user_index():
 @router.post("/register/", response_model=User, status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     hashed_password = get_password_hash(user.password)
-    db_user = SQLUser(id=str(uuid.uuid4()), name=user.name, email=user.email, password=hashed_password)
+    db_user = SQLUser(id=str(uuid.uuid4()), username=user.username, email=user.email, password=hashed_password, avatar="", role="patient")
     try:
         db.add(db_user)
         db.commit()
@@ -59,19 +60,19 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
         return {"access_token": access_token, "token_type": "bearer"}
     else:
         try:
-            db_user = db.query(SQLUser).filter(SQLUser.name == form_data.username).first()
+            db_user = db.query(SQLUser).filter(SQLUser.email == form_data.username).first()
 
             if db_user is None or not verify_password(form_data.password, db_user.password):
                 raise HTTPException(status_code=401, detail="Incorrect name or password", headers={"WWW-Authenticate": "Bearer"})
 
             access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-            access_token = create_access_token(data={"sub": db_user.name}, expires_delta=access_token_expires)
+            access_token = create_access_token(data={"sub": db_user.username}, expires_delta=access_token_expires)
 
             return {"access_token": access_token, "token_type": "bearer"}
 
         except Exception as e:
-            print(f"Login error: {e}")
-            raise HTTPException(status_code=500, detail="Internal server error, try again later")
+            # logging.ERROR(f"Login error: {e}")
+            raise HTTPException(status_code=500, detail=f"Internal server error, try again later")
 
 
 @router.get("/me/", response_model=User)
