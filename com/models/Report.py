@@ -13,4 +13,5 @@ class Report(Base):
     location = Column(String, nullable=True)
     user_id = Column(String, ForeignKey("user.id"), nullable=True)
     content = Column(String, nullable=True)
+    report_type = Column(String, nullable=True)
     added_datetime = Column(String, default=lambda: datetime.now().isoformat())

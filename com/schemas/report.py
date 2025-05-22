@@ -7,6 +7,7 @@ class ReportBase(BaseModel):
     name: str
     location: Optional[str] = None
     content: Optional[str] = None
+    report_type: Optional[str] = None
     user_id: Optional[str] = None
     added_datetime: str = Field(default_factory=lambda: datetime.now().isoformat())
 

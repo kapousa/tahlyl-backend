@@ -41,6 +41,8 @@ async def get_user_id_from_request(request: Request) -> str | None:
     user_id = request.headers.get("X-User-Id")
     return user_id
 
+from http import HTTPStatus  # <-- Import this
+
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     start_time = time.time()
@@ -55,8 +57,10 @@ async def log_requests(request: Request, call_next):
     try:
         response = await call_next(request)
         log_data["status_code"] = response.status_code
+        log_data["status_description"] = HTTPStatus(response.status_code).phrase
     except Exception as e:
         log_data["status_code"] = 500
+        log_data["status_description"] = HTTPStatus(500).phrase
         log_data["error_message"] = str(e)
         log_data["traceback"] = traceback.format_exc()
         raise
@@ -75,6 +79,7 @@ async def log_requests(request: Request, call_next):
         logger.info(json.dumps(log_data, default=str))
 
     return response
+
 
 @app.on_event("startup")
 async def startup():

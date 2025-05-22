@@ -64,7 +64,8 @@ def save_report(report_data: dict, db: Session):
         name=report_data.get("name"),
         location=report_data.get("location"),
         user_id=report_data.get("user_id"),
-        content=report_data.get("content")
+        content=report_data.get("content"),
+        report_type=report_data.get("report_type")
     )
 
     try:
@@ -130,7 +131,8 @@ def save_analysis_result(result_data: dict, db: Session):
                     reference_range_min=min_max_range.get("min"),
                     reference_range_max=min_max_range.get("max"),
                     status=metric_item.get("status"),
-                    report_id=report_id
+                    report_id=report_id,
+                    result_id=result_id
                 )
                 metrics_to_create.append(db_metric)
             saved_metrics = create_metrics(db=db, metrics=metrics_to_create)

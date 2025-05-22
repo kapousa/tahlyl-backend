@@ -1,7 +1,5 @@
 from datetime import datetime
-
 from sqlalchemy import Column, Integer, DateTime, String, Float, Text
-
 from config import Base
 
 
@@ -12,6 +10,7 @@ class APILog(Base):
     method = Column(String)
     path = Column(String)
     status_code = Column(Integer)
+    status_description = Column(String)
     duration = Column(Float)
     user_id = Column(String, nullable=True)
     error_message = Column(Text, nullable=True)

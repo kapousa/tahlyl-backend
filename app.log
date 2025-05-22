@@ -157,3 +157,355 @@
 {"time": "2025-05-16 22:26:05,153", "level": "INFO", "message": "{"method": "POST", "path": "/users/register/", "timestamp": "2025-05-16 18:25:42.165206", "user_id": null, "status_code": 400, "duration": 22.982361316680908}"}
 {"time": "2025-05-16 22:27:38,471", "level": "INFO", "message": "{"method": "POST", "path": "/users/register/", "timestamp": "2025-05-16 18:27:29.984574", "user_id": null, "status_code": 201, "duration": 8.47626256942749}"}
 {"time": "2025-05-16 22:28:20,042", "level": "INFO", "message": "{"method": "POST", "path": "/users/login/", "timestamp": "2025-05-16 18:28:13.843663", "user_id": null, "status_code": 200, "duration": 6.183244943618774}"}
+{"time": "2025-05-21 15:13:15,065", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-21 11:13:15.048862", "user_id": null, "status_code": 307, "duration": 0.0052340030670166016}"}
+{"time": "2025-05-21 15:13:15,087", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-21 11:13:15.070800", "user_id": null, "status_code": 200, "duration": 0.01552891731262207}"}
+{"time": "2025-05-21 15:13:39,256", "level": "INFO", "message": "{"method": "POST", "path": "/users/login/", "timestamp": "2025-05-21 11:13:31.869403", "user_id": null, "status_code": 500, "duration": 7.385365962982178}"}
+{"time": "2025-05-21 15:15:22,546", "level": "INFO", "message": "{"method": "POST", "path": "/users/login/", "timestamp": "2025-05-21 11:14:39.841353", "user_id": null, "status_code": 500, "duration": 42.70276403427124}"}
+{"time": "2025-05-21 15:15:52,917", "level": "INFO", "message": "{"method": "POST", "path": "/users/login/", "timestamp": "2025-05-21 11:15:38.334605", "user_id": null, "status_code": 500, "duration": 14.579794883728027}"}
+{"time": "2025-05-21 15:16:12,546", "level": "INFO", "message": "{"method": "POST", "path": "/users/login/", "timestamp": "2025-05-21 11:16:09.734503", "user_id": null, "status_code": 200, "duration": 2.811126947402954}"}
+{"time": "2025-05-21 15:16:20,471", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-21 11:16:20.466384", "user_id": null, "status_code": 307, "duration": 0.0017430782318115234}"}
+{"time": "2025-05-21 15:16:20,481", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-21 11:16:20.475393", "user_id": null, "status_code": 200, "duration": 0.004038095474243164}"}
+{"time": "2025-05-22 05:34:32,366", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:34:32.349853', 'GET', '/services', 307, 'Temporary Redirect', 0.011389970779418945, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:34:32,367", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 01:34:32.349853", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.011389970779418945}"}
+{"time": "2025-05-22 05:34:32,384", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:34:32.374653', 'GET', '/services/', 200, 'OK', 0.009447813034057617, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:34:32,384", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 01:34:32.374653", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.009447813034057617}"}
+{"time": "2025-05-22 05:41:52,607", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:41:52.598213', 'GET', '/services', 307, 'Temporary Redirect', 0.0030570030212402344, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:41:52,608", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 01:41:52.598213", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0030570030212402344}"}
+{"time": "2025-05-22 05:41:52,701", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:41:52.690560', 'GET', '/services/', 200, 'OK', 0.01052713394165039, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:41:52,701", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 01:41:52.690560", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.01052713394165039}"}
+{"time": "2025-05-22 05:44:58,681", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:44:58.678361', 'GET', '/services', 307, 'Temporary Redirect', 0.0015697479248046875, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:44:58,682", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 01:44:58.678361", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0015697479248046875}"}
+{"time": "2025-05-22 05:44:58,687", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:44:58.684120', 'GET', '/services/', 200, 'OK', 0.002930164337158203, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:44:58,687", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 01:44:58.684120", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002930164337158203}"}
+{"time": "2025-05-22 05:45:00,677", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:45:00.674817', 'GET', '/services', 307, 'Temporary Redirect', 0.002129793167114258, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:45:00,677", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 01:45:00.674817", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.002129793167114258}"}
+{"time": "2025-05-22 05:45:00,681", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 01:45:00.679158', 'GET', '/services/', 200, 'OK', 0.0017840862274169922, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 05:45:00,681", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 01:45:00.679158", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0017840862274169922}"}
+{"time": "2025-05-22 07:34:13,846", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:34:13.838679', 'GET', '/services', 307, 'Temporary Redirect', 0.0014522075653076172, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:34:13,848", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:34:13.838679", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0014522075653076172}"}
+{"time": "2025-05-22 07:34:13,861", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:34:13.850988', 'GET', '/services/', 200, 'OK', 0.010250091552734375, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:34:13,861", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:34:13.850988", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.010250091552734375}"}
+{"time": "2025-05-22 07:36:16,842", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:36:16.836595', 'GET', '/services', 307, 'Temporary Redirect', 0.0020880699157714844, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:36:16,844", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:36:16.836595", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0020880699157714844}"}
+{"time": "2025-05-22 07:36:16,852", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:36:16.847933', 'GET', '/services/', 200, 'OK', 0.004266977310180664, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:36:16,853", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:36:16.847933", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004266977310180664}"}
+{"time": "2025-05-22 07:36:20,823", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:36:20.822023', 'GET', '/services', 307, 'Temporary Redirect', 0.0009648799896240234, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:36:20,824", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:36:20.822023", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0009648799896240234}"}
+{"time": "2025-05-22 07:36:20,827", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:36:20.825534', 'GET', '/services/', 200, 'OK', 0.0018322467803955078, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:36:20,827", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:36:20.825534", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0018322467803955078}"}
+{"time": "2025-05-22 07:43:04,739", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:43:04.728227', 'GET', '/services', 307, 'Temporary Redirect', 0.0025179386138916016, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:43:04,750", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:43:04.728227", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0025179386138916016}"}
+{"time": "2025-05-22 07:43:04,778", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:43:04.752212', 'GET', '/services/', 200, 'OK', 0.02579021453857422, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:43:04,778", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:43:04.752212", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.02579021453857422}"}
+{"time": "2025-05-22 07:45:39,371", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:45:39.358518', 'GET', '/services', 307, 'Temporary Redirect', 0.0023889541625976562, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:45:39,372", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:45:39.358518", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0023889541625976562}"}
+{"time": "2025-05-22 07:45:39,388", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:45:39.383603', 'GET', '/services/', 200, 'OK', 0.004215717315673828, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:45:39,388", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:45:39.383603", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004215717315673828}"}
+{"time": "2025-05-22 07:48:41,298", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:48:41.295292', 'GET', '/services', 307, 'Temporary Redirect', 0.001271963119506836, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:48:41,302", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:48:41.295292", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.001271963119506836}"}
+{"time": "2025-05-22 07:48:41,312", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:48:41.307909', 'GET', '/services/', 200, 'OK', 0.00400996208190918, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:48:41,312", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:48:41.307909", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.00400996208190918}"}
+{"time": "2025-05-22 07:49:50,805", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:49:50.798678', 'GET', '/services', 307, 'Temporary Redirect', 0.0013079643249511719, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:49:50,806", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 03:49:50.798678", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0013079643249511719}"}
+{"time": "2025-05-22 07:49:50,840", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:49:50.821525', 'GET', '/services/', 200, 'OK', 0.018735170364379883, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:49:50,841", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 03:49:50.821525", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.018735170364379883}"}
+{"time": "2025-05-22 07:50:52,668", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:50:52.637175', 'GET', '/services/view/1', 200, 'OK', 0.031013965606689453, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:50:52,668", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:50:52.637175", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.031013965606689453}"}
+{"time": "2025-05-22 07:53:57,915", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:57.898507', 'GET', '/services/view/1', 200, 'OK', 0.015233039855957031, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:57,915", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:57.898507", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.015233039855957031}"}
+{"time": "2025-05-22 07:53:58,755", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:58.752764', 'GET', '/services/view/1', 200, 'OK', 0.00238800048828125, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:58,755", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:58.752764", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.00238800048828125}"}
+{"time": "2025-05-22 07:53:58,878", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:58.870170', 'GET', '/services/view/1', 200, 'OK', 0.006853818893432617, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:58,879", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:58.870170", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.006853818893432617}"}
+{"time": "2025-05-22 07:53:59,052", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:59.050107', 'GET', '/services/view/1', 200, 'OK', 0.0022940635681152344, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:59,053", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:59.050107", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0022940635681152344}"}
+{"time": "2025-05-22 07:53:59,219", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:59.216077', 'GET', '/services/view/1', 200, 'OK', 0.0022318363189697266, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:59,219", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:59.216077", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0022318363189697266}"}
+{"time": "2025-05-22 07:53:59,408", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:59.405623', 'GET', '/services/view/1', 200, 'OK', 0.002391815185546875, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:59,408", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:59.405623", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002391815185546875}"}
+{"time": "2025-05-22 07:53:59,576", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:59.573796', 'GET', '/services/view/1', 200, 'OK', 0.0021393299102783203, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:59,576", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:59.573796", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0021393299102783203}"}
+{"time": "2025-05-22 07:53:59,763", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:59.755050', 'GET', '/services/view/1', 200, 'OK', 0.0073699951171875, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:59,764", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:59.755050", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0073699951171875}"}
+{"time": "2025-05-22 07:53:59,934", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:53:59.928766', 'GET', '/services/view/1', 200, 'OK', 0.0051577091217041016, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:53:59,934", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:53:59.928766", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0051577091217041016}"}
+{"time": "2025-05-22 07:54:00,104", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:00.101286', 'GET', '/services/view/1', 200, 'OK', 0.002753019332885742, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:00,104", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:00.101286", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002753019332885742}"}
+{"time": "2025-05-22 07:54:00,287", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:00.285065', 'GET', '/services/view/1', 200, 'OK', 0.0025680065155029297, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:00,288", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:00.285065", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0025680065155029297}"}
+{"time": "2025-05-22 07:54:00,488", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:00.484193', 'GET', '/services/view/1', 200, 'OK', 0.004111289978027344, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:00,488", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:00.484193", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004111289978027344}"}
+{"time": "2025-05-22 07:54:00,657", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:00.654786', 'GET', '/services/view/1', 200, 'OK', 0.0021963119506835938, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:00,657", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:00.654786", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0021963119506835938}"}
+{"time": "2025-05-22 07:54:00,831", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:00.829086', 'GET', '/services/view/1', 200, 'OK', 0.0022590160369873047, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:00,831", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:00.829086", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0022590160369873047}"}
+{"time": "2025-05-22 07:54:01,015", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:01.012665', 'GET', '/services/view/1', 200, 'OK', 0.0027968883514404297, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:01,016", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:01.012665", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0027968883514404297}"}
+{"time": "2025-05-22 07:54:01,200", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:01.197315', 'GET', '/services/view/1', 200, 'OK', 0.0022339820861816406, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:01,200", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:01.197315", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0022339820861816406}"}
+{"time": "2025-05-22 07:54:01,383", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:01.380691', 'GET', '/services/view/1', 200, 'OK', 0.0022640228271484375, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:01,383", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:01.380691", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0022640228271484375}"}
+{"time": "2025-05-22 07:54:01,566", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:01.563625', 'GET', '/services/view/1', 200, 'OK', 0.0024569034576416016, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:01,566", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:01.563625", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0024569034576416016}"}
+{"time": "2025-05-22 07:54:01,742", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:01.737593', 'GET', '/services/view/1', 200, 'OK', 0.004950761795043945, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:01,743", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:01.737593", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004950761795043945}"}
+{"time": "2025-05-22 07:54:01,926", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:01.923523', 'GET', '/services/view/1', 200, 'OK', 0.002496004104614258, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:01,926", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:01.923523", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002496004104614258}"}
+{"time": "2025-05-22 07:54:02,112", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:02.109915', 'GET', '/services/view/1', 200, 'OK', 0.0024030208587646484, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:02,112", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:02.109915", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0024030208587646484}"}
+{"time": "2025-05-22 07:54:02,284", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:02.281914', 'GET', '/services/view/1', 200, 'OK', 0.002053976058959961, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:02,284", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:02.281914", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002053976058959961}"}
+{"time": "2025-05-22 07:54:02,467", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:02.464975', 'GET', '/services/view/1', 200, 'OK', 0.002579212188720703, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:02,468", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:02.464975", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002579212188720703}"}
+{"time": "2025-05-22 07:54:02,647", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:02.643122', 'GET', '/services/view/1', 200, 'OK', 0.004138946533203125, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:02,647", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:02.643122", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004138946533203125}"}
+{"time": "2025-05-22 07:54:02,839", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:54:02.836364', 'GET', '/services/view/1', 200, 'OK', 0.002415180206298828, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:54:02,839", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:54:02.836364", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.002415180206298828}"}
+{"time": "2025-05-22 07:55:45,201", "level": "ERROR", "message": "Failed to save log to DB: (sqlite3.OperationalError) table api_logs has no column named status_description
+[SQL: INSERT INTO api_logs (timestamp, method, path, status_code, status_description, duration, user_id, error_message, traceback) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-05-22 03:55:45.180366', 'GET', '/services/view/1', 200, 'OK', 0.018884897232055664, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)"}
+{"time": "2025-05-22 07:55:45,203", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 03:55:45.180366", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.018884897232055664}"}
+{"time": "2025-05-22 08:04:48,460", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 04:04:48.389472", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.06432104110717773}"}
+{"time": "2025-05-22 08:36:09,702", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 04:36:09.672352", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.011237859725952148}"}
+{"time": "2025-05-22 08:36:09,718", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 04:36:09.705564", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.012233972549438477}"}
+{"time": "2025-05-22 08:48:46,501", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 04:48:46.481910", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.00574946403503418}"}
+{"time": "2025-05-22 08:48:46,518", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 04:48:46.504544", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.013158798217773438}"}
+{"time": "2025-05-22 08:48:48,554", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 04:48:48.547358", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.006394863128662109}"}
+{"time": "2025-05-22 08:49:25,195", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 08:49:25,198", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 04:49:14.963320", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 10.234421968460083}"}
+{"time": "2025-05-22 09:53:06,837", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 05:53:06.820182", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.006373167037963867}"}
+{"time": "2025-05-22 09:53:06,851", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 05:53:06.839584", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.011003255844116211}"}
+{"time": "2025-05-22 09:53:09,025", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 05:53:09.017853", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0060307979583740234}"}
+{"time": "2025-05-22 09:54:34,626", "level": "ERROR", "message": "HTTPException: 500: Error processing report analysis: 'NoneType' object has no attribute 'report_type' "}
+{"time": "2025-05-22 09:54:34,632", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 05:53:15.877372", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 78.75286388397217}"}
+{"time": "2025-05-22 09:56:12,594", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 05:56:12.469521", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.10965609550476074}"}
+{"time": "2025-05-22 10:00:10,743", "level": "ERROR", "message": "HTTPException: 500: Error processing report analysis: 'NoneType' object has no attribute 'report_type' "}
+{"time": "2025-05-22 10:00:10,767", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 05:56:27.942678", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 222.8215069770813}"}
+{"time": "2025-05-22 10:03:53,254", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:03:53.207304", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.024631023406982422}"}
+{"time": "2025-05-22 10:03:53,273", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:03:53.259272", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.013562917709350586}"}
+{"time": "2025-05-22 10:03:54,761", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:03:54.750666", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.009770870208740234}"}
+{"time": "2025-05-22 10:04:29,266", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:04:29,269", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:04:03.196349", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 26.072633028030396}"}
+{"time": "2025-05-22 10:05:52,442", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:05:52,446", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:05:19.631750", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 32.8127281665802}"}
+{"time": "2025-05-22 10:10:38,568", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:10:38.532124", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.006394863128662109}"}
+{"time": "2025-05-22 10:10:38,593", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:10:38.571328", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.02068305015563965}"}
+{"time": "2025-05-22 10:10:39,715", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:10:39.706512", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.007866859436035156}"}
+{"time": "2025-05-22 10:11:10,390", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:11:10,393", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:10:48.222859", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 22.169183015823364}"}
+{"time": "2025-05-22 10:12:13,078", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:12:13,082", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:11:34.248243", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 38.833070278167725}"}
+{"time": "2025-05-22 10:21:13,106", "level": "ERROR", "message": "HTTPException: 500: Error processing report analysis: cannot access local variable 'db_result' where it is not associated with a value "}
+{"time": "2025-05-22 10:21:13,116", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:20:33.340348", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 39.771766901016235}"}
+{"time": "2025-05-22 10:23:38,500", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:23:38.480497", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.009902238845825195}"}
+{"time": "2025-05-22 10:23:38,540", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:23:38.508569", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.030064105987548828}"}
+{"time": "2025-05-22 10:23:40,075", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:23:40.061764", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.011705160140991211}"}
+{"time": "2025-05-22 10:24:35,554", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:24:35,558", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:23:47.147497", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 48.409595012664795}"}
+{"time": "2025-05-22 10:25:54,318", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 10:25:54,322", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:25:11.079421", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 43.242839097976685}"}
+{"time": "2025-05-22 10:26:52,197", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:26:52.180364", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0014922618865966797}"}
+{"time": "2025-05-22 10:26:52,209", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:26:52.199340", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0071599483489990234}"}
+{"time": "2025-05-22 10:26:53,883", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:26:53.870872", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.009092092514038086}"}
+{"time": "2025-05-22 10:27:07,028", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:27:07,031", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:27:01.463885", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 5.566091060638428}"}
+{"time": "2025-05-22 10:27:52,696", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 10:27:52,699", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:27:47.549659", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 5.149389982223511}"}
+{"time": "2025-05-22 10:29:49,207", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:29:49.197383", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.005563020706176758}"}
+{"time": "2025-05-22 10:29:49,219", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:29:49.211903", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0039103031158447266}"}
+{"time": "2025-05-22 10:32:06,320", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:32:06.270127", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.04742884635925293}"}
+{"time": "2025-05-22 10:33:57,204", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:34:00,395", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:32:21.503506", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 98.88249111175537}"}
+{"time": "2025-05-22 10:37:53,350", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 10:37:53,362", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:35:25.729509", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 147.62737011909485}"}
+{"time": "2025-05-22 10:38:54,835", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:38:54.817680", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0025458335876464844}"}
+{"time": "2025-05-22 10:38:54,847", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:38:54.838440", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.007888078689575195}"}
+{"time": "2025-05-22 10:38:56,272", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:38:56.259125", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.010722875595092773}"}
+{"time": "2025-05-22 10:39:24,914", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 10:39:24,926", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:39:12.920643", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 12.003641128540039}"}
+{"time": "2025-05-22 10:39:29,025", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:39:29.020858", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.0037000179290771484}"}
+{"time": "2025-05-22 10:41:07,969", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 10:41:07,982", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:39:37.471393", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 90.50620794296265}"}
+{"time": "2025-05-22 10:42:29,298", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:42:29.286088", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.007477760314941406}"}
+{"time": "2025-05-22 10:42:29,312", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:42:29.300846", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.010223865509033203}"}
+{"time": "2025-05-22 10:42:31,688", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:42:31.675527", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.010608196258544922}"}
+{"time": "2025-05-22 10:43:09,744", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 10:43:09,758", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:42:52.690839", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 17.06135082244873}"}
+{"time": "2025-05-22 10:43:29,600", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 06:43:29.585014", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.006571054458618164}"}
+{"time": "2025-05-22 10:43:29,608", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 06:43:29.602528", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004665851593017578}"}
+{"time": "2025-05-22 10:43:31,107", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 06:43:31.089295", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.014996051788330078}"}
+{"time": "2025-05-22 10:43:56,663", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:43:56,670", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:43:37.359936", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 19.30800485610962}"}
+{"time": "2025-05-22 10:50:09,949", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:50:14,370", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:44:53.905265", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 320.4564459323883}"}
+{"time": "2025-05-22 10:50:49,140", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 10:50:49,145", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 06:50:39.989204", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 9.155067205429077}"}
+{"time": "2025-05-22 11:11:05,701", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 07:11:05.649511", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.009196043014526367}"}
+{"time": "2025-05-22 11:11:05,733", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 07:11:05.707222", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.024626970291137695}"}
+{"time": "2025-05-22 11:11:07,267", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 07:11:07.256486", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.009322643280029297}"}
+{"time": "2025-05-22 11:11:23,962", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 11:11:23,964", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 07:11:16.087357", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 7.876343011856079}"}
+{"time": "2025-05-22 11:13:26,261", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 07:13:26.247470", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.009409904479980469}"}
+{"time": "2025-05-22 11:13:26,276", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 07:13:26.264654", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.010727167129516602}"}
+{"time": "2025-05-22 11:13:27,874", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 07:13:27.860927", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.011316061019897461}"}
+{"time": "2025-05-22 11:15:47,428", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 11:15:47,447", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 07:13:37.039267", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 130.40255188941956}"}
+{"time": "2025-05-22 11:16:04,954", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 07:16:04.940574", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.01063394546508789}"}
+{"time": "2025-05-22 11:16:04,962", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 07:16:04.956659", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.004601001739501953}"}
+{"time": "2025-05-22 11:16:06,032", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 07:16:06.017916", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.012040138244628906}"}
+{"time": "2025-05-22 11:17:55,815", "level": "ERROR", "message": "Error processing analysis: tuple index out of range"}
+{"time": "2025-05-22 11:17:55,834", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 07:16:12.368415", "user_id": null, "status_code": 500, "status_description": "Internal Server Error", "duration": 103.46222496032715}"}
+{"time": "2025-05-22 11:19:08,905", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 07:19:08.862829", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.008565902709960938}"}
+{"time": "2025-05-22 11:19:08,928", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 07:19:08.908341", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.01778101921081543}"}
+{"time": "2025-05-22 11:19:10,285", "level": "INFO", "message": "{"method": "GET", "path": "/services/view/1", "timestamp": "2025-05-22 07:19:10.266934", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.015670061111450195}"}
+{"time": "2025-05-22 11:20:30,492", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 11:20:30,499", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 07:19:18.465748", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 72.03133296966553}"}
+{"time": "2025-05-22 11:24:57,035", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-05-22 11:24:57,049", "level": "INFO", "message": "{"method": "POST", "path": "/analysis/analyze", "timestamp": "2025-05-22 07:24:40.299811", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 16.740859985351562}"}
+{"time": "2025-05-22 11:27:15,039", "level": "INFO", "message": "{"method": "GET", "path": "/services", "timestamp": "2025-05-22 07:27:15.032413", "user_id": null, "status_code": 307, "status_description": "Temporary Redirect", "duration": 0.0026328563690185547}"}
+{"time": "2025-05-22 11:27:15,051", "level": "INFO", "message": "{"method": "GET", "path": "/services/", "timestamp": "2025-05-22 07:27:15.043739", "user_id": null, "status_code": 200, "status_description": "OK", "duration": 0.006990909576416016}"}

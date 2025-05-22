@@ -51,22 +51,22 @@ async def __analyze_blood_test_endpoint(
         blood_test_text = extract_text_from_uploaded_report(pdf_file)
         analysis_dict = analyze_report_by_gemini(blood_test_text)
 
-        # # Save the report using the logged-in user's ID
-        # report_data = {
-        #     "name": pdf_file.filename,
-        #     "content": blood_test_text,
-        # }
-        # report = save_report(report_data, current_user.id, db)
-        # logger.info(f"Report saved to database with ID: {report.id} for user: {current_user.id}")
-        #
-        # # Save the analysis result
-        # result_data = ResultCreate(
-        #     result=analysis_dict.get("interpretation", "Analysis Result"),
-        #     report_id=report.id,
-        #     tone_id=tone,  # Assuming 'tone' string is what you want to save
-        # )
-        # saved_result = save_analysis_result(result_data, db)
-        # logger.info(f"Analysis result saved to database with ID: {saved_result.id} for report: {report.id}")
+        # Save the report using the logged-in user's ID
+        report_data = {
+            "name": pdf_file.filename,
+            "content": blood_test_text,
+        }
+        report = save_report(report_data, current_user.id, db)
+        logger.info(f"Report saved to database with ID: {report.id} for user: {current_user.id}")
+
+        # Save the analysis result
+        result_data = ResultCreate(
+            result=analysis_dict.get("interpretation", "Analysis Result"),
+            report_id=report.id,
+            tone_id=tone,  # Assuming 'tone' string is what you want to save
+        )
+        saved_result = save_analysis_result(result_data, db)
+        logger.info(f"Analysis result saved to database with ID: {saved_result.id} for report: {report.id}")
 
         send_analysis_results_email(email, analysis_dict, arabic, tone)
         logger.info(f"Email sent successfully to {email}.")
@@ -127,15 +127,13 @@ async def analyze_report_endpoint(
     try:
         file_name = ""
         if reportFile:
-            file_name = reportFile.filename
-            medical_test_content = extract_text_from_uploaded_report(reportFile)
+            analysis_dict = report_analyzer(db, reportFile, arabic, tone, current_user, testReportId)
+            logger.info(f"Email sent successfully to {current_user.email}.")
         elif testReportId:  # testReportId exist
             raise HTTPException(status_code=200, detail="Please provide a blood test ID.")  # for testing purpose only
         else:
             raise HTTPException(status_code=422, detail="Please provide either a report file or a blood test ID.")
 
-        analysis_dict = report_analyzer(db, medical_test_content, arabic, tone, current_user, file_name, testReportId)
-        logger.info(f"Email sent successfully to {current_user.email}.")
         return analysis_dict  # AnalysisResult(**analysis_dict)
 
     except HTTPException as e:

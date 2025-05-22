@@ -32,7 +32,8 @@ def create_metrics(db: Session, metrics: List[MetricCreate]) -> List[Metric]:
             reference_range_min=metric.reference_range_min,
             reference_range_max=metric.reference_range_max,
             status=metric.status,
-            report_id=metric.report_id
+            report_id=metric.report_id,
+            result_id=metric.result_id
         )
         db_metrics.append(db_metric)
 
@@ -65,7 +66,8 @@ def create_metric(db: Session, metric: MetricCreate) -> Metric:
         reference_range_min=metric.reference_range_min,
         reference_range_max=metric.reference_range_max,
         status=metric.status,
-        report_id=metric.report_id
+        report_id=metric.report_id,
+        result_id=metric.result_id
     )
     try:
         db.add(db_metric)
