@@ -13,3 +13,7 @@ class Result(Base):
     language = Column(Text, nullable=True)
     report_id = Column(String, ForeignKey("report.id"), nullable=False)
     added_datetime = Column(String, default=lambda: datetime.now().isoformat())
+
+    report = relationship("Report", back_populates="results")
+    tone = relationship("Tone", back_populates="results")
+    metrics = relationship("Metric", back_populates="result")

@@ -7,3 +7,5 @@ class Tone(Base):
 
     id = Column(String, primary_key=True, unique=True, nullable=False)
     tone = Column(String, unique=True, nullable=False)
+
+    results = relationship("Result", back_populates="tone")

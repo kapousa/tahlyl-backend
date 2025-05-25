@@ -11,7 +11,7 @@ class APILog(Base):
     path = Column(String)
     status_code = Column(Integer)
     status_description = Column(String)
-    duration = Column(Float)
+    duration = Column(String)
     user_id = Column(String, nullable=True)
     error_message = Column(Text, nullable=True)
     traceback = Column(Text, nullable=True)

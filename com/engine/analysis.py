@@ -6,7 +6,6 @@ from sqlalchemy.orm import Session
 
 from com.utils.Helper import extract_text_from_uploaded_report
 from config import logger, get_db
-from com.curds.Metric import create_metrics
 from com.engine.security import get_current_user
 from com.models.Report import Report as SQLReport
 from com.models.Result import Result as SQLResult
@@ -15,7 +14,6 @@ from com.utils import Helper
 from com.utils.AI import analyze_report_by_gemini
 from com.utils.Email import send_analysis_results_email
 from com.utils.Report import save_report, detect_report_type, save_analysis_result
-from com.schemas.result import ResultCreate
 from com.constants.prompts import (
     ENGLISH_CBC_PROMPT, ARABIC_CBC_PROMPT,
     ENGLISH_COMPARE_PROMPT, ARABIC_COMPARE_PROMPT,
@@ -86,9 +84,11 @@ def report_analyzer(db: Session,
         db_report = db.query(SQLReport).filter(SQLReport.content == medical_test_content).first()
         db_result = None
         if db_report is not None:
-            db_result = db.query(SQLResult).filter(SQLResult.report_id == db_report.id, SQLResult.tone_id == tone).first()
+            db_result = db.query(SQLResult).filter(SQLResult.report_id == db_report.id,
+                                                   SQLResult.tone_id == tone).first()
 
-        if db_report is None or (db_report is not None and db_result is None):  # New report of exist report but request results with new tone
+        if db_report is None or (
+                db_report is not None and db_result is None):  # New report of exist report but request results with new tone
             detected_report_type = detect_report_type(medical_test_content)
             logger.info(f"Detected report type: {detected_report_type}")
             if not detected_report_type:
@@ -117,6 +117,7 @@ def report_analyzer(db: Session,
                     "name": file_name,
                     "content": medical_test_content,
                     "report_type": detected_report_type,
+                    "status": "normal",
                     "location": "location",
                     "user_id": current_user.id  # Access user_id as dict
                 }
@@ -125,14 +126,15 @@ def report_analyzer(db: Session,
             if db_result is None:
                 # Save the analysis result
                 result_data = {  # Use ResultCreate schema
-                    "result": json.dumps(analysis_dict, ensure_ascii=False),  # retrieve as analysis_dict = json.loads(result)
+                    "result": json.dumps(analysis_dict, ensure_ascii=False),
+                    # retrieve as analysis_dict = json.loads(result)
                     "report_id": report_id,
                     "tone_id": tone,  # Assuming 'tone' string is what you want to save
                     "language": language
                 }
                 saved_result = save_analysis_result(result_data, db)
 
-        else:   # Results of required report and tone exist
+        else:  # Results of required report and tone exist
             detected_report_type = db_report.report_type
             analysis_dict = json.loads(db_result.result)
 

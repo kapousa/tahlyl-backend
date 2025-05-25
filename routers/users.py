@@ -1,4 +1,3 @@
-import logging
 import uuid
 from datetime import timedelta
 from typing import List
@@ -38,7 +37,7 @@ async def get_fake_current_user():
 def user_index():
     return {"message": "Welcome user"}
 
-@router.post("/register/", response_model=User, status_code=status.HTTP_201_CREATED)
+@router.post("/register", response_model=User, status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     hashed_password = get_password_hash(user.password)
     db_user = SQLUser(id=str(uuid.uuid4()), username=user.username, email=user.email, password=hashed_password, avatar="", role="patient")
@@ -51,7 +50,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
         db.rollback()
         raise HTTPException(status_code=400, detail="name or email already registered")
 
-@router.post("/login/", response_model=Token)
+@router.post("/login", response_model=Token)
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     if DISABLE_AUTH:
         fake_user = FakeUser(name=form_data.username)
@@ -67,7 +66,8 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
 
             access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
             access_token = create_access_token(data={"sub": db_user.username}, expires_delta=access_token_expires)
-
+            # TODO : remove printing the token
+            print(f"Access Token: {access_token}")
             return {"access_token": access_token, "token_type": "bearer"}
 
         except Exception as e:

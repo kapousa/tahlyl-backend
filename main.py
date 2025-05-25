@@ -6,11 +6,10 @@ import os
 import json
 import time
 import traceback
-from datetime import datetime
-
+from datetime import datetime, timedelta
 from com.models.APILog import APILog
 from com.utils.Logger import logger  # Your existing logger
-from routers import users_router, analysis_router, services_router, report_router, bloodtest_router
+from routers import users_router, analysis_router, services_router, report_router, bloodtest_router, smartfeatures_router
 
 from config import SessionLocal, Base, engine  # Your DB config
 
@@ -21,13 +20,18 @@ Base.metadata.create_all(bind=engine)
 # Load .env
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+    title="Tahlyl: AI-Powered Medical Test Analysis API Platform",
+    description="API for understanding and managing medical test results with AI.",
+    version="0.1.0"
+)
 
 app.include_router(users_router)
 app.include_router(analysis_router)
 app.include_router(services_router)
 app.include_router(report_router)
 app.include_router(bloodtest_router)
+app.include_router(smartfeatures_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -65,7 +69,7 @@ async def log_requests(request: Request, call_next):
         log_data["traceback"] = traceback.format_exc()
         raise
     finally:
-        log_data["duration"] = time.time() - start_time
+        log_data["duration"] = str(timedelta(seconds=time.time() - start_time))
         try:
             db.add(APILog(**log_data))
             db.commit()

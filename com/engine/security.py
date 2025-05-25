@@ -32,7 +32,7 @@ def get_password_hash(password):
 def create_access_token(data: dict, expires_delta: timedelta = None):
     to_encode = data.copy()
     expire = datetime.utcnow() + (expires_delta if expires_delta else timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
-    to_encode.update({"exp": expire})
+    to_encode.update({"exp": expire, "expires_at": expire.isoformat()})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
@@ -56,7 +56,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
     if username is None:
         raise credentials_exception
     token_data = TokenData(username=username)
-    user = db.query(SQLUser).filter(SQLUser.username == token_data.name).first()
+    user = db.query(SQLUser).filter(SQLUser.username == token_data.username).first()
     if user is None:
         raise credentials_exception
     return user

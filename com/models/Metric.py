@@ -16,11 +16,12 @@ class Metric(Base):
     reference_range_min = Column(String, nullable=True)
     reference_range_max = Column(String, nullable=True)
     status = Column(String, nullable=True)
-    report_id = Column(String, ForeignKey("report.id"), nullable=False)
     result_id = Column(String, ForeignKey("result.id"), nullable=False)
     created_by = Column(String, nullable=True)
     created_date = Column(DateTime, default=datetime.datetime.utcnow, nullable=True)
     updated_by = Column(String, nullable=True)
     updated_date = Column(DateTime, nullable=True)
+
+    result = relationship("Result", back_populates="metrics")
 
 

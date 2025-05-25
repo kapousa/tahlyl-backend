@@ -9,7 +9,7 @@ from http.client import HTTPException
 def send_email_with_pdf(email: str, pdf_path: str):
     """Sends an email with the PDF report as an attachment."""
     msg = MIMEMultipart()
-    msg['From'] = os.getenv("EMAIL_SENDER") # your email
+    msg['From'] = os.getenv("EMAIL_SENDER")  # your email
     msg['To'] = email
     msg['Subject'] = "Tahlyl | Blood Test Analysis Report"
     body = "Please find your blood test analysis report attached."
@@ -21,13 +21,14 @@ def send_email_with_pdf(email: str, pdf_path: str):
         msg.attach(attach)
 
     try:
-        server = smtplib.SMTP(os.getenv("SMTP_SERVER"), int(os.getenv("SMTP_PORT"))) # smtp server and port
+        server = smtplib.SMTP(os.getenv("SMTP_SERVER"), int(os.getenv("SMTP_PORT")))  # smtp server and port
         server.starttls()
-        server.login(os.getenv("EMAIL_SENDER"), os.getenv("EMAIL_PASSWORD")) # email and password
+        server.login(os.getenv("EMAIL_SENDER"), os.getenv("EMAIL_PASSWORD"))  # email and password
         server.send_message(msg)
         server.quit()
     except Exception as e:
         print(f"Error sending email: {e}")
+
 
 def send_analysis_results_email(report_type: str, email: str, analysis_dict: dict, arabic: bool):
     """Sends an email with the analysis results in the body (HTML)."""
@@ -39,7 +40,7 @@ def send_analysis_results_email(report_type: str, email: str, analysis_dict: dic
     body = ""
     if arabic:
         body += "<div style=\"direction: rtl; text-align: right;\">"
-        body += f"<h2>{ 'تقرير تحليل نتائج {report_type}:' if arabic else '{report_type} Analysis Report:'}</h2>"
+        body += f"<h2>{'تقرير تحليل نتائج {report_type}:' if arabic else '{report_type} Analysis Report:'}</h2>"
 
         for key, value in analysis_dict.items():
             if value is not None:
@@ -129,33 +130,34 @@ def send_analysis_results_email(report_type: str, email: str, analysis_dict: dic
     except Exception as e:
         print(f"Error sending email: {e}")
 
-def send_compare_report_email(email_to: str, body: str, arabic: bool):
-        """Sends an email with RTL support for Arabic content."""
-        msg = MIMEMultipart()
-        msg['From'] = os.getenv('EMAIL_SENDER')
-        msg['To'] = email_to
-        msg['Subject'] = "Compare Blood Tests Analysis Report"
 
-        if arabic:
-            html = f"""
+def send_compare_report_email(email_to: str, body: str, arabic: bool):
+    """Sends an email with RTL support for Arabic content."""
+    msg = MIMEMultipart()
+    msg['From'] = os.getenv('EMAIL_SENDER')
+    msg['To'] = email_to
+    msg['Subject'] = "Compare Blood Tests Analysis Report"
+
+    if arabic:
+        html = f"""
                         <div dir="rtl">
                             {body}
                         </div>
                         """
-        else:
-            html = f"""
+    else:
+        html = f"""
                         <div>
                             {body}
                         </div>
                         """
 
-        msg.attach(MIMEText(html, 'html'))
+    msg.attach(MIMEText(html, 'html'))
 
-        try:
-            server = smtplib.SMTP(os.getenv("SMTP_SERVER"), int(os.getenv("SMTP_PORT")))
-            server.starttls()
-            server.login(os.getenv("EMAIL_SENDER"), os.getenv("EMAIL_PASSWORD"))
-            server.send_message(msg)
-            server.quit()
-        except Exception as e:
-            print(f"Error sending email: {e}")
+    try:
+        server = smtplib.SMTP(os.getenv("SMTP_SERVER"), int(os.getenv("SMTP_PORT")))
+        server.starttls()
+        server.login(os.getenv("EMAIL_SENDER"), os.getenv("EMAIL_PASSWORD"))
+        server.send_message(msg)
+        server.quit()
+    except Exception as e:
+        print(f"Error sending email: {e}")

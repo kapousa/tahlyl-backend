@@ -1,10 +1,8 @@
 from typing import List
-
 from fastapi import HTTPException, status
 from reportlab.pdfgen import canvas
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-
 from config import logger
 from com.curds.Metric import create_metric, create_metrics
 from com.models.Tone import Tone as SQLTone
@@ -15,6 +13,7 @@ from com.schemas.report import Report
 from com.schemas.result import ResultCreate, Result
 from com.utils import Helper
 from com.utils.Metrice import extract_min_max, matric_string_to_dict
+import json
 
 
 def generate_pdf_report(analysis_dict: dict, output_path: str):
@@ -118,7 +117,6 @@ def save_analysis_result(result_data: dict, db: Session):
         if detailed_results is not None:
             metrics_to_create: List[SQLMetric] = []
             detailed_results_metrics = matric_string_to_dict(detailed_results)
-            report_id = result_data.get("report_id")  # Assuming report_id is the same for all detailed results
             for metric_item in detailed_results_metrics:
                 metric_id = Helper.generate_id()
                 min_max_range = extract_min_max(str(metric_item))
@@ -131,7 +129,6 @@ def save_analysis_result(result_data: dict, db: Session):
                     reference_range_min=min_max_range.get("min"),
                     reference_range_max=min_max_range.get("max"),
                     status=metric_item.get("status"),
-                    report_id=report_id,
                     result_id=result_id
                 )
                 metrics_to_create.append(db_metric)
@@ -186,8 +183,6 @@ def detect_report_type(extracted_text: str):
     return text_lower
 
 
-import json
-
 def find_detailed_results(data):
     """
     Checks if a dictionary or a JSON string contains the key "detailed_results"
@@ -219,21 +214,3 @@ def find_detailed_results(data):
             if result:
                 return result
     return None
-
-# # Your dictionary object as a string
-# data_string = '{"result": "{\\"summary\\": \\"The patient\'s erythrocyte sedimentation rate (ESR) is significantly elevated, indicating potential inflammation.\\u00a0 The provided CRP value is missing.\\", \\"detailed_results\\": {\\"ESR\\": {\\"value\\": {\\"first_hour\\": 38, \\"second_hour\\": 75}, \\"unit\\": \\"mms\\", \\"normal_range\\": \\"Up to 10 mms (first hour), Up to 20 mms (second hour)\\", \\"status\\": \\"high\\"}}, \\"interpretation\\": \\"The ESR results are markedly elevated, strongly suggesting the presence of inflammation in the body.\\u00a0 The absence of a CRP value prevents a complete assessment of the inflammatory process.\\u00a0 The high ESR could indicate various conditions.\\", \\"potential causes\\": [\\"Infection (bacterial, viral, or fungal)\\", \\"Autoimmune diseases (rheumatoid arthritis, lupus)\\", \\"Inflammation of tissues (e.g., vasculitis)\\", \\"Malignancy\\", \\"Tissue damage or necrosis\\", \\"Anemia\\", \\"Certain medications\\"], \\"next steps\\": [\\"A complete blood count (CBC) should be ordered to further investigate potential causes of the elevated ESR.\\", \\"CRP testing is crucial to obtain a more comprehensive picture of the inflammatory process.\\u00a0 A high CRP would strengthen the indication of inflammation.\\", \\"The patient should consult a physician to discuss the elevated ESR and potential underlying causes. Further investigations, such as imaging studies or specialized blood tests, might be necessary to identify the specific condition.\\" ]}, \\"report_id\\": \\"1xKCKezE70g5uI\\", \\"tone_id\\": \\"general\\", \\"language\\": \\"en\\"}"}'
-#
-# # Parse the main JSON string
-# try:
-#     main_data = json.loads(data_string)
-# except json.JSONDecodeError:
-#     print("Error: Invalid main JSON string")
-#     main_data = None
-
-# if main_data:
-#     detailed_results_json = find_detailed_results(main_data)
-#
-#     if detailed_results_json:
-#         print(detailed_results_json)
-#     else:
-#         print("Key 'detailed_results' not found at any level.")

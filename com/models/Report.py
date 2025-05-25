@@ -11,7 +11,10 @@ class Report(Base):
     id = Column(String, primary_key=True, unique=True, nullable=False)
     name = Column(String, nullable=False)
     location = Column(String, nullable=True)
-    user_id = Column(String, ForeignKey("user.id"), nullable=True)
+    user_id = Column(String)
     content = Column(String, nullable=True)
+    status = Column(String, nullable=True)
     report_type = Column(String, nullable=True)
     added_datetime = Column(String, default=lambda: datetime.now().isoformat())
+
+    results = relationship("Result", back_populates="report")

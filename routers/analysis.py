@@ -1,12 +1,9 @@
 # analysis.py
-import json
-import os
-from typing import List, Union, Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, HTTPException, File, Form, UploadFile, Depends
 from pdfminer.high_level import extract_text
 from sqlalchemy.orm import Session
-from starlette.responses import JSONResponse
 
 from config import get_db
 from com.engine.analysis import report_analyzer

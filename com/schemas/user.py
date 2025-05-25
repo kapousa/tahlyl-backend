@@ -21,4 +21,4 @@ class Token(BaseModel):
     token_type: str
 
 class TokenData(BaseModel):
-    name: Optional[str] = None
+    username: Optional[str] = None

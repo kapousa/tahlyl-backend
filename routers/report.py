@@ -1,8 +1,15 @@
 from typing import List, Optional
 from pydantic import BaseModel
-from fastapi import FastAPI, HTTPException, APIRouter
+from fastapi import FastAPI, HTTPException, APIRouter, Depends
 from fastapi.middleware.cors import CORSMiddleware
 import datetime
+
+from sqlalchemy.orm import Session
+
+from com.engine.report import get_report_cards
+from com.engine.security import get_current_user
+from com.schemas.user import User
+from config import get_db
 
 router = APIRouter(prefix="/report", tags=["report"])
 
@@ -135,4 +142,10 @@ async def share_blood_test(test_id: int):
             #  For simplicity, we'll just return a message with the data.
             return {"message": f"Blood test data for test ID {test_id} would be shared (e.g., via email) in a real application.", "data": test}
     raise HTTPException(status_code=404, detail="Blood test not found")
+
+@router.get("/cards")
+async def fetch_report_cards_endpoint(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    user_id = current_user.id
+    report_cards = get_report_cards(db, user_id)
+    return report_cards
 

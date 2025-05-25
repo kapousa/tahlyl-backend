@@ -12,7 +12,6 @@ class MetricSchema(BaseModel):
     reference_range_min: Optional[str] = None
     reference_range_max: Optional[str] = None
     status: Optional[str] = None
-    report_id: str
     result_id: str
     created_by: Optional[str] = None
     created_date: Optional[datetime.datetime] = None
