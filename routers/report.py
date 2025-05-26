@@ -1,13 +1,12 @@
-from typing import List, Optional
+from typing import List
 from pydantic import BaseModel
-from fastapi import FastAPI, HTTPException, APIRouter, Depends
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import HTTPException, APIRouter, Depends
 import datetime
 
 from sqlalchemy.orm import Session
 
 from com.engine.report import get_report_cards
-from com.engine.security import get_current_user
+from com.engine.auth.jwt_security import get_current_user
 from com.schemas.user import User
 from config import get_db
 

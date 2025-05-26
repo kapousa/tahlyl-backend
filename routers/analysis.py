@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from config import get_db
 from com.engine.analysis import report_analyzer
 from com.utils.AI import analyze_report_by_gemini
-from com.engine.security import get_current_user, fake_current_user
+from com.engine.auth.jwt_security import get_current_user
 from com.schemas.result import ResultCreate
 from com.utils.Helper import extract_text_from_uploaded_report
 from com.schemas.analysisResult import AnalysisResult
@@ -115,7 +115,7 @@ async def analyze_report_endpoint(
         report_type: Optional[str] = Form(None),
         arabic: bool = Form(False),
         tone: str = Form("General"),
-        current_user: SQLUser = Depends(fake_current_user),
+        current_user: SQLUser = Depends(get_current_user),
         db: Session = Depends(get_db),
 ):
     logger.info(

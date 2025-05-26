@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from com.utils.Helper import extract_text_from_uploaded_report
 from config import logger, get_db
-from com.engine.security import get_current_user
+from com.engine.auth.jwt_security import get_current_user
 from com.models.Report import Report as SQLReport
 from com.models.Result import Result as SQLResult
 from com.schemas.analysisResult import AnalysisResult
