@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import jwt
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session # No need for make_transient here anymore
 from config import get_db
@@ -79,7 +79,7 @@ def decode_access_token(token: str) -> dict:
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+def get_current_user(request: Request, token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     """
     Dependency to get the current authenticated human user.
     Retrieves user from DB and ensures they are active.
@@ -118,6 +118,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     # Assign the list of strings from the token to the new `roles_from_token` attribute.
     # This attribute is NOT managed by SQLAlchemy's ORM and can directly accept a list.
     user.roles_from_token = roles_from_token
+    request.state.authenticated_user_id = user.id
     logger.debug(f"Assigned roles from token to user object: {user.roles_from_token}")
 
     return user

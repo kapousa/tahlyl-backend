@@ -25,8 +25,8 @@ class User(UserBase):
     class Config:
         # Pydantic v2 uses `from_attributes = True`
         from_attributes = True
-        # Pydantic v1 used `orm_mode = True`
-        # orm_mode = True
+        # Pydantic v1 used `from_attributes = True`
+        # from_attributes = True
 
 
 # --- Token Response Schema ---

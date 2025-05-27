@@ -19,18 +19,18 @@ class MetricSchema(BaseModel):
     updated_date: Optional[datetime.datetime] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class MetricCreate(BaseModel):
     pass
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class MetricUpdate(BaseModel):
     pass
 
     class Config:
-        orm_mode = True
+        from_attributes = True

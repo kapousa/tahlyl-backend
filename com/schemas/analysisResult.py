@@ -50,3 +50,4 @@ class AnalysisResult(BaseModel):
     individualized_recommendations: Optional[Union[str, Dict, List]] = None
     date: datetime = datetime.now()
     detailed_results: Optional[Dict[str, AnalysisDetailedResultItem]] = None
+    doctor_questions: Optional[Dict[str, AnalysisDetailedResultItem]] = None

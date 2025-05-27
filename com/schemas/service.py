@@ -35,7 +35,7 @@ class Service(ServiceBase):
 
     # Pydantic V1:
     # class Config:
-    #     orm_mode = True
+    #     from_attributes = True
 
 class ServicesList(BaseModel):
     services: List[Service]

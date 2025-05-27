@@ -29,7 +29,7 @@ class Report(ReportBase):
     id: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class ReportCard(BaseModel):
@@ -40,4 +40,4 @@ class ReportCard(BaseModel):
     metrics: List[Metric]
 
     class Config:
-        orm_mode = True
+        from_attributes = True

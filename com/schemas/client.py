@@ -21,4 +21,4 @@ class CombinedAuthClient(BaseModel):
     # Example: email: Optional[str] = None
 
     class Config:
-        from_attributes = True # For Pydantic v2, or orm_mode = True for Pydantic v1
+        from_attributes = True # For Pydantic v2, or from_attributes = True for Pydantic v1

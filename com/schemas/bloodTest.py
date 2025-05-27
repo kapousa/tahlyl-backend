@@ -22,7 +22,7 @@ class BloodTestSchema(BaseModel):
     metrics: List[MetricSchema] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class BloodTestCreateSchema(BaseModel):
@@ -38,7 +38,7 @@ class BloodTestCreateSchema(BaseModel):
     content: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class BloodTestUpdateSchema(BaseModel):
@@ -51,4 +51,4 @@ class BloodTestUpdateSchema(BaseModel):
     content: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

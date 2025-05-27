@@ -8,6 +8,7 @@ import time
 import traceback
 from datetime import datetime, timedelta
 from com.models.APILog import APILog
+from com.utils import Helper
 from com.utils.Logger import logger  # Your existing logger
 from routers import users_router, analysis_router, services_router, report_router, bloodtest_router, smartfeatures_router
 
@@ -42,7 +43,7 @@ app.add_middleware(
 )
 
 async def get_user_id_from_request(request: Request) -> str | None:
-    user_id = request.headers.get("X-User-Id")
+    user_id = "e3d593f4-0463-4cca-b83c-b4c7c641178c" #request.headers.get("X-User-Id")
     return user_id
 
 from http import HTTPStatus  # <-- Import this
@@ -69,6 +70,7 @@ async def log_requests(request: Request, call_next):
         log_data["traceback"] = traceback.format_exc()
         raise
     finally:
+        log_data["id"] = Helper.generate_id()
         log_data["duration"] = str(timedelta(seconds=time.time() - start_time))
         try:
             db.add(APILog(**log_data))

@@ -7,7 +7,6 @@ ARABIC_BLOOD_TEST_GENERAL_PROMPT = """
 - "summary": ملخص موجز لنتائج اختبار الدم.
 - "lifestyle_changes": قائمة بالتغييرات المقترحة في نمط الحياة لتحسين النتائج.
 - "diet_routine": قائمة بالتوصيات الغذائية بناءً على النتائج.
-- **"doctor_questions": قائمة بالأسئلة التي يمكن طرحها على الطبيب بناءً على تحليل التقرير.**
 
 نتائج اختبار الدم:
 {blood_test_text}
@@ -20,7 +19,6 @@ The JSON should contain the following keys:
 - "summary": A concise summary of the blood test results.
 - "lifestyle_changes": A list of suggested lifestyle changes to improve the results.
 - "diet_routine": A list of dietary recommendations based on the results.
-- **"doctor_questions": A list of questions to ask the doctor based on the report analysis.**
 
 Blood test results:
 {blood_test_text}
@@ -29,7 +27,6 @@ JSON:
 """
 
 # General Doctor (No specific status/range instructions added here as these are very detailed)
-# 'doctor_questions' removed as AI acts as the doctor here
 ARABIC_BLOOD_TEST_DOCTOR_PROMPT = """
 حلل نتائج اختبار الدم التالية بدقة واهتمام، وقدم استجابة مفصلة باللغة العربية بتنسيق JSON، كما لو كنت طبيبًا عامًا محترفًا.
 يجب أن يحتوي JSON على المفاتيح التالية:
@@ -51,7 +48,7 @@ Analyze the following blood test results with precision and care, and provide a 
 The JSON should contain the following keys:
 - "summary": A detailed summary of the blood test results, with clear explanations of any abnormal values and their potential health implications.
 - "detailed_analysis": A detailed analysis of each component of the blood test, with comparisons to reference ranges and explanations of any deviations.
-- "potential_causes": A list of potential causes for any abnormal results, considering potential symptoms.
+- "potential causes": A list of potential causes for any abnormal results, considering potential symptoms.
 - "lifestyle_changes": Specific recommendations for lifestyle changes to improve the results, with explanations of the importance of each change.
 - "diet_routine": Detailed dietary recommendations based on the results, with examples of recommended and avoided foods.
 - "next steps": Recommendations for next steps, such as specialist consultation or additional testing.
@@ -90,28 +87,26 @@ JSON:
 """
 
 # Educational/Informative (Focus on explaining ranges, so status is less critical here)
-ARABIC_BLOOD_TEST_EDUCATIONAL_PROMPT = """
-قدم تحليلاً تعليميًا لنتائج اختبار الدم التالية بتنسيق JSON.
-يجب أن يحتوي JSON على المفاتيح التالية:
-- "result_explanations": شروحات مفصلة لكل مكون من مكونات اختبار الدم وأهميته، بما في ذلك النطاقات الطبيعية النموذجية.
-- "reference_ranges": مقارنة لنتائج المستخدم بالنطاقات المرجعية الطبيعية، مع ذكر هذه النطاقات صراحة.
-- "potential_implications": شرح للتأثيرات الصحية المحتملة لأي نتائج غير طبيعية، مع الإشارة إلى كيفية انحرافها عن النطاقات الطبيعية.
-- **"doctor_questions": قائمة بالأسئلة التي يمكن طرحها على الطبيب بناءً على تحليل التقرير.**
-
-نتائج اختبار الدم:
-{blood_test_text}
-
-JSON:
-"""
 ENGLISH_BLOOD_TEST_EDUCATIONAL_PROMPT = """
 Provide an educational analysis of the following blood test results in JSON format.
 The JSON should contain the following keys:
 - "result_explanations": Detailed explanations of each blood test component and its significance, including typical normal ranges.
 - "reference_ranges": A comparison of the user's results to normal reference ranges, explicitly stating these ranges.
 - "potential_implications": An explanation of the potential health implications of any abnormal results, referencing how they deviate from the normal ranges.
-- **"doctor_questions": A list of questions to ask the doctor based on the report analysis.**
 
 Blood test results:
+{blood_test_text}
+
+JSON:
+"""
+ARABIC_BLOOD_TEST_EDUCATIONAL_PROMPT = """
+قدم تحليلاً تعليميًا لنتائج اختبار الدم التالية بتنسيق JSON.
+يجب أن يحتوي JSON على المفاتيح التالية:
+- "result_explanations": شروحات مفصلة لكل مكون من مكونات اختبار الدم وأهميته، بما في ذلك النطاقات الطبيعية النموذجية.
+- "reference_ranges": مقارنة لنتائج المستخدم بالنطاقات المرجعية الطبيعية، مع ذكر هذه النطاقات صراحة.
+- "potential_implications": شرح للتأثيرات الصحية المحتملة لأي نتائج غير طبيعية، مع الإشارة إلى كيفية انحرافها عن النطاقات الطبيعية.
+
+نتائج اختبار الدم:
 {blood_test_text}
 
 JSON:
@@ -327,7 +322,7 @@ ARABIC_LIVER_PROMPT = """
 - "potential_implications": شرح محتمل لأي قيم غير طبيعية تم العثور عليها، مع ذكر الحالات الصحية المحتملة المرتبطة بها (مثل التهاب الكبد، تلف الكبد).
 - "next steps": توصيات للخطوات التالية بناءً على النتائج، مثل استشارة الطبيب أو إجراء فحوصات إضافية.
 
-نتائج اختبارات وظائف الكلى:
+نتائج اختبارات وظائف الكبد:
 {blood_test_text}
 
 JSON:
@@ -452,7 +447,7 @@ ARABIC_VITAMIN_D_PROMPT = """
 - "potential_implications": شرح محتمل لتأثير مستويات فيتامين د على صحة العظام ووظيفة المناعة بناءً على الحالة.
 - "recommendations": توصيات بناءً على النتيجة، مثل تناول مكملات فيتامين د أو التعرض لأشعة الشمس.
 
-نتائج اختبار فيتامين د (25-هيدروكسي فيتامين د):
+نتيجة اختبار فيتامين د (25-هيدروكسي فيتامين د):
 {blood_test_text}
 
 JSON:
@@ -545,7 +540,7 @@ ARABIC_INFLAMMATION_PROMPT = """
 - "summary": ملخص موجز لنتائج علامات الالتهاب، مع الإشارة إلى حالة CRP و ESR.
 - "detailed_results": كائن تكون فيه المفاتيح أسماء العلامات ("CRP"، "ESR") والقيمة هي كائن يحتوي على "value" و "unit" و "normal_range" و "status".
 - "interpretation": تفسير للنتائج وما إذا كانت تشير إلى وجود التهاب في الجسم بناءً على الحالة.
-- "potential_causes": ذكر بعض الأسباب المحتملة لارتفاع علامات الالتهاب (مثل العدوى، أمراض المناعة الذاتية).
+- "potential causes": ذكر بعض الأسباب المحتملة لارتفاع علامات الالتهاب (مثل العدوى، أمراض المناعة الذاتية).
 - "next steps": توصيات للخطوات التالية بناءً على النتائج، مثل استشارة الطبيب لتحديد سبب الالتهاب.
 
 نتائج علامات الالتهاب (CRP و ESR):
@@ -561,7 +556,7 @@ The JSON should contain the following keys:
 - "summary": A concise summary of the inflammation markers results, highlighting the status of CRP and ESR.
 - "detailed_results": An object where the keys are the marker names ("CRP", "ESR") and the value is an object containing "value", "unit", "normal_range", and "status".
 - "interpretation": An interpretation of the results and whether they suggest the presence of inflammation in the body based on the status.
-- "potential_causes": Mention some potential causes for elevated inflammation markers (e.g., infection, autoimmune diseases).
+- "potential causes": Mention some potential underlying causes for elevated inflammation markers (e.g., infection, autoimmune conditions).
 - "next steps": Recommendations for the next steps based on the results, such as consulting a doctor to determine the cause of inflammation.
 
 Inflammation Markers (CRP and ESR) results:
