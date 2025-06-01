@@ -1,14 +1,15 @@
-ython-dotenv==1.1.0
+dotenv==0.9.9
+python-dotenv==1.1.0  # Typo fixed here!
 fastapi==0.115.12
 pydantic==2.11.3
 uvicorn==0.34.1
 starlette==0.46.2
 google-generativeai==0.8.4
 google-api-core<2.0.0,>=1.34.0
-# pdfminer.six  # <--- TEMPORARILY COMMENTED OUT
+# pdfminer.six  # Temporarily commented out for troubleshooting
 fastapi-cors
 python-multipart
-# reportlab==4.3.1  # <--- TEMPORARILY COMMENTED OUT
+# reportlab==4.3.1  # Temporarily commented out for troubleshooting
 prometheus-fastapi-instrumentator
 #opentelemetry-api
 #opentelemetry-sdk
