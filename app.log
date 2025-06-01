@@ -3678,3 +3678,4 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint fail
 {"time": "2025-06-01 12:00:51,803", "level": "WARNING", "message": "HTTP Exception: 401 - User not found for request: GET http://localhost:8000/report/cards"}
 {"time": "2025-06-01 12:04:17,247", "level": "WARNING", "message": "HTTP Exception: 401 - User not found for request: GET http://localhost:8000/report/cards"}
 {"time": "2025-06-01 12:13:31,706", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-01 13:11:05,879", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
