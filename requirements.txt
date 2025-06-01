@@ -7,6 +7,6 @@ starlette
 sqlalchemy
 passlib
 reportlab
-jose
+python-jose>=3.3.0
 jwt
 PyJWT
