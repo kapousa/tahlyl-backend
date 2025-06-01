@@ -17,6 +17,8 @@ prometheus-fastapi-instrumentator
 #opentelemetry-exporter-jaeger
 #opentelemetry-exporter-otlp
 sqlalchemy==2.0.40
-jose
-PyJWT
+# Remove the old 'jose' line and replace with the following:
+python-jose[cryptography]==1.3.2  # Specify a recent, Python 3 compatible version.
+# Remove 'PyJWT' as it's not needed directly and can cause conflicts:
+# PyJWT
 passlib==1.7.4
