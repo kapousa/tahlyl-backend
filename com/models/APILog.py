@@ -9,6 +9,7 @@ class APILog(Base):
     timestamp = Column(DateTime, default=datetime.utcnow)
     method = Column(String)
     path = Column(String)
+    query_params = Column(String, nullable=True)
     status_code = Column(Integer)
     status_description = Column(String)
     duration = Column(String)

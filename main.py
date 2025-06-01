@@ -1,18 +1,29 @@
+# main.py
+
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
+from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.middleware.cors import CORSMiddleware
+# NEW IMPORT: For class-based middleware
+from starlette.middleware.base import BaseHTTPMiddleware
 import uvicorn
 import os
 import json
 import time
 import traceback
 from datetime import datetime, timedelta
+
+from starlette.responses import JSONResponse
+
+from com.engine.auth.auth_backend import JWTAuthBackend
 from com.models.APILog import APILog
 from com.utils import Helper
-from com.utils.Logger import logger  # Your existing logger
+from com.utils.Logger import logger
+# IMPORT THE CLASS YOU JUST CREATED
+from middleware.log_middleware import LogRequestsMiddleware
 from routers import users_router, analysis_router, services_router, report_router, bloodtest_router, smartfeatures_router
 
-from config import SessionLocal, Base, engine  # Your DB config
+from config import SessionLocal, Base, engine
 
 
 # Create tables if not exist
@@ -34,57 +45,54 @@ app.include_router(report_router)
 app.include_router(bloodtest_router)
 app.include_router(smartfeatures_router)
 
+
+# --- Middleware Registration Order ---
+app.add_middleware(LogRequestsMiddleware)
+app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"], # This should allow http://localhost:8080
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-async def get_user_id_from_request(request: Request) -> str | None:
-    user_id = "e3d593f4-0463-4cca-b83c-b4c7c641178c" #request.headers.get("X-User-Id")
-    return user_id
 
-from http import HTTPStatus  # <-- Import this
+# --- Global Exception Handlers ---
+@app.exception_handler(Exception)
+async def custom_exception_handler(request: Request, exc: Exception):
+    logger.error(
+        f"Unhandled exception for request: {request.method} {request.url}",
+        exc_info=True,
+        extra={
+            "request_id": getattr(request.state, "request_id", "N/A"),
+            "error_type": type(exc).__name__,
+            "error_message": str(exc),
+        }
+    )
+    return JSONResponse(
+        status_code=500,
+        content={
+            "message": "An unexpected server error occurred. Please try again later.",
+            "request_id": getattr(request.state, "request_id", "N/A"),
+        },
+    )
 
-@app.middleware("http")
-async def log_requests(request: Request, call_next):
-    start_time = time.time()
-    user_id = await get_user_id_from_request(request)
-    db = SessionLocal()
-    log_data = {
-        "method": request.method,
-        "path": request.url.path,
-        "timestamp": datetime.utcnow(),
-        "user_id": user_id
-    }
-    try:
-        response = await call_next(request)
-        log_data["status_code"] = response.status_code
-        log_data["status_description"] = HTTPStatus(response.status_code).phrase
-    except Exception as e:
-        log_data["status_code"] = 500
-        log_data["status_description"] = HTTPStatus(500).phrase
-        log_data["error_message"] = str(e)
-        log_data["traceback"] = traceback.format_exc()
-        raise
-    finally:
-        log_data["id"] = Helper.generate_id()
-        log_data["duration"] = str(timedelta(seconds=time.time() - start_time))
-        try:
-            db.add(APILog(**log_data))
-            db.commit()
-        except Exception as db_exc:
-            logger.error(f"Failed to save log to DB: {db_exc}")
-            db.rollback()
-        finally:
-            db.close()
 
-        # Log to your existing logger as JSON string for easier parsing
-        logger.info(json.dumps(log_data, default=str))
-
-    return response
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    logger.warning(
+        f"HTTP Exception: {exc.status_code} - {exc.detail} for request: {request.method} {request.url}",
+        extra={
+            "request_id": getattr(request.state, "request_id", "N/A"),
+            "status_code": exc.status_code,
+            "detail": exc.detail,
+        }
+    )
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"message": exc.detail, "request_id": getattr(request.state, "request_id", "N/A")},
+    )
 
 
 @app.on_event("startup")

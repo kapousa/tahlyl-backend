@@ -87,35 +87,36 @@ def get_current_user(request: Request, token: str = Depends(oauth2_scheme), db: 
     """
     payload = decode_access_token(token)
 
-    username: str = payload.get("sub")
-    # Get roles as a list of strings from the token
+    # --- CHANGE 1: Rename 'username' to 'user_id' for clarity, as 'sub' now holds the UUID ID ---
+    user_id_from_token: str = payload.get("sub")
     roles_from_token: list[str] = payload.get("roles", [])
 
-    if username is None:
-        logger.warning("Token payload missing 'sub' (username).")
+    if user_id_from_token is None:
+        logger.warning("Token payload missing 'sub' (user ID).")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Could not validate credentials: Missing username in token",
+            detail="Could not validate credentials: Missing user ID in token",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    # Use TokenData for consistency and clarity of what's in the token
-    token_data = TokenData(username=username, roles=roles_from_token)
+    # --- CHANGE 2: If TokenData schema expects 'username', pass the user_id into it.
+    # A more semantically correct approach would be to update TokenData schema to have a 'user_id' field.
+    token_data = TokenData(username=user_id_from_token, roles=roles_from_token)
 
-    # Fetch the User object from the DB.
-    # No eager loading of `roles` is needed here because we are not using the ORM-managed `user.roles`
-    # relationship for token-based roles.
-    user = db.query(SQLUser).filter(SQLUser.username == token_data.username).first()
+
+    # Fetch the User object from the DB using the actual user ID.
+    # --- CHANGE 3: Filter by SQLUser.id, not SQLUser.username ---
+    user = db.query(SQLUser).filter(SQLUser.id == user_id_from_token).first()
     if user is None:
-        logger.warning(f"User '{username}' not found in DB.")
+        logger.warning(f"User with ID '{user_id_from_token}' not found in DB, despite valid token.")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User not found",
+            detail="User not found", # This is the exact error message you were getting
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    # --- CRITICAL CHANGE FOR SOLUTION 2 ---
-    # Assign the list of strings from the token to the new `roles_from_token` attribute.
+    # --- This part is correct ---
+    # Assign the list of roles from the token to a dynamic attribute on the user object.
     # This attribute is NOT managed by SQLAlchemy's ORM and can directly accept a list.
     user.roles_from_token = roles_from_token
     request.state.authenticated_user_id = user.id

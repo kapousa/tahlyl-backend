@@ -1,78 +1,112 @@
-# log_middleware.py
+# middleware/log_middleware.py
+
 import time
 import json
-import traceback
-from datetime import datetime, timedelta
-from http import HTTPStatus
-import logging  # Using standard Python logging
+from datetime import datetime  # Make sure datetime is imported here
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+from starlette.responses import JSONResponse, Response
+from starlette.types import ASGIApp
+import traceback as tb_module  # Import for getting traceback string
 
-from fastapi import Request
-from sqlalchemy.orm import Session
-
-# Adjust these imports to your actual project structure
-# Assuming your APILog model is in com.models.APILog
-from com.models.APILog import APILog
-# Assuming your logger is in com.utils.Logger
-from com.utils.Logger import logger
-# Assuming your SessionLocal is in config (or database.py)
-from config import SessionLocal
+from com.models.APILog import APILog  # Ensure this import is correct
+from com.utils import Helper
+from com.utils.Logger import logger  # Ensure this import is correct
+from config import SessionLocal  # Import SessionLocal for direct use
 
 
-async def log_requests_middleware(request: Request, call_next):
-    """
-    Middleware to log details of each API request, including authenticated user ID.
-    """
-    start_time = time.time()
-    user_id_for_log = None
+class LogRequestsMiddleware(BaseHTTPMiddleware):
+    def __init__(self, app: ASGIApp):
+        super().__init__(app)
 
-    # Check if request.user is available and authenticated by AuthenticationMiddleware
-    if request.user and request.user.is_authenticated:
-        # Assuming request.user.identity holds the user ID (from your AuthenticatedUser class)
-        user_id_for_log = request.user.identity
-    else:
-        # For unauthenticated requests or those where auth failed, log as 'None' or 'anonymous'
-        user_id_for_log = "anonymous"  # Or simply None, depending on your logging preference
-
-    log_data = {
-        "method": request.method,
-        "path": request.url.path,
-        "timestamp": datetime.utcnow(),
-        "user_id": user_id_for_log
-    }
-
-    response = None  # Initialize response outside try block
-    db: Session = None  # Initialize db outside try block to ensure it's closed
-
-    try:
-        # Proceed to the next middleware or route handler
-        response = await call_next(request)
-
-        log_data["status_code"] = response.status_code
-        log_data["status_description"] = HTTPStatus(response.status_code).phrase
-
-    except Exception as e:
-        # This catches any unhandled exceptions from downstream middleware or route handlers
-        log_data["status_code"] = 500
-        log_data["status_description"] = HTTPStatus(500).phrase
-        log_data["error_message"] = str(e)
-        log_data["traceback"] = traceback.format_exc()
-        raise  # Re-raise the exception after logging it so FastAPI can handle it further
-    finally:
-        log_data["duration"] = str(timedelta(seconds=time.time() - start_time))
-
-        # Acquire a new DB session specifically for logging, just in case the request's session was closed/rolled back
+    async def dispatch(self, request: Request, call_next):
+        # 1. Start a new DB session for this middleware
         db = SessionLocal()
+        log_record = None  # Initialize to None
+        log_record_to_update = None  # Initialize to None
+        start_time = time.time()
+        user_id_for_initial_log = None
+
         try:
-            db.add(APILog(**log_data))
-            db.commit()
-        except Exception as db_exc:
-            logger.error(f"Failed to save log to DB: {db_exc}", exc_info=True)
-            db.rollback()  # Ensure rollback on DB save error
+            # Attempt to get user_id even if not authenticated
+            if hasattr(request, "user") and request.user.is_authenticated:
+                # Ensure user_id is correctly obtained and is a string if your APILog.user_id is String
+                user_id_for_initial_log = str(request.user.identity)
+            else:
+                user_id_for_initial_log = None  # Or 'guest' or some other indicator
+
+            # Initial log record creation with NEW MODEL FIELDS
+            log_record = APILog(
+                id=Helper.generate_id(),
+                timestamp=datetime.utcnow(),  # Use utcnow for consistency with model default
+                method=request.method,
+                path=request.url.path,
+                query_params=str(request.query_params) if request.query_params else None,  # Ensure it's string or None
+                # Removed 'request_body' and 'response_body' as they are not in your APILog model
+                status_code=500,  # Default to 500 in case of crash before response
+                status_description="Pending",  # New field for initial status
+                duration="0.0",  # New field, storing as string as per your model's 'duration'
+                user_id=user_id_for_initial_log,
+                error_message=None,  # Initialize as None
+                traceback=None  # Initialize as None
+            )
+            db.add(log_record)
+            db.commit()  # Commit the initial log to get an ID
+            db.refresh(log_record)  # Refresh to get the generated ID and keep it 'fresh'
+
+            # Store the log record ID in request.state for later updates
+            request.state.log_record_id = log_record.id
+            log_record_to_update = log_record  # Assign to the variable used in the finally block
+
+            # Process the request
+            response = await call_next(request)
+
+            # Update log record with response details
+            if log_record_to_update:
+                db.refresh(log_record_to_update)  # Re-bind/refresh before updating
+                log_record_to_update.status_code = response.status_code
+                log_record_to_update.duration = f"{(time.time() - start_time):.4f}s"  # Format as string
+
+                # Set status_description based on status_code
+                if 200 <= response.status_code < 300:
+                    log_record_to_update.status_description = "Success"
+                elif 400 <= response.status_code < 500:
+                    log_record_to_update.status_description = "Client Error"
+                else:
+                    log_record_to_update.status_description = "Server Error"
+
+                # Do not try to log request_body or response_body as they are not in your model
+
+                db.add(log_record_to_update)  # Re-add to session if it somehow became detached
+                db.commit()
+                # db.refresh(log_record_to_update) # Not strictly needed after final commit unless you use it later
+
+        except Exception as e:
+            # Handle exceptions that occur *within* the middleware or downstream
+            logger.error(f"Error in LogRequestsMiddleware: {e}", exc_info=True)
+
+            # If an initial log record was created, try to update it with error info
+            if log_record_to_update:
+                try:
+                    db.refresh(log_record_to_update)  # Re-bind/refresh before updating
+                    log_record_to_update.status_code = 500  # Set to 500 for unhandled errors
+                    log_record_to_update.duration = f"{(time.time() - start_time):.4f}s"
+                    log_record_to_update.status_description = "Unhandled Exception"
+                    log_record_to_update.error_message = str(e)[:500]  # Truncate error message for DB
+                    log_record_to_update.traceback = tb_module.format_exc()  # Get full traceback string
+                    db.add(log_record_to_update)
+                    db.commit()
+                except Exception as update_e:
+                    logger.error(f"Failed to update APILog record after error: {update_e}")
+
+            # Re-raise the exception so FastAPI's global exception handlers can catch it
+            raise e
         finally:
-            if db:  # Ensure db session is closed if it was opened
+            # Always close the database session to release the connection
+            if db:
                 db.close()
 
-        # Log the full request data to your existing logger
-        logger.info(json.dumps(log_data, default=str))
-
-    return response
+        # Ensure a response is always returned.
+        # If an exception was raised, FastAPI's exception handler will return a response.
+        # If no exception, 'response' is from call_next.
+        return response
