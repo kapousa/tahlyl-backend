@@ -2,6 +2,7 @@ dotenv
 python-dotenv
 fastapi
 pydantic
+google-generativeai
 uvicorn
 starlette
 sqlalchemy
