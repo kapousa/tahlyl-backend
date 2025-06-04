@@ -1,17 +1,21 @@
+import inspect
 import json
+from typing import List
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 
+from com.constants.deep_analysis_prompts import ARABIC_DIGITAL_PROFILE_PROMPT, ENGLISH_DIGITAL_PROFILE_PROMPT
+from com.schemas.digitalProfile import DigitalProfile
+from com.utils.Logger import logger
 from com.utils.Helper import extract_text_from_uploaded_report
-from config import logger, get_db
-from com.engine.auth.jwt_security import get_current_user
+from config import logger
 from com.models.Report import Report as SQLReport
 from com.models.Result import Result as SQLResult
 from com.schemas.analysisResult import AnalysisResult
 from com.utils import Helper
-from com.utils.AI import analyze_report_by_gemini
+from com.utils.AI import analyze_contents_by_gemini
 from com.utils.Email import send_analysis_results_email
 from com.utils.Report import save_report, detect_report_type, save_analysis_result
 from com.constants.prompts import (
@@ -46,25 +50,6 @@ REPORT_TYPE_PROMPT_MAP = {
     "iron": {"en": ENGLISH_IRON_PROMPT, "ar": ARABIC_IRON_PROMPT},
     "inflammation": {"en": ENGLISH_INFLAMMATION_PROMPT, "ar": ARABIC_INFLAMMATION_PROMPT},
 }
-
-
-@app.post("/analyze_report/")  # Example route, adjust as needed
-async def analyze_report_endpoint(
-        medical_test_content: str,
-        arabic: bool,
-        tone: str,
-        current_user: dict = Depends(get_current_user),
-        db: Session = Depends(get_db),
-        file_name: str = ""  # Added file_name here
-):
-    """Example route to call report_analyzer"""
-    try:
-        analysis_result = report_analyzer(medical_test_content, arabic, tone, current_user, file_name, db)
-        return analysis_result
-    except HTTPException as e:
-        raise e
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error analyzing report: {e}")
 
 
 def report_analyzer(db: Session,
@@ -106,7 +91,7 @@ def report_analyzer(db: Session,
             formatted_prompt = prompt.format(blood_test_text=medical_test_content, tone=tone)
             logger.info(f"Using prompt: {formatted_prompt[:150]}...")  # Log first 150 chars of prompt
 
-            analysis_dict = analyze_report_by_gemini(formatted_prompt)  # Call Gemini
+            analysis_dict = analyze_contents_by_gemini(formatted_prompt)  # Call Gemini
             # logger.info(f"Gemini Analysis Dictionary: {analysis_dict}")  # <--- ADD THIS LINE
 
             report_id = Helper.generate_id() if db_report is None else db_report.id
@@ -144,8 +129,56 @@ def report_analyzer(db: Session,
         return AnalysisResult(**analysis_dict)
 
     except HTTPException as e:
-        logger.error(f"HTTPException: {e.args[0]}")
-        raise HTTPException(status_code=500, detail=f"Error processing report analysis: {e}")
+        func_name = inspect.currentframe().f_code.co_name
+        logger.error(f"Error processing report analysis '{func_name}': {e}")
+        raise HTTPException(status_code=500, detail=f"Error processing report analysis '{func_name}': {e}")
     except Exception as e:
-        logger.error(f"Error processing Gemini response or saving report: {e.args[0]}")
-        raise HTTPException(status_code=500, detail=f"Error processing report analysis: {e}")
+        func_name = inspect.currentframe().f_code.co_name
+        logger.error(f"Error processing Gemini response or saving report '{func_name}': {e}")
+        raise HTTPException(status_code=500,
+                            detail=f"Error processing Gemini response or saving report '{func_name}': {e}")
+
+
+def deep_analyzer(db: Session, user_id: str, arabic: bool = False, tone: str = "general"):
+    """
+    Process deep analysis using all user's reports and generate information of the user's digital profile
+    :param user_id:
+    :return: user's digital profile
+    """
+    try:
+        # 1. Fetch the analysis results
+        analysis_collection: List[SQLResult] = db.query(SQLResult).join(SQLResult.report).filter(
+            SQLReport.user_id == user_id).all()
+
+        # 2. Extract relevant data and format it
+        results_strings = []
+        for result in analysis_collection:
+            result_info = (
+                f"analysis_result: {result.result}, "
+            )
+            # You might also want to include the report details if relevant
+            if result.report:
+                report_info = (
+                    f" (Result ID: {result.id}, "
+                    f"Date: {result.report.added_datetime})"
+                )
+                result_info += report_info
+
+            results_strings.append(result_info)
+
+        # 3. Join the formatted strings into a single comma-separated string
+        health_results_text = ", ".join(results_strings)
+
+        if arabic:
+            prompt = ARABIC_DIGITAL_PROFILE_PROMPT.format(health_results_text=health_results_text)
+        else:
+            prompt = ENGLISH_DIGITAL_PROFILE_PROMPT.format(health_results_text=health_results_text)
+
+        digital_profile_dict = analyze_contents_by_gemini(prompt)
+
+        return DigitalProfile(**digital_profile_dict)
+
+    except Exception as e:
+        func_name = inspect.currentframe().f_code.co_name
+        logger.error(f"Deep analysis exception in '{func_name}': {e}")
+        raise HTTPException(status_code=500, detail=f"Deep analysis exception in '{func_name}': {e}")

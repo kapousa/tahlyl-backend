@@ -3679,3 +3679,1325 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint fail
 {"time": "2025-06-01 12:04:17,247", "level": "WARNING", "message": "HTTP Exception: 401 - User not found for request: GET http://localhost:8000/report/cards"}
 {"time": "2025-06-01 12:13:31,706", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
 {"time": "2025-06-01 13:11:05,879", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-02 12:58:34,026", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/cards"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\util\_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'DigitalProfile'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\auth\auth_backend.py", line 81, in authenticate
+    user = db.query(SQLUser).filter(SQLUser.id == user_id_for_query).first()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 36, in __call__
+    auth_result = await self.backend.authenticate(conn)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\auth\auth_backend.py", line 95, in authenticate
+    print(f"DEBUG: UNEXPECTED ERROR during authentication: {e}", exc_info=True)
+TypeError: 'exc_info' is an invalid keyword argument for print()
+{"time": "2025-06-02 12:58:37,181", "level": "ERROR", "message": "Error in LogRequestsMiddleware: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 12:58:37,237", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/services"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    |     log_record = APILog(
+    |                  ^^^^^^^
+    |   File "<string>", line 4, in __init__
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    |     manager.dispatch.init(self, args, kwargs)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    |     fn(*args, **kw)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    |     instrumenting_mapper._check_configure()
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    |     _configure_registries({self.registry}, cascade=True)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    |     _do_configure_registries(registries, cascade)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    |     raise e
+    | sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 12:58:50,614", "level": "ERROR", "message": "Error in LogRequestsMiddleware: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 12:58:50,614", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    |     log_record = APILog(
+    |                  ^^^^^^^
+    |   File "<string>", line 4, in __init__
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    |     manager.dispatch.init(self, args, kwargs)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    |     fn(*args, **kw)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    |     instrumenting_mapper._check_configure()
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    |     _configure_registries({self.registry}, cascade=True)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    |     _do_configure_registries(registries, cascade)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    |     raise e
+    | sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:01:06,899", "level": "ERROR", "message": "Error in LogRequestsMiddleware: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:01:06,911", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    |     log_record = APILog(
+    |                  ^^^^^^^
+    |   File "<string>", line 4, in __init__
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    |     manager.dispatch.init(self, args, kwargs)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    |     fn(*args, **kw)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    |     instrumenting_mapper._check_configure()
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    |     _configure_registries({self.registry}, cascade=True)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    |     _do_configure_registries(registries, cascade)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    |     raise e
+    | sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'DigitalProfile' failed to locate a name ('DigitalProfile'). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:04:56,698", "level": "ERROR", "message": "Error in LogRequestsMiddleware: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'user'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'user'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'user'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:04:56,714", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'user'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'user'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:12:43,022", "level": "ERROR", "message": "Error in LogRequestsMiddleware: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
+    x = eval(self.arg, globals(), self._dict)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'user_roles' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1655, in do_init
+    self._process_dependent_arguments()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1696, in _process_dependent_arguments
+    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
+    self.resolved = clsregistry_resolver(
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
+    self._raise_for_name(n.args[0], n)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:12:43,038", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
+    x = eval(self.arg, globals(), self._dict)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'user_roles' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1655, in do_init
+    self._process_dependent_arguments()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1696, in _process_dependent_arguments
+    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
+    self.resolved = clsregistry_resolver(
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
+    self._raise_for_name(n.args[0], n)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:14:26,632", "level": "ERROR", "message": "Error in LogRequestsMiddleware: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
+    x = eval(self.arg, globals(), self._dict)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'user_roles' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1655, in do_init
+    self._process_dependent_arguments()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1696, in _process_dependent_arguments
+    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
+    self.resolved = clsregistry_resolver(
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
+    self._raise_for_name(n.args[0], n)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:14:26,649", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 533, in __call__
+    x = eval(self.arg, globals(), self._dict)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'user_roles' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1655, in do_init
+    self._process_dependent_arguments()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1696, in _process_dependent_arguments
+    rel_arg._resolve_against_registry(self._clsregistry_resolvers[1])
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 270, in _resolve_against_registry
+    self.resolved = clsregistry_resolver(
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 540, in __call__
+    self._raise_for_name(n.args[0], n)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:15:07,027", "level": "ERROR", "message": "Error in LogRequestsMiddleware: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:15:07,029", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    |     log_record = APILog(
+    |                  ^^^^^^^
+    |   File "<string>", line 4, in __init__
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    |     manager.dispatch.init(self, args, kwargs)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    |     fn(*args, **kw)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    |     instrumenting_mapper._check_configure()
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    |     _configure_registries({self.registry}, cascade=True)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    |     _do_configure_registries(registries, cascade)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    |     raise e
+    | sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: When initializing mapper Mapper[User(user)], expression 'user_roles' failed to locate a name ("name 'user_roles' is not defined"). If this is a class name, consider adding this relationship() to the <class 'com.models.User.User'> class after both dependent classes have been defined.
+{"time": "2025-06-02 13:18:01,710", "level": "ERROR", "message": "Error in LogRequestsMiddleware: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'users'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:18:01,718", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'users'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:18:31,652", "level": "ERROR", "message": "Error in LogRequestsMiddleware: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:18:31,653", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    |     log_record = APILog(
+    |                  ^^^^^^^
+    |   File "<string>", line 4, in __init__
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    |     manager.dispatch.init(self, args, kwargs)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    |     fn(*args, **kw)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    |     instrumenting_mapper._check_configure()
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    |     _configure_registries({self.registry}, cascade=True)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    |     _do_configure_registries(registries, cascade)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    |     raise e
+    | sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:19:34,841", "level": "ERROR", "message": "Error in LogRequestsMiddleware: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called."}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 13:19:34,850", "level": "ERROR", "message": "Unhandled exception for request: POST http://localhost:8000/users/login"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    |     log_record = APILog(
+    |                  ^^^^^^^
+    |   File "<string>", line 4, in __init__
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    |     manager.dispatch.init(self, args, kwargs)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    |     fn(*args, **kw)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    |     instrumenting_mapper._check_configure()
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    |     _configure_registries({self.registry}, cascade=True)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    |     _do_configure_registries(registries, cascade)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    |     raise e
+    | sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 39, in dispatch
+    log_record = APILog(
+                 ^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(user)]'. Original exception was: Mapper 'Mapper[DigitalProfile(digital_profile)]' has no property 'users'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+{"time": "2025-06-02 14:12:10,949", "level": "WARNING", "message": "HTTP Exception: 401 - Token has expired for request: GET http://localhost:8000/report/cards"}
+{"time": "2025-06-02 14:12:12,212", "level": "WARNING", "message": "HTTP Exception: 401 - Token has expired for request: GET http://localhost:8000/report/cards"}
+{"time": "2025-06-02 14:14:06,541", "level": "WARNING", "message": "HTTP Exception: 401 - Token has expired for request: GET http://localhost:8000/report/cards"}
+{"time": "2025-06-02 14:14:06,610", "level": "WARNING", "message": "HTTP Exception: 401 - Token has expired for request: GET http://localhost:8000/report/cards"}
+{"time": "2025-06-02 14:50:40,668", "level": "ERROR", "message": "Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType"}
+{"time": "2025-06-02 14:50:40,668", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-02 15:19:28,213", "level": "ERROR", "message": "Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType"}
+{"time": "2025-06-02 15:19:28,235", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-02 15:21:03,757", "level": "ERROR", "message": "Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType"}
+{"time": "2025-06-02 15:21:03,767", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-02 15:22:50,146", "level": "ERROR", "message": "Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType"}
+{"time": "2025-06-02 15:22:50,147", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-02 16:12:31,925", "level": "ERROR", "message": "Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType"}
+{"time": "2025-06-02 16:12:31,925", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: com.schemas.digitalProfile.DigitalProfile() argument after ** must be a mapping, not NoneType for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-02 16:18:52,214", "level": "ERROR", "message": "Error processing Gemini response or saving report: 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ised by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease... to high cholesterol.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...to high cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...to high cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-02 16:19:03,547", "level": "ERROR", "message": "Error processing Gemini response or saving report: 4 validation errors for DigitalProfile
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...uiring repeat testing)'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease... disease, and stroke.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...disease, and stroke.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...disease, and stroke.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-02 16:19:03,564", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ised by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease... to high cholesterol.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...to high cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...to high cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-02 16:19:03,564", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: 4 validation errors for DigitalProfile
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...uiring repeat testing)'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease... disease, and stroke.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...disease, and stroke.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...disease, and stroke.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-03 07:54:22,072", "level": "ERROR", "message": "Error processing Gemini response or saving report: 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an immediate a...onalized dietary plan.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...e cardiovascular risk.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...elevated cholesterol.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...levated cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...levated cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-03 07:54:22,104", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an immediate a...onalized dietary plan.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...e cardiovascular risk.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...elevated cholesterol.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...levated cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...levated cholesterol.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-03 08:16:39,657", "level": "ERROR", "message": "Error processing Gemini response or saving report: 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an immediate a...(ultrasound, CT scan).'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l... medical intervention.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-03 08:16:39,672", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report: 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an immediate a...(ultrasound, CT scan).'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l... medical intervention.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-03 08:19:56,179", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Immediate consultation ...hysician's assessment."], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...scular complications.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...cular complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...cular complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-03 08:19:56,189", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Immediate consultation ...hysician's assessment."], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...scular complications.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...cular complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...cular complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-03 15:01:01,058", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...on to ensure accuracy.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...her metabolic issues.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...er metabolic issues.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...er metabolic issues.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-03 15:01:01,063", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...on to ensure accuracy.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...her metabolic issues.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...er metabolic issues.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...er metabolic issues.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}

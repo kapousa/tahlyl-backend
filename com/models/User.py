@@ -4,6 +4,7 @@ from sqlalchemy import Column, String # Assuming String for ID, adjust if Intege
 from sqlalchemy.orm import relationship
 # Make sure this import path is correct for your project structure
 from com.models.Role import user_roles_association
+from com.models.DigitalProfile import DigitalProfile
 from config import Base # Your declarative_base
 
 class User(Base):
@@ -15,7 +16,8 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     avatar = Column(String, nullable=True)
 
-    # SQLAlchemy ORM-managed relationship (collection_class=set is correct here)
+    digital_profile = relationship("DigitalProfile", back_populates="user", uselist=False)
+
     roles = relationship(
         "Role",
         secondary=user_roles_association,
@@ -23,10 +25,6 @@ class User(Base):
         collection_class=set
     )
 
-    # --- NEW: Non-database-mapped attribute for roles from token ---
-    # This attribute will temporarily hold the list of role names from the JWT.
-    # It is not a database column; it's a Python-only attribute that we set
-    # after fetching the user from the DB.
     roles_from_token: list[str] = []
 
     def __repr__(self):

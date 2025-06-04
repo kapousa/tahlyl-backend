@@ -51,7 +51,7 @@ app.add_middleware(LogRequestsMiddleware)
 app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # This should allow http://localhost:8080
+    allow_origins=["https://tahlyl-frontend.netlify.app"], # This should allow http://localhost:8080
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
