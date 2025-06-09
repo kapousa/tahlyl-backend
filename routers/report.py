@@ -4,8 +4,9 @@ from fastapi import HTTPException, APIRouter, Depends
 import datetime
 
 from sqlalchemy.orm import Session
+from starlette import status
 
-from com.engine.report import get_report_cards
+from com.engine.report import get_report_cards, get_parsed_report_analysis_for_user
 from com.engine.auth.jwt_security import get_current_user
 from com.schemas.user import User
 from config import get_db
@@ -148,3 +149,17 @@ async def fetch_report_cards_endpoint(db: Session = Depends(get_db), current_use
     report_cards = get_report_cards(db, user_id)
     return report_cards
 
+@router.get("/{report_id}/analysis")
+async def get_report_details(report_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    # Call the service function to get the parsed AnalysisResult object
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+
+    if not analysis_data:
+        # If no data is returned, it means the report doesn't exist,
+        # or doesn't belong to the user, or parsing failed.
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Report analysis not found or not accessible."
+        )
+
+    return analysis_data

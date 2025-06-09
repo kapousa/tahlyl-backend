@@ -26,6 +26,7 @@ class AnalysisDetailedResultItem(BaseModel):
         return value
 
 class AnalysisResult(BaseModel):
+    report_name: Optional[str] = None
     summary: Optional[Union[str, Dict, List]] = None
     lifestyle_changes: Optional[Union[str, Dict, List]] = None
     diet_routine: Optional[Union[str, Dict, List]] = None

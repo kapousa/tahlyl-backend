@@ -5001,3 +5001,1817 @@ id
 user_id
   Field required [type=missing, input_value={'overview_health_status'...er metabolic issues.'}]}, input_type=dict]
     For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-04 08:52:10,864", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...to verify the results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...tentially medication.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...entially medication.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...entially medication.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-04 08:52:10,864", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...to verify the results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...tentially medication.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...entially medication.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...entially medication.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 10:09:02,213", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ded by your physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a... thorough evaluation).'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...abolic complications.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...bolic complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...bolic complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 10:09:02,242", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ded by your physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a... thorough evaluation).'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...abolic complications.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...bolic complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...bolic complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 10:56:09,295", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...d, to ensure accuracy.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a... prompt investigation.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...pheral artery disease'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 10:56:09,313", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...d, to ensure accuracy.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a... prompt investigation.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...pheral artery disease'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 12:19:18,284", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...sed by a nephrologist.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...buildup in arteries).'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...uildup in arteries).'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...uildup in arteries).'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 12:19:18,286", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...sed by a nephrologist.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...buildup in arteries).'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...uildup in arteries).'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...uildup in arteries).'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 12:37:25,930", "level": "WARNING", "message": "HTTP Exception: 404 - Report or its results not found for request: GET http://localhost:8000/report/rGk1yM8BGsJVu8/analysis"}
+{"time": "2025-06-09 12:45:38,686", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...nsure result accuracy.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...e cardiovascular risk.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...pheral artery disease'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 12:45:38,702", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...nsure result accuracy.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...e cardiovascular risk.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...pheral artery disease'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 12:45:46,216", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 4 validation errors for DigitalProfile
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN (62 mg/dL)...further investigation.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 12:45:46,248", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 4 validation errors for DigitalProfile
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN (62 mg/dL)...further investigation.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 12:55:21,923", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule a follow-up ap...ised by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...h cholesterol levels.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 12:55:21,948", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule a follow-up ap...ised by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...h cholesterol levels.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 13:13:50,340", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm... advised by physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'... due to misdiagnosis.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...due to misdiagnosis.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...due to misdiagnosis.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 13:13:50,370", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm... advised by physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'... due to misdiagnosis.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...due to misdiagnosis.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...due to misdiagnosis.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 13:16:55,150", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an appointment...y the initial results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a... medical intervention.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 13:16:59,392", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an appointment...y the initial results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a... medical intervention.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 13:18:25,141", "level": "WARNING", "message": "HTTP Exception: 404 - Report or its results not found for request: GET http://localhost:8000/report/rGk1yM8BGsJVu8/analysis"}
+{"time": "2025-06-09 13:26:55,022", "level": "WARNING", "message": "HTTP Exception: 404 - Report or its results not found for request: GET http://localhost:8000/report/rGk1yM8BGsJVu8/analysis"}
+{"time": "2025-06-09 13:29:02,547", "level": "WARNING", "message": "HTTP Exception: 404 - Report or its results not found for request: GET http://localhost:8000/report/rGk1yM8BGsJVu8/analysis"}
+{"time": "2025-06-09 13:30:42,386", "level": "WARNING", "message": "HTTP Exception: 401 - Could not validate credentials for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+{"time": "2025-06-09 14:07:44,614", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...sed by your physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...ded for confirmation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ed for confirmation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ed for confirmation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:07:44,626", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...sed by your physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...ded for confirmation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ed for confirmation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ed for confirmation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 14:24:23,181", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an immediate a...on of kidney function.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...h cholesterol levels.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:24:33,323", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Schedule an immediate a...on of kidney function.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...h cholesterol levels.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'... cholesterol levels.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 14:24:39,892", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...onalized dietary plan.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...pheral artery disease'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:24:39,892", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...onalized dietary plan.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...pheral artery disease'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...heral artery disease'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 14:43:16,294", "level": "ERROR", "message": "Error in LogRequestsMiddleware: type object 'Report' has no attribute 'report_name'"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    SQLReport.report_name # --- NEW: Select report_name ---
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Report' has no attribute 'report_name'
+{"time": "2025-06-09 14:43:16,442", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    |     SQLReport.report_name # --- NEW: Select report_name ---
+    |     ^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: type object 'Report' has no attribute 'report_name'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    SQLReport.report_name # --- NEW: Select report_name ---
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Report' has no attribute 'report_name'
+{"time": "2025-06-09 14:45:55,859", "level": "ERROR", "message": "Error in LogRequestsMiddleware: type object 'Report' has no attribute 'report_name'"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    #SQLReport.report_name # --- NEW: Select report_name ---
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Report' has no attribute 'report_name'
+{"time": "2025-06-09 14:45:55,874", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    |     #SQLReport.report_name # --- NEW: Select report_name ---
+    |     ^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: type object 'Report' has no attribute 'report_name'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    #SQLReport.report_name # --- NEW: Select report_name ---
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Report' has no attribute 'report_name'
+{"time": "2025-06-09 14:46:00,076", "level": "ERROR", "message": "Error in LogRequestsMiddleware: type object 'Report' has no attribute 'report_name'"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    #SQLReport.report_name # --- NEW: Select report_name ---
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Report' has no attribute 'report_name'
+{"time": "2025-06-09 14:46:00,141", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    |     #SQLReport.report_name # --- NEW: Select report_name ---
+    |     ^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: type object 'Report' has no attribute 'report_name'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 68, in get_parsed_report_analysis_for_user
+    #SQLReport.report_name # --- NEW: Select report_name ---
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Report' has no attribute 'report_name'
+{"time": "2025-06-09 14:46:29,395", "level": "ERROR", "message": "Error in LogRequestsMiddleware: 'Result' object is not subscriptable"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:46:29,426", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    |     main_result_obj = main_result_data[0] # The SQLResult object
+    |                       ~~~~~~~~~~~~~~~~^^^
+    | TypeError: 'Result' object is not subscriptable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:47:05,890", "level": "ERROR", "message": "Error in LogRequestsMiddleware: 'Result' object is not subscriptable"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:47:05,908", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    |     main_result_obj = main_result_data[0] # The SQLResult object
+    |                       ~~~~~~~~~~~~~~~~^^^
+    | TypeError: 'Result' object is not subscriptable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:48:30,345", "level": "ERROR", "message": "Error in LogRequestsMiddleware: 'Result' object is not subscriptable"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:48:30,352", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    |     main_result_obj = main_result_data[0] # The SQLResult object
+    |                       ~~~~~~~~~~~~~~~~^^^
+    | TypeError: 'Result' object is not subscriptable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:48:39,739", "level": "ERROR", "message": "Error in LogRequestsMiddleware: 'Result' object is not subscriptable"}
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 148, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\streams\memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:48:39,760", "level": "ERROR", "message": "Unhandled exception for request: GET http://localhost:8000/report/dwHF0MTwSONUJA/analysis"}
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 76, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 177, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    |     await self.simple_response(scope, receive, send, request_headers=headers)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |   File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    |     self.gen.throw(typ, value, traceback)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    |     raise e
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    |     raise app_exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    |     return await dependant.call(**values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    |     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    |     main_result_obj = main_result_data[0] # The SQLResult object
+    |                       ~~~~~~~~~~~~~~~~^^^
+    | TypeError: 'Result' object is not subscriptable
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\authentication.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 176, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+  File "C:\Users\hatem\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 178, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 103, in dispatch
+    raise e
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\middleware\log_middleware.py", line 62, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\venv\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\routers\report.py", line 155, in get_report_details
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hatem\Desktop\Hatem\Eight-Company\projects\tahlyl-backend\com\engine\report.py", line 79, in get_parsed_report_analysis_for_user
+    main_result_obj = main_result_data[0] # The SQLResult object
+                      ~~~~~~~~~~~~~~~~^^^
+TypeError: 'Result' object is not subscriptable
+{"time": "2025-06-09 14:49:46,396", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...od, to verify results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...tening complications.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ening complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ening complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:49:46,412", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...od, to verify results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...tening complications.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ening complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ening complications.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 14:54:00,866", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ised by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...cardiovascular risks.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ardiovascular risks.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ardiovascular risks.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:54:00,880", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ised by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...cardiovascular risks.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ardiovascular risks.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ardiovascular risks.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 14:57:23,409", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ized dietary guidance.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...ut and kidney stones.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...t and kidney stones.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...t and kidney stones.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:57:23,409", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...ized dietary guidance.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...rt disease and stroke.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...ut and kidney stones.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...t and kidney stones.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...t and kidney stones.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-09 14:57:43,552", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...od, to verify results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...g cardiovascular risk.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-09 14:57:43,556", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...od, to verify results.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN and uric a...g cardiovascular risk.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...dney stone formation.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
