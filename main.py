@@ -78,7 +78,7 @@ app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
 # before CORS checks, but before route handling.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins, # Dynamically set based on environment
+    allow_origins="https://tahlyl-frontend.netlify.app", # Dynamically set based on environment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
