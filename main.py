@@ -52,7 +52,7 @@ app.add_middleware(LogRequestsMiddleware)
 app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins, # Dynamically set based on environment
+    allow_origins=["*"], # Dynamically set based on environment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
