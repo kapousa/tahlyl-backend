@@ -27,6 +27,7 @@ class AnalysisDetailedResultItem(BaseModel):
 
 class AnalysisResult(BaseModel):
     report_name: Optional[str] = None
+    tone_id: Optional[str] = None
     summary: Optional[Union[str, Dict, List]] = None
     lifestyle_changes: Optional[Union[str, Dict, List]] = None
     diet_routine: Optional[Union[str, Dict, List]] = None
@@ -51,4 +52,4 @@ class AnalysisResult(BaseModel):
     individualized_recommendations: Optional[Union[str, Dict, List]] = None
     date: datetime = datetime.now()
     detailed_results: Optional[Dict[str, AnalysisDetailedResultItem]] = None
-    doctor_questions: Optional[Dict[str, AnalysisDetailedResultItem]] = None
+    doctor_questions: Optional[Union[str, Dict, List]] = None

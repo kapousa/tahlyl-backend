@@ -6815,3 +6815,139 @@ id
 user_id
   Field required [type=missing, input_value={'overview_health_status'...ney stone formation.'}]}, input_type=dict]
     For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-10 04:52:37,025", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...cted by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN (62 mg/dL)...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...nificant risk factor."}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ificant risk factor."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ificant risk factor."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-10 04:52:37,035", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a physician imm...cted by the physician.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated BUN (62 mg/dL)...ardiovascular disease.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Kidney disease...nificant risk factor."}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ificant risk factor."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ificant risk factor."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-10 05:01:55,042", "level": "ERROR", "message": "HTTPException: 500: Error processing Gemini response or saving report 'report_analyzer': 1 validation error for AnalysisResult
+doctor_questions
+  Input should be a valid dictionary [type=dict_type, input_value=['What could be the cause... affected the results?'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type "}
+{"time": "2025-06-10 05:01:55,042", "level": "WARNING", "message": "HTTP Exception: 500 - Error processing Gemini response or saving report 'report_analyzer': 1 validation error for AnalysisResult
+doctor_questions
+  Input should be a valid dictionary [type=dict_type, input_value=['What could be the cause... affected the results?'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type for request: POST http://localhost:8000/analysis/analyze"}
+{"time": "2025-06-10 05:08:01,584", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 4 validation errors for DigitalProfile
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...art disease and stroke'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...confirm the findings."}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...onfirm the findings."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...onfirm the findings."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-10 05:08:01,598", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 4 validation errors for DigitalProfile
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Elevated SGOT and ALP l...art disease and stroke'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Liver disease'...confirm the findings."}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...onfirm the findings."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...onfirm the findings."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-10 05:08:27,198", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-10 05:48:18,633", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-10 05:49:18,528", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Follow a balanced diet ...gation and monitoring.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Slightly elevated SGOT ... the underlying cause.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Underlying liv...y serious conditions.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ussed with the doctor.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ussed with the doctor.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-10 05:49:18,544", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Follow a balanced diet ...gation and monitoring.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Slightly elevated SGOT ... the underlying cause.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Underlying liv...y serious conditions.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...ussed with the doctor.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...ussed with the doctor.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-10 05:50:04,509", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-10 06:23:27,294", "level": "ERROR", "message": "HTTPException: 500: Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a doctor immedi...esting may be needed).'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Slightly elevated SGOT ...ussed with the doctor.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Underlying liv... other possibilities.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...other possibilities.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...other possibilities.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing"}
+{"time": "2025-06-10 06:23:27,309", "level": "WARNING", "message": "HTTP Exception: 500 - Deep analysis exception in 'deep_analyzer': 5 validation errors for DigitalProfile
+recommendations
+  Input should be a valid string [type=string_type, input_value=['Consult a doctor immedi...esting may be needed).'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+attention_points
+  Input should be a valid string [type=string_type, input_value=['Slightly elevated SGOT ...ussed with the doctor.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+risks
+  Input should be a valid string [type=string_type, input_value=[{'risk': 'Underlying liv... other possibilities.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+id
+  Field required [type=missing, input_value={'overview_health_status'...other possibilities.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+user_id
+  Field required [type=missing, input_value={'overview_health_status'...other possibilities.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing for request: POST http://localhost:8000/analysis/digitalprofile"}
+{"time": "2025-06-10 06:54:52,869", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-10 06:55:35,311", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-10 06:56:44,022", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}

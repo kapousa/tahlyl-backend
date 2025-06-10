@@ -51,36 +51,36 @@ def get_report_cards(db, user_id: str, tone: str = "general") -> list[dict]:
 
     return report_cards
 
-
-def get_parsed_report_analysis_for_user(
+def get_general_report_analysis_for_user(
     db,
     user_id: str,
     report_id: str
 ) -> Optional[AnalysisResult]:
     """
     Retrieves and processes the overall report analysis (summary, detailed results, etc.)
-    for a given report ID and user ID, including the report name.
+    for a given report ID and user ID, specifically for the 'general' tone.
     """
-    # Fetch the specific SQLResult object, and the associated SQLReport object.
-    # We explicitly select SQLReport here to get its name.
+    # Fetch the SQLResult object with tone_id = "general" and its associated SQLReport.
     main_result_data = db.query(
         SQLResult,
-        SQLReport.name # --- NEW: Select report_name ---
+        SQLReport.name # Assuming SQLReport.name is the report_name field
     ).join(
         SQLReport, SQLResult.report_id == SQLReport.id
     ).filter(
         SQLReport.user_id == user_id,
-        SQLResult.report_id == report_id
-    ).first() # Use .first() as we expect one primary result for the analysis
+        SQLResult.report_id == report_id,
+        SQLResult.tone_id == "general" # Filter for 'general' tone_id
+    ).first() # Use .first() as we expect only one 'general' tone result
 
     if not main_result_data:
-        return None # No data found for this user/report combination
+        # No 'general' tone analysis found for this user/report.
+        return None
 
-    main_result_obj = main_result_data[0] # The SQLResult object
-    report_name = main_result_data[1] # --- NEW: Get the report name ---
+    main_result_obj, report_name = main_result_data # Unpack the fetched data
 
     if not main_result_obj.result:
-        return None # No analysis content found
+        # The 'result' field (AI analysis JSON) is empty.
+        return None
 
     try:
         parsed_analysis_dict = json.loads(main_result_obj.result)
@@ -93,18 +93,19 @@ def get_parsed_report_analysis_for_user(
         for metric_name, metric_data in parsed_analysis_dict['detailed_results'].items():
             ai_detailed_results[metric_name] = AnalysisDetailedResultItem(**metric_data)
 
-    # Construct the AnalysisResult instance, including the report_name
+    # Construct the AnalysisResult instance
     overall_analysis = AnalysisResult(
-        report_name=report_name, # --- NEW: Pass report_name here ---
+        report_name=report_name,
+        tone_id="general",
         summary=parsed_analysis_dict.get('summary'),
         detailed_results=ai_detailed_results,
         recommendations=parsed_analysis_dict.get('recommendations'),
-        potential_implications=parsed_analysis_dict.get('interpretation'),
+        potential_implications=parsed_analysis_dict.get('interpretation'), # 'interpretation' from AI response
         lifestyle_changes=parsed_analysis_dict.get('lifestyle_changes'),
         diet_routine=parsed_analysis_dict.get('diet_routine'),
         key_findings=parsed_analysis_dict.get('key_findings'),
         potential_impact=parsed_analysis_dict.get('potential_impact'),
-        detailed_analysis=parsed_analysis_dict.get('detailed_analysis'), # Ensure all fields are mapped
+        detailed_analysis=parsed_analysis_dict.get('detailed_analysis'),
         potential_causes=parsed_analysis_dict.get('potential_causes'),
         next_steps=parsed_analysis_dict.get('next_steps'),
         disclaimer=parsed_analysis_dict.get('disclaimer'),
@@ -122,5 +123,108 @@ def get_parsed_report_analysis_for_user(
         doctor_questions=parsed_analysis_dict.get('doctor_questions'),
         date=main_result_obj.added_datetime or datetime.now()
     )
+
+    return overall_analysis
+
+def get_all_report_analyses_for_user(
+    db,
+    user_id: str,
+    report_id: str
+) -> List[AnalysisResult]:
+    """
+    Retrieves and processes all report analysis records (summaries, detailed results, etc.)
+    for a given report ID and user ID.
+    """
+    # Fetch all SQLResult objects for the report_id and user_id, along with the report name.
+    # We use .all() to get all matching records.
+    all_results_data = db.query(
+        SQLResult,
+        SQLReport.name # Assuming SQLReport.name is the report_name field
+    ).join(
+        SQLReport, SQLResult.report_id == SQLReport.id
+    ).filter(
+        SQLReport.user_id == user_id,
+        SQLResult.report_id == report_id
+    ).all()
+
+    if not all_results_data:
+        # No analysis records found for this user/report.
+        return [] # Return an empty list
+
+    parsed_analyses: List[AnalysisResult] = []
+
+    for result_obj, report_name in all_results_data:
+        if not result_obj.result:
+            # Skip records where the 'result' field (AI analysis JSON) is empty.
+            continue
+
+        try:
+            parsed_analysis_dict = json.loads(result_obj.result)
+        except (json.JSONDecodeError, TypeError) as e:
+            print(f"Error parsing nested JSON from result.result for result_id {result_obj.id}: {e}")
+            continue # Skip this record if parsing fails
+
+        ai_detailed_results: Dict[str, AnalysisDetailedResultItem] = {}
+        if 'detailed_results' in parsed_analysis_dict and isinstance(parsed_analysis_dict['detailed_results'], dict):
+            for metric_name, metric_data in parsed_analysis_dict['detailed_results'].items():
+                ai_detailed_results[metric_name] = AnalysisDetailedResultItem(**metric_data)
+
+        tone_id_from_db = result_obj.tone_id
+        if tone_id_from_db is None and len(all_results_data) == 1:
+            tone_id_from_db = "general"
+        elif tone_id_from_db is None:
+            pass
+
+        # Construct an AnalysisResult instance for each record
+        analysis_item = AnalysisResult(
+            report_name=report_name,
+            tone_id = tone_id_from_db,
+            summary=parsed_analysis_dict.get('summary'),
+            detailed_results=ai_detailed_results,
+            recommendations=parsed_analysis_dict.get('recommendations'),
+            potential_implications=parsed_analysis_dict.get('interpretation'),
+            lifestyle_changes=parsed_analysis_dict.get('lifestyle_changes'),
+            diet_routine=parsed_analysis_dict.get('diet_routine'),
+            key_findings=parsed_analysis_dict.get('key_findings'),
+            potential_impact=parsed_analysis_dict.get('potential_impact'),
+            detailed_analysis=parsed_analysis_dict.get('detailed_analysis'),
+            potential_causes=parsed_analysis_dict.get('potential_causes'),
+            next_steps=parsed_analysis_dict.get('next_steps'),
+            disclaimer=parsed_analysis_dict.get('disclaimer'),
+            result_explanations=parsed_analysis_dict.get('result_explanations'),
+            reference_ranges=parsed_analysis_dict.get('reference_ranges'),
+            wellness_assessment=parsed_analysis_dict.get('wellness_assessment'),
+            preventative_recommendations=parsed_analysis_dict.get('preventative_recommendations'),
+            long_term_outlook=parsed_analysis_dict.get('long_term_outlook'),
+            detailed_lab_values=parsed_analysis_dict.get('detailed_lab_values'),
+            scientific_references=parsed_analysis_dict.get('scientific_references'),
+            pathophysiological_explanations=parsed_analysis_dict.get('pathophysiological_explanations'),
+            personal_summary=parsed_analysis_dict.get('personal_summary'),
+            emotional_support=parsed_analysis_dict.get('emotional_support'),
+            individualized_recommendations=parsed_analysis_dict.get('individualized_recommendations'),
+            doctor_questions=parsed_analysis_dict.get('doctor_questions'),
+            date=result_obj.added_datetime or datetime.now()
+            # You might want to add result_obj.tone_id here to distinguish results in the list
+            # e.g., tone: Optional[str] = None in AnalysisResult schema
+            # then analysis_item = AnalysisResult(..., tone=result_obj.tone_id)
+        )
+        parsed_analyses.append(analysis_item)
+
+    return parsed_analyses
+
+def get_parsed_report_analysis_for_user(
+    db,
+    user_id: str,
+    report_id: str,
+    all=True
+) -> Optional[AnalysisResult]:
+    """
+    Retrieves and processes the overall report analysis (summary, detailed results, etc.)
+    for a given report ID and user ID, including the report name.
+    """
+    if all:
+        overall_analysis = get_all_report_analyses_for_user(db, user_id, report_id)
+    else:
+        overall_analysis = get_general_report_analysis_for_user(db, user_id, report_id)
 
     return overall_analysis
