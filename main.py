@@ -19,16 +19,16 @@ Base.metadata.create_all(bind=engine)
 load_dotenv()
 
 # --- Environment Configuration for CORS ---
-APP_ENV = os.getenv("APP_ENV", "development")
-if APP_ENV == "production":
-    allowed_origins = [
-        "https://tahlyl-frontend.netlify.app",
-    ]
-else:
-    allowed_origins = [
-        "http://localhost:8080",
-        "http://127.0.0.1:8080",
-    ]
+# APP_ENV = os.getenv("APP_ENV", "development")
+# if APP_ENV == "production":
+#     allowed_origins = [
+#         "https://tahlyl-frontend.netlify.app",
+#     ]
+# else:
+#     allowed_origins = [
+#         "http://localhost:8080",
+#         "http://127.0.0.1:8080",
+#     ]
 # --- End Environment Configuration. ---
 
 
