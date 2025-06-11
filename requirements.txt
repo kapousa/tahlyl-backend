@@ -9,7 +9,6 @@ sqlalchemy
 passlib
 reportlab
 python-jose>=3.3.0
-jwt
 PyJWT
 pdfminer.six
 python-multipart
