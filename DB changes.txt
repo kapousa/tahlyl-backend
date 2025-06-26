@@ -1,0 +1,15 @@
+dotenv
+python-dotenv
+fastapi
+pydantic
+google-generativeai
+uvicorn
+starlette
+sqlalchemy
+passlib
+reportlab
+python-jose>=3.3.0
+PyJWT
+pdfminer.six
+python-multipart
+fhir.resources

@@ -1,12 +1,14 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, Union, Dict, List
+
 
 class DigitalProfileBase(BaseModel):
-    health_overview: Optional[str] = None
-    recommendations: Optional[str] = None
-    attention_points: Optional[str] = None
-    risks: Optional[str] = None
+    health_overview: Optional[Union[str, Dict, List]] = None
+    recommendations: Optional[Union[str, Dict, List]] = None
+    attention_points: Optional[Union[str, Dict, List]] = None
+    risks: Optional[Union[str, Dict, List]] = None
     creation_date: Optional[str] = None
+    recent: int
 
 class DigitalProfileCreate(DigitalProfileBase):
     pass

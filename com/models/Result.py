@@ -2,7 +2,8 @@ from datetime import datetime
 
 from sqlalchemy import Column, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
-from config import Base  # Assuming you have your Base defined in config.py
+from config import Base
+from com.models.Tone import Tone
 
 class Result(Base):
     __tablename__ = "result"
@@ -15,5 +16,5 @@ class Result(Base):
     added_datetime = Column(String, default=lambda: datetime.now().isoformat())
 
     report = relationship("Report", back_populates="results")
-    tone = relationship("Tone", back_populates="results")
     metrics = relationship("Metric", back_populates="result")
+    tone = relationship("Tone", back_populates="results")

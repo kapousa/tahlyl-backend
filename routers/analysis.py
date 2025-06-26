@@ -1,13 +1,16 @@
 # analysis.py
+from collections import defaultdict
+from datetime import datetime
 from typing import List, Optional
 
 from fastapi import APIRouter, HTTPException, File, Form, UploadFile, Depends
 from pdfminer.high_level import extract_text
 from sqlalchemy.orm import Session
-
+from typing import Dict
 from com.schemas.digitalProfile import DigitalProfile
+from com.schemas.historicalMetric import MetricSummaryWithHistory
 from config import get_db
-from com.engine.analysis import report_analyzer, deep_analyzer
+from com.engine.analysis import report_analyzer, deep_analyzer, get_historical_metric_values, fetch_user_metrics
 from com.utils.AI import analyze_contents_by_gemini
 from com.engine.auth.jwt_security import get_current_user
 from com.schemas.result import ResultCreate
@@ -30,12 +33,12 @@ async def base_analysis():
 
 
 @router.post("/digitalprofile", response_model=DigitalProfile)
-async def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_user), db: Session = Depends(get_db)):
+def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_user), db: Session = Depends(get_db)):
     tone = "general"
     try:
-        digital_profile = deep_analyzer(db, current_user.id, tone)
+        digital_profile = deep_analyzer(db, current_user.id, False, tone)
 
-        return digital_profile  #DigitalProfile(**digital_profile)
+        return DigitalProfile(**digital_profile)
 
     except HTTPException as e:
         logger.error(f"HTTPException: {e}")
@@ -44,6 +47,50 @@ async def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_u
         logger.error(f"Error processing Gemini response or saving report: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
 
+@router.get("/metricssummary", response_model=Dict[str, MetricSummaryWithHistory])  # <--- Change here
+def get_user_metrics_summary_and_history(current_user: SQLUser = Depends(get_current_user),
+                                         db: Session = Depends(get_db)):
+    """
+    Retrieves the minimum of the last three available values and the last three
+    individual values for key metrics for a specific user, structured by metric name.
+    """
+    all_user_metrics_data = fetch_user_metrics(db, current_user.id)  # This returns List[Dict]
+
+    transformed_metrics_summary = {}  # This will be the dict we return
+    grouped_metrics = defaultdict(list)
+
+    for metric_row in all_user_metrics_data:
+        try:
+            metric_row['metric_value_float'] = float(metric_row['metric_value'])
+        except (ValueError, TypeError):
+            metric_row['metric_value_float'] = None
+
+        grouped_metrics[metric_row['metric_name']].append(metric_row)
+
+    for metric_name, metrics_list in grouped_metrics.items():
+        sorted_metrics = sorted(metrics_list,
+                                key=lambda x: x.get('report_added_datetime') or x.get('result_added_datetime', ''),
+                                reverse=True)
+
+        last_three_values = []
+        for m in sorted_metrics[:3]:
+            dt_value = m.get('report_added_datetime') or m.get('result_added_datetime')
+            added_datetime_str = dt_value.isoformat() if isinstance(dt_value, datetime) else str(dt_value)
+
+            last_three_values.append({
+                "value": str(m['metric_value']),
+                "added_datetime": added_datetime_str
+            })
+
+        numeric_values = [m['metric_value_float'] for m in sorted_metrics[:3] if m['metric_value_float'] is not None]
+        minimum_of_last_three = min(numeric_values) if numeric_values else None
+
+        transformed_metrics_summary[metric_name] = MetricSummaryWithHistory(
+            minimum_of_last_three=minimum_of_last_three,
+            last_three_values=last_three_values
+        )
+
+    return transformed_metrics_summary
 
 @router.post("/compare", response_model=CompareReports)
 async def compare_blood_tests(
@@ -76,7 +123,7 @@ async def compare_blood_tests(
 
 
 @router.post("/analyze", response_model=AnalysisResult)
-async def analyze_report_endpoint(
+def analyze_report_endpoint(
         serviceId: Optional[str] = Form(None),
         reportFile: Optional[UploadFile] = File(None),
         testReportId: Optional[str] = Form(None),
@@ -87,8 +134,9 @@ async def analyze_report_endpoint(
         db: Session = Depends(get_db),
 ):
     logger.info(
-        f"Analyze report endpoint hit. User ID: {current_user.id}, Service ID: {serviceId}, Blood Test ID: {testReportId}, Report Type: {report_type}, Arabic: {arabic}, Tone: {tone}",
-        current_user, db)
+        f"Analyze report endpoint hit. User ID: {current_user.id}, Service ID: {serviceId}, "
+        f"Blood Test ID: {testReportId}, Report Type: {report_type}, Arabic: {arabic}, Tone: {tone}"
+    )
     try:
         file_name = ""
         if reportFile:

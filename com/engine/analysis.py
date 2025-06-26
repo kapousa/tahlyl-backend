@@ -1,13 +1,16 @@
 import inspect
 import json
+from datetime import datetime
 from typing import List
-
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, BackgroundTasks
+from sqlalchemy import Column, desc, text
 from sqlalchemy.orm import Session
 
 from com.constants.deep_analysis_prompts import ARABIC_DIGITAL_PROFILE_PROMPT, ENGLISH_DIGITAL_PROFILE_PROMPT
+from com.engine.digitalProfile import create_digital_profile
 from com.schemas.digitalProfile import DigitalProfile
+from com.schemas.historicalMetric import historicalMetric, MetricSummaryWithHistory
 from com.utils.Logger import logger
 from com.utils.Helper import extract_text_from_uploaded_report
 from config import logger
@@ -57,6 +60,7 @@ def report_analyzer(db: Session,
                     arabic: bool,
                     tone: str,
                     current_user: dict,  # Assuming current_user is a dict here
+                    background_tasks: BackgroundTasks,
                     report_id: str = ""):
     tone = tone.lower()
     language = "ar" if arabic else "en"
@@ -119,12 +123,15 @@ def report_analyzer(db: Session,
                 }
                 saved_result = save_analysis_result(result_data, db)
 
+
         else:  # Results of required report and tone exist
             detected_report_type = db_report.report_type
             analysis_dict = json.loads(db_result.result)
 
         # Send email with the analysis results
         send_analysis_results_email(detected_report_type, current_user.email, analysis_dict, arabic)
+
+        update_digital_profile= deep_analyzer(db, current_user.id, arabic, tone)
 
         return AnalysisResult(**analysis_dict)
 
@@ -139,35 +146,60 @@ def report_analyzer(db: Session,
                             detail=f"Error processing Gemini response or saving report '{func_name}': {e}")
 
 
-def deep_analyzer(db: Session, user_id: str, arabic: bool = False, tone: str = "general"):
+def deep_analyzer(db: Session, user_id: str, arabic: bool, tone: str):
     """
     Process deep analysis using all user's reports and generate information of the user's digital profile
     :param user_id:
+    :param arabic:
+    :param tone:
     :return: user's digital profile
     """
+    # db: Session = SessionLocal()  # <--- IMPORTANT: Get a NEW session for the background task
     try:
-        # 1. Fetch the analysis results
         analysis_collection: List[SQLResult] = db.query(SQLResult).join(SQLResult.report).filter(
             SQLReport.user_id == user_id).all()
 
-        # 2. Extract relevant data and format it
         results_strings = []
         for result in analysis_collection:
+            try:
+                analysis_content = json.loads(result.result)
+            except json.JSONDecodeError:
+                analysis_content = {"error": "Invalid JSON in result.result"}
+
             result_info = (
-                f"analysis_result: {result.result}, "
+                f"report_id: {result.report_id}, "
+                f"tone: {result.tone_id}, "
+                f"language: {result.language}, "
+                f"summary: {analysis_content.get('summary', 'N/A')}, "
+                f"recommendations: {analysis_content.get('recommendations', 'N/A')}"
             )
-            # You might also want to include the report details if relevant
             if result.report:
                 report_info = (
                     f" (Result ID: {result.id}, "
+                    f"Report Name: {result.report.name}, "
                     f"Date: {result.report.added_datetime})"
                 )
                 result_info += report_info
 
             results_strings.append(result_info)
 
-        # 3. Join the formatted strings into a single comma-separated string
         health_results_text = ", ".join(results_strings)
+
+        if not health_results_text:
+            logger.warning(f"No analysis results found for user {user_id} for deep analysis.")
+            empty_profile_data = {
+                "health_overview": "No analysis data available to generate a comprehensive profile.",
+                "recommendations": [],  # Keep as list
+                "attention_points": [],  # Keep as list
+                "risks": [],  # Keep as list
+                "creation_date": datetime.utcnow().isoformat(),
+                "recent": 1,
+                "user_id": user_id,
+                "id": Helper.generate_id()
+            }
+            digital_profile_schema_obj = DigitalProfile(**empty_profile_data)
+            create_digital_profile(digital_profile_schema_obj, db)
+            return empty_profile_data  # Return the dict directly, FastAPI will serialize it
 
         if arabic:
             prompt = ARABIC_DIGITAL_PROFILE_PROMPT.format(health_results_text=health_results_text)
@@ -176,9 +208,103 @@ def deep_analyzer(db: Session, user_id: str, arabic: bool = False, tone: str = "
 
         digital_profile_dict = analyze_contents_by_gemini(prompt)
 
-        return DigitalProfile(**digital_profile_dict)
+        final_digital_profile_data = {
+            "id": Helper.generate_id(),
+            "user_id": user_id,
+            "health_overview": digital_profile_dict.get("overview_health_status", ""),
+            "recommendations": digital_profile_dict.get("recommendations", []),
+            "attention_points": digital_profile_dict.get("attention_points", []),
+            "risks": digital_profile_dict.get("risks", []),
+            "creation_date": datetime.utcnow().isoformat(),
+            "recent": 1
+        }
+
+
+        digital_profile_schema_obj = DigitalProfile(**final_digital_profile_data)
+        created_dp = create_digital_profile(digital_profile_schema_obj, db)
+
+        # Fetch metrics history
+        metrics_history = fetch_user_metrics(db, user_id)
+        final_digital_profile_data['metrics'] = metrics_history
+
+        # Log the dictionary using logger, not print
+        logger.info(f"Final Digital Profile Data: {json.dumps(final_digital_profile_data, indent=2)}")
+
+        return final_digital_profile_data
 
     except Exception as e:
         func_name = inspect.currentframe().f_code.co_name
-        logger.error(f"Deep analysis exception in '{func_name}': {e}")
-        raise HTTPException(status_code=500, detail=f"Deep analysis exception in '{func_name}': {e}")
+        logger.error(f"Deep analysis exception in '{func_name}': {e}", exc_info=True)
+        raise
+
+def fetch_user_metrics(db: Session, user_id):
+    """
+    Retrieves all metric values from the last three report results for a given user.
+
+    Args:
+        db: The SQLAlchemy database session.
+        user_id: The ID of the user whose reports to query.
+
+    Returns:
+        A list of dictionaries, where each dictionary represents a metric
+        and includes associated result and report information.
+    """
+    sql_query = text(f"""
+        WITH LastThreeReports AS (
+            SELECT
+                id AS report_id,
+                added_datetime
+            FROM
+                report
+            WHERE
+                user_id = :user_id
+            ORDER BY
+                added_datetime DESC
+            LIMIT 3
+        )
+        SELECT
+            m.id AS metric_id,
+            m.name AS metric_name,
+            m.value AS metric_value,
+            m.unit AS metric_unit,
+            m.reference_range_min,
+            m.reference_range_max,
+            m.status AS metric_status,
+            r.id AS result_id,
+            r.tone_id,
+            r.added_datetime AS result_added_datetime,
+            r.language,
+            l3r.report_id,
+            l3r.added_datetime AS report_added_datetime,
+            rep.name AS report_name
+        FROM
+            metric m
+        JOIN
+            result r ON m.result_id = r.id
+        JOIN
+            report rep ON r.report_id = rep.id
+        JOIN
+            LastThreeReports l3r ON rep.id = l3r.report_id
+        ORDER BY
+            l3r.added_datetime DESC,
+            r.added_datetime DESC,
+            m.name;
+    """)
+    results = db.execute(sql_query, {"user_id": user_id}).mappings().all()
+    list_of_dicts = [dict(row) for row in results]
+
+    return list_of_dicts
+
+def get_historical_metric_values(db: Session, user_id: str, metric_column: Column, n: int = 1) -> List[historicalMetric]:
+    results = db.query(
+        metric_column,
+        SQLResult.added_datetime
+    ).filter(
+        SQLResult.report.has(user_id=user_id),
+        metric_column.isnot(None)
+    ).order_by(
+        desc(SQLResult.added_datetime)
+    ).limit(n).all()
+    return [historicalMetric(value=r[0], added_datetime=r[1]) for r in results if r[0] is not None]
+
+

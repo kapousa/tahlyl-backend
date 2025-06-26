@@ -135,8 +135,6 @@ def get_all_report_analyses_for_user(
     Retrieves and processes all report analysis records (summaries, detailed results, etc.)
     for a given report ID and user ID.
     """
-    # Fetch all SQLResult objects for the report_id and user_id, along with the report name.
-    # We use .all() to get all matching records.
     all_results_data = db.query(
         SQLResult,
         SQLReport.name # Assuming SQLReport.name is the report_name field
