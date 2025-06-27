@@ -14743,3 +14743,4 @@ TypeError: com.schemas.historicalMetric.UserMetricsSummary() argument after ** m
 {"time": "2025-06-27 10:43:33,570", "level": "WARNING", "message": "HTTP Exception: 401 - Incorrect username or password for request: POST http://localhost:8000/users/login"}
 {"time": "2025-06-27 11:23:41,431", "level": "INFO", "message": "Analyze report endpoint hit. User ID: e3d593f4-0463-4cca-b83c-b4c7c641178c, Service ID: None, Blood Test ID: None, Report Type: None, Arabic: False, Tone: general"}
 {"time": "2025-06-27 11:24:33,526", "level": "INFO", "message": "Email sent successfully to hatem.gadallah@gmail.com."}
+{"time": "2025-06-27 12:53:09,396", "level": "WARNING", "message": "HTTP Exception: 401 - Incorrect username or password for request: POST http://localhost:8000/users/login"}
