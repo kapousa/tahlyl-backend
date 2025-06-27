@@ -22,7 +22,7 @@ load_dotenv()
 APP_ENV = os.getenv("APP_ENV", "development")
 if APP_ENV == "production":
     allowed_origins = [
-        "https://tahlyl-frontend.netlify.app/",
+        "https://tahlyl-frontend.netlify.app",
     ]
 else:
     allowed_origins = [
