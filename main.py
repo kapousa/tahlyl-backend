@@ -52,7 +52,7 @@ app.add_middleware(LogRequestsMiddleware)
 app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
 app.add_middleware(
     CORSMiddleware,
-    allow_origins= "https://tahlyl-frontend.netlify.app",
+    allow_origins= "allowed_origins",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
