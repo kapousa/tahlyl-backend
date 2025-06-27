@@ -32,7 +32,7 @@ async def base_analysis():
     return {"Hello": "Analysis"}
 
 
-@router.post("/digitalprofile", response_model=DigitalProfile)
+@router.get("/digitalprofile", response_model=DigitalProfile)
 def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_user), db: Session = Depends(get_db)):
     tone = "general"
     try:
@@ -47,7 +47,7 @@ def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_user), 
         logger.error(f"Error processing Gemini response or saving report: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
 
-@router.post("/metricssummary", response_model=Dict[str, MetricSummaryWithHistory])  # <--- Change here
+@router.get("/metricssummary", response_model=Dict[str, MetricSummaryWithHistory])  # <--- Change here
 def get_user_metrics_summary_and_history(current_user: SQLUser = Depends(get_current_user),
                                          db: Session = Depends(get_db)):
     """

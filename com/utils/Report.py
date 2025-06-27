@@ -150,7 +150,7 @@ def save_analysis_result(result_data: dict, db: Session):
         )
 
 
-def detect_report_type(extracted_text: str):
+def detect_report_type_limitied(extracted_text: str):
     """
     Rudimentary function to detect report type from text.
     This is a placeholder and needs a more robust implementation.
@@ -181,6 +181,109 @@ def detect_report_type(extracted_text: str):
 
     return text_lower
 
+def detect_report_type(extracted_text: str):
+    """
+    Detects the type of health report from the extracted text.
+
+    This function uses a rule-based approach with an expanded set of keywords
+    and prioritizes more specific matches.
+
+    Args:
+        extracted_text (str): The full text extracted from the health report.
+
+    Returns:
+        str: A standardized string representing the detected report type
+             (e.g., "cbc", "liver", "glucose", "unknown"), or "other_blood_test"
+             for general blood tests not specifically matched.
+    """
+    text_lower = extracted_text.lower()
+
+    # --- Highly Specific Tests (Prioritize these) ---
+
+    # Glucose-related tests
+    if "hemoglobin a1c" in text_lower or "hba1c" in text_lower:
+        return "hba1c"
+    elif "oral glucose tolerance test" in text_lower or "ogtt" in text_lower:
+        return "ogtt" # New specific type
+    elif "blood glucose" in text_lower or "sugar level" in text_lower or "fasting glucose" in text_lower or "random glucose" in text_lower:
+        return "glucose"
+
+    # Liver Function Tests
+    elif "liver function test" in text_lower or "lfts" in text_lower or "hepatic panel" in text_lower or "alt" in text_lower or "ast" in text_lower or "alkaline phosphatase" in text_lower or "bilirubin" in text_lower:
+        return "liver"
+
+    # Kidney Function Tests
+    elif "kidney function test" in text_lower or "renal function test" in text_lower or "kfts" in text_lower or "rfts" in text_lower or "creatinine" in text_lower or "bun" in text_lower or "egfr" in text_lower or "glomerular filtration" in text_lower:
+        return "kidney"
+
+    # Lipid Profile / Cholesterol
+    elif "lipid profile" in text_lower or "cholesterol" in text_lower or "ldl" in text_lower or "hdl" in text_lower or "triglycerides" in text_lower or "atherogenic index" in text_lower:
+        return "lipid"
+
+    # Thyroid Function Tests
+    elif "thyroid function test" in text_lower or "tsh" in text_lower or "t3" in text_lower or "t4" in text_lower or "free t3" in text_lower or "free t4" in text_lower:
+        return "thyroid"
+
+    # Complete Blood Count / Hemogram
+    elif "complete blood count" in text_lower or "cbc" in text_lower or "full blood count" in text_lower or "fbc" in text_lower or "hemogram" in text_lower or "white blood cell" in text_lower or "red blood cell" in text_lower or "platelet count" in text_lower or "hemoglobin" in text_lower:
+        return "cbc"
+
+    # Inflammation Markers
+    elif "c-reactive protein" in text_lower or "crp" in text_lower or "erythrocyte sedimentation rate" in text_lower or "esr" in text_lower or "inflammation marker" in text_lower:
+        return "inflammation"
+
+    # Vitamin & Mineral Tests
+    elif "vitamin d" in text_lower or "25-hydroxy vitamin d" in text_lower or "cholecalciferol" in text_lower:
+        return "vitamin_d"
+    elif "iron panel" in text_lower or "iron studies" in text_lower or "ferritin" in text_lower or "transferrin" in text_lower or "iron binding capacity" in text_lower:
+        return "iron"
+    elif "vitamin b12" in text_lower or "cobalamin" in text_lower: # New specific type
+        return "vitamin_b12"
+    elif "folate" in text_lower or "folic acid" in text_lower: # New specific type
+        return "folate"
+
+    # Electrolytes & Basic Metabolic Panel
+    elif "electrolyte" in text_lower or "sodium" in text_lower or "potassium" in text_lower or "chloride" in text_lower or "bicarbonate" in text_lower or "co2 content" in text_lower:
+        return "electrolytes" # New specific type
+    elif "basic metabolic panel" in text_lower or "bmp" in text_lower:
+        return "bmp" # New specific type (often includes glucose, kidney, electrolytes)
+    elif "comprehensive metabolic panel" in text_lower or "cmp" in text_lower:
+        return "cmp" # New specific type (more comprehensive than BMP)
+
+    # Coagulation / Blood Clotting Tests
+    elif "prothrombin time" in text_lower or "pt/inr" in text_lower or "inr" in text_lower or "partial thromboplastin time" in text_lower or "aptt" in text_lower or "coagulation panel" in text_lower:
+        return "coagulation" # New specific type
+
+    # Hormone Tests (general or specific examples)
+    elif "testosterone" in text_lower or "estrogen" in text_lower or "hormone panel" in text_lower:
+        return "hormone" # New broader hormone category
+
+    # Urine Tests
+    elif "urinalysis" in text_lower or "urine test" in text_lower or "urine culture" in text_lower:
+        return "urinalysis" # New broader urine category
+
+    # Imaging Reports (common types)
+    elif "x-ray" in text_lower or "radiograph" in text_lower:
+        return "xray" # New type
+    elif "mri" in text_lower or "magnetic resonance imaging" in text_lower:
+        return "mri" # New type
+    elif "ct scan" in text_lower or "computed tomography" in text_lower:
+        return "ct_scan" # New type
+    elif "ultrasound" in text_lower or "sonography" in text_lower:
+        return "ultrasound" # New type
+    elif "ecg" in text_lower or "ekg" in text_lower or "electrocardiogram" in text_lower:
+        return "ecg" # New type (often considered imaging/diagnostic)
+
+    # General Reports (less specific, put lower in hierarchy)
+    elif "compare" in text_lower and "blood test" in text_lower:
+        return "compare_blood_test" # Renamed for clarity
+    elif "blood test result" in text_lower or "lab result" in text_lower or "laboratory report" in text_lower:
+        return "other_blood_test" # More generic blood test if nothing specific found
+    elif "medical report" in text_lower or "patient record" in text_lower or "consultation notes" in text_lower:
+        return "general_medical_report" # New generic medical report type
+
+    # Default if no specific type is detected
+    return "unknown" # Changed default to 'unknown' for clarity
 
 def find_detailed_results(data):
     """
