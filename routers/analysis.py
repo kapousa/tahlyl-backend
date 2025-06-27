@@ -47,7 +47,7 @@ def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_user), 
         logger.error(f"Error processing Gemini response or saving report: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
 
-@router.get("/metricssummary", response_model=Dict[str, MetricSummaryWithHistory])  # <--- Change here
+@router.post("/metricssummary", response_model=Dict[str, MetricSummaryWithHistory])  # <--- Change here
 def get_user_metrics_summary_and_history(current_user: SQLUser = Depends(get_current_user),
                                          db: Session = Depends(get_db)):
     """
