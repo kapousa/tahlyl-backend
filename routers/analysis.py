@@ -44,8 +44,8 @@ def digital_profile_endpoint(current_user: SQLUser = Depends(get_current_user), 
         logger.error(f"HTTPException: {e}")
         raise e
     except Exception as e:
-        logger.error(f"Error processing Gemini response or saving report: {e}")
-        raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
+        logger.error(f"Error in digital profile: {e}")
+        raise HTTPException(status_code=500, detail=f"Error in digital profile: {e}")
 
 @router.get("/metricssummary", response_model=Dict[str, MetricSummaryWithHistory])  # <--- Change here
 def get_user_metrics_summary_and_history(current_user: SQLUser = Depends(get_current_user),
@@ -54,43 +54,51 @@ def get_user_metrics_summary_and_history(current_user: SQLUser = Depends(get_cur
     Retrieves the minimum of the last three available values and the last three
     individual values for key metrics for a specific user, structured by metric name.
     """
-    all_user_metrics_data = fetch_user_metrics(db, current_user.id)  # This returns List[Dict]
+    try:
+        all_user_metrics_data = fetch_user_metrics(db, current_user.id)  # This returns List[Dict]
 
-    transformed_metrics_summary = {}  # This will be the dict we return
-    grouped_metrics = defaultdict(list)
+        transformed_metrics_summary = {}  # This will be the dict we return
+        grouped_metrics = defaultdict(list)
 
-    for metric_row in all_user_metrics_data:
-        try:
-            metric_row['metric_value_float'] = float(metric_row['metric_value'])
-        except (ValueError, TypeError):
-            metric_row['metric_value_float'] = None
+        for metric_row in all_user_metrics_data:
+            try:
+                metric_row['metric_value_float'] = float(metric_row['metric_value'])
+            except (ValueError, TypeError):
+                metric_row['metric_value_float'] = None
 
-        grouped_metrics[metric_row['metric_name']].append(metric_row)
+            grouped_metrics[metric_row['metric_name']].append(metric_row)
 
-    for metric_name, metrics_list in grouped_metrics.items():
-        sorted_metrics = sorted(metrics_list,
-                                key=lambda x: x.get('report_added_datetime') or x.get('result_added_datetime', ''),
-                                reverse=True)
+        for metric_name, metrics_list in grouped_metrics.items():
+            sorted_metrics = sorted(metrics_list,
+                                    key=lambda x: x.get('report_added_datetime') or x.get('result_added_datetime', ''),
+                                    reverse=True)
 
-        last_three_values = []
-        for m in sorted_metrics[:3]:
-            dt_value = m.get('report_added_datetime') or m.get('result_added_datetime')
-            added_datetime_str = dt_value.isoformat() if isinstance(dt_value, datetime) else str(dt_value)
+            last_three_values = []
+            for m in sorted_metrics[:3]:
+                dt_value = m.get('report_added_datetime') or m.get('result_added_datetime')
+                added_datetime_str = dt_value.isoformat() if isinstance(dt_value, datetime) else str(dt_value)
 
-            last_three_values.append({
-                "value": str(m['metric_value']),
-                "added_datetime": added_datetime_str
-            })
+                last_three_values.append({
+                    "value": str(m['metric_value']),
+                    "added_datetime": added_datetime_str
+                })
 
-        numeric_values = [m['metric_value_float'] for m in sorted_metrics[:3] if m['metric_value_float'] is not None]
-        minimum_of_last_three = min(numeric_values) if numeric_values else None
+            numeric_values = [m['metric_value_float'] for m in sorted_metrics[:3] if m['metric_value_float'] is not None]
+            minimum_of_last_three = min(numeric_values) if numeric_values else None
 
-        transformed_metrics_summary[metric_name] = MetricSummaryWithHistory(
-            minimum_of_last_three=minimum_of_last_three,
-            last_three_values=last_three_values
-        )
+            transformed_metrics_summary[metric_name] = MetricSummaryWithHistory(
+                minimum_of_last_three=minimum_of_last_three,
+                last_three_values=last_three_values
+            )
 
-    return transformed_metrics_summary
+        return transformed_metrics_summary
+
+    except HTTPException as e:
+        logger.error(f"Matric Summary HTTPException: {e}")
+        raise e
+    except Exception as e:
+        logger.error(f"Error Matric Summary: {e}")
+        raise HTTPException(status_code=500, detail=f"Error processing Gemini response or saving report: {e}")
 
 @router.post("/compare", response_model=CompareReports)
 async def compare_blood_tests(
