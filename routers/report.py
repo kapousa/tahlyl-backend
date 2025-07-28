@@ -154,7 +154,22 @@ async def fetch_report_cards_endpoint(db: Session = Depends(get_db), current_use
 @router.get("/{report_id}/analysis")
 async def get_report_details(report_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     # Call the service function to get the parsed AnalysisResult object
-    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id)
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id, False)
+
+    if not analysis_data:
+        # If no data is returned, it means the report doesn't exist,
+        # or doesn't belong to the user, or parsing failed.
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Report analysis not found or not accessible."
+        )
+
+    return analysis_data
+
+@router.get("/{report_id}/alltones")
+async def get_report_details(report_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    # Call the service function to get the parsed AnalysisResult object
+    analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id, True)
 
     if not analysis_data:
         # If no data is returned, it means the report doesn't exist,

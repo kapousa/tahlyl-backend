@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 
 from com.constants.deep_analysis_prompts import ARABIC_DIGITAL_PROFILE_PROMPT, ENGLISH_DIGITAL_PROFILE_PROMPT
 from com.engine.digitalProfile import create_digital_profile
+from com.engine.smartFeatures import analyze_health_trends
 from com.schemas.digitalProfile import DigitalProfile
 from com.schemas.historicalMetric import historicalMetric, MetricSummaryWithHistory
 from com.utils.Logger import logger
@@ -69,12 +70,12 @@ def report_analyzer(db: Session,
         file_name = reportFile.filename
         medical_test_content = extract_text_from_uploaded_report(reportFile)
 
-        # check if the report and results with required tone are exist
+        # check if the report and results with required tone and language are exist
         db_report = db.query(SQLReport).filter(SQLReport.content == medical_test_content).first()
         db_result = None
         if db_report is not None:
             db_result = db.query(SQLResult).filter(SQLResult.report_id == db_report.id,
-                                                   SQLResult.tone_id == tone).first()
+                                                   SQLResult.tone_id == tone, SQLResult.language).first()
 
         if db_report is None or (
                 db_report is not None and db_result is None):  # New report of exist report but request results with new tone
@@ -292,6 +293,11 @@ def fetch_user_metrics(db: Session, user_id):
     """)
     results = db.execute(sql_query, {"user_id": user_id}).mappings().all()
     list_of_dicts = [dict(row) for row in results]
+
+    # TODO
+    # will remove comment sign when enable smart services
+    # Get health trends
+    # health_trends= analyze_health_trends(list_of_dicts)
 
     return list_of_dicts
 

@@ -1,8 +1,12 @@
-from fastapi import FastAPI, HTTPException, Body
+from fastapi import FastAPI, HTTPException, Body, Depends
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 import datetime
 
+from sqlalchemy.orm import Session
+
+from com.curds.Metric import get_unique_metric_names_from_list
+from config import get_db
 
 # --- Common Helper for Disclaimers ---
 MEDICAL_DISCLAIMER = (
@@ -16,7 +20,8 @@ def analyze_health_trends(historical_data: List[Dict[str, Any]]) -> Dict[str, An
     # This would involve time-series analysis, anomaly detection, etc.
     # Example: looking at 'glucose' levels over time
     trends = {}
-    for metric in ["glucose", "cholesterol_ldl", "blood_pressure_systolic"]:  # Example metrics
+    metrics_list = get_unique_metric_names_from_list(historical_data)
+    for metric in metrics_list: #["glucose", "cholesterol_ldl", "blood_pressure_systolic"]:
         values = [d.get(metric) for d in historical_data if d.get(metric) is not None]
         if len(values) > 1:
             if values[-1] > values[0]:

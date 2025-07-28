@@ -45,7 +45,8 @@ def get_report_cards(db, user_id: str, tone: str = "general") -> list[dict]:
             "report_date": report.added_datetime.isoformat() if hasattr(report.added_datetime, 'isoformat') else str(
                 report.added_datetime),
             "status": report.status,
-            "metrics": metrics
+            "metrics": metrics,
+            "report_type": report.report_type
         }
         report_cards.append(card)
 
@@ -214,7 +215,7 @@ def get_parsed_report_analysis_for_user(
     db,
     user_id: str,
     report_id: str,
-    all=True
+    all=False,
 ) -> Optional[AnalysisResult]:
     """
     Retrieves and processes the overall report analysis (summary, detailed results, etc.)
