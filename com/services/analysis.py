@@ -8,8 +8,8 @@ from sqlalchemy import Column, desc, text
 from sqlalchemy.orm import Session
 
 from com.constants.deep_analysis_prompts import ARABIC_DIGITAL_PROFILE_PROMPT, ENGLISH_DIGITAL_PROFILE_PROMPT
-from com.engine.digitalProfile import create_digital_profile
-from com.engine.smartFeatures import analyze_health_trends
+from com.services.digitalProfile import create_digital_profile
+from com.services.smartFeatures import analyze_health_trends
 from com.schemas.digitalProfile import DigitalProfile
 from com.schemas.historicalMetric import historicalMetric, MetricSummaryWithHistory
 from com.utils.Logger import logger
@@ -132,7 +132,7 @@ def report_analyzer(db: Session,
         # Send email with the analysis results
         send_analysis_results_email(detected_report_type, current_user.email, analysis_dict, arabic)
 
-        update_digital_profile= deep_analyzer(db, current_user.id, arabic, tone)
+        update_digital_profile= deep_analyzer(db, current_user.id, arabic)
 
         return AnalysisResult(**analysis_dict)
 
@@ -147,7 +147,7 @@ def report_analyzer(db: Session,
                             detail=f"Error processing Gemini response or saving report '{func_name}': {e}")
 
 
-def deep_analyzer(db: Session, user_id: str, arabic: bool, tone: str):
+def deep_analyzer(db: Session, user_id: str, arabic: bool):
     """
     Process deep analysis using all user's reports and generate information of the user's digital profile
     :param user_id:

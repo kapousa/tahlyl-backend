@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from dotenv import load_dotenv
 
-from config import get_db, SessionLocal
+from config import get_sqlite_db_sync, SessionLocal
 from com.models.User import User as SQLUser
 
 load_dotenv()

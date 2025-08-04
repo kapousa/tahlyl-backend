@@ -4,6 +4,10 @@ import os
 import google.generativeai as genai
 from dotenv import load_dotenv
 
+from com.utils.Logger import logger
+from com.utils.Helper import extract_text_from_uploaded_report
+from config import logger
+
 load_dotenv()
 
 api_key = os.getenv("GOOGLE_API_KEY")
@@ -35,4 +39,5 @@ def analyze_contents_by_gemini(blood_test_text: str):
 
     except Exception as e:
         func_name = inspect.currentframe().f_code.co_name
+        logger.error(f"Error generating AI analysis report using Gemini '{func_name}': {e}")
         raise {f"{func_name}: Error": e.args[0]}

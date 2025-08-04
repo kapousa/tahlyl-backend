@@ -8,7 +8,7 @@ import jwt
 from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session # No need for make_transient here anymore
-from config import get_db
+from config import get_sqlite_db_sync
 from com.models.User import User as SQLUser # Your SQLAlchemy User model
 from com.schemas.user import TokenData
 from passlib.context import CryptContext
@@ -79,7 +79,7 @@ def decode_access_token(token: str) -> dict:
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-def get_current_user(request: Request, token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+def get_current_user(request: Request, token: str = Depends(oauth2_scheme), db: Session = Depends(get_sqlite_db_sync)):
     """
     Dependency to get the current authenticated human user.
     Retrieves user from DB and ensures they are active.

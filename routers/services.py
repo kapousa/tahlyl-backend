@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from starlette import status
 
-from config import get_db
+from config import get_sqlite_db_sync
 from com.schemas.service import Service, ServiceBase, ServiceCreate
 from com.models.Service import Service as SQLService  # Import SQLAlchemy model
 from typing import List, Optional # Import Optional
@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO)
 # Now, depend on the new get_db dependency
 @router.get("/", response_model=List[Service])
 @log_activity(log_level=logging.INFO, message="Listing all services")
-async def read_services(db: Session = Depends(get_db)):
+async def read_services(db: Session = Depends(get_sqlite_db_sync)):
     """Retrieves all services from the database using SQLAlchemy ORM.  Returns an empty list if no services are found."""
     logger.info("Attempting to read all services")
     try:
@@ -33,7 +33,7 @@ async def read_services(db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail="Database error retrieving services")
 
 @router.post("/add/", response_model=Service, status_code=status.HTTP_201_CREATED)
-async def create_service(service: ServiceCreate, db: Session = Depends(get_db)):
+async def create_service(service: ServiceCreate, db: Session = Depends(get_sqlite_db_sync)):
     """Creates a new service using SQLAlchemy ORM."""
     logger.info(f"Attempting to add service: {service.name}")
     try:
@@ -53,7 +53,7 @@ async def create_service(service: ServiceCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail="Database error creating service")
 
 @router.get("/view/{service_id}", response_model=Optional[Service]) # Change response_model to Optional[Service]
-async def read_service(service_id: str, db: Session = Depends(get_db)):
+async def read_service(service_id: str, db: Session = Depends(get_sqlite_db_sync)):
     """Retrieves a single service by its ID using SQLAlchemy ORM.
        Returns a JSON response.  Returns null if no service is found.
     """
@@ -70,7 +70,7 @@ async def read_service(service_id: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail="Database error retrieving service")
 
 @router.put("/update/{service_name}", response_model=Service)
-async def update_service(service_name: str, service_update: ServiceCreate, db: Session = Depends(get_db)):
+async def update_service(service_name: str, service_update: ServiceCreate, db: Session = Depends(get_sqlite_db_sync)):
     """Updates a service by its name using SQLAlchemy ORM."""
     logger.info(f"Attempting to update service: {service_name}")
     try:

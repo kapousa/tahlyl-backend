@@ -6,7 +6,7 @@ import datetime
 from sqlalchemy.orm import Session
 
 from com.curds.Metric import get_unique_metric_names_from_list
-from config import get_db
+from config import get_sqlite_db_sync
 
 # --- Common Helper for Disclaimers ---
 MEDICAL_DISCLAIMER = (

@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
-from config import get_db
+from config import get_sqlite_db_sync
 from com.models.BloodTest import BloodTest
 from com.models.Metric import Metric
 from com.models.Report import Report
@@ -15,7 +15,7 @@ from com.schemas.metric import MetricCreate, MetricUpdate, MetricSchema
 router = APIRouter(prefix="/bloodtest", tags=["bloodtest"])
 
 @router.post("/add/", response_model=BloodTestSchema, status_code=status.HTTP_201_CREATED)
-def create_blood_test(blood_test: BloodTestCreateSchema, db: Session = Depends(get_db)):
+def create_blood_test(blood_test: BloodTestCreateSchema, db: Session = Depends(get_sqlite_db_sync)):
     """
     Create a new blood test.
     """
@@ -26,7 +26,7 @@ def create_blood_test(blood_test: BloodTestCreateSchema, db: Session = Depends(g
     return db_blood_test
 
 @router.get("/", response_model=List[ReportSchema])
-def get_blood_tests(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def get_blood_tests(skip: int = 0, limit: int = 100, db: Session = Depends(get_sqlite_db_sync)):
     """
     Get all blood tests.
     """
@@ -39,7 +39,7 @@ def get_blood_tests(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
 
 
 @router.get("/get/{blood_test_id}", response_model=BloodTestSchema)
-def get_blood_test(blood_test_id: str, db: Session = Depends(get_db)):
+def get_blood_test(blood_test_id: str, db: Session = Depends(get_sqlite_db_sync)):
     """
     Get a single blood test by ID.
     """
@@ -49,7 +49,7 @@ def get_blood_test(blood_test_id: str, db: Session = Depends(get_db)):
     return db_blood_test
 
 @router.put("/update/{blood_test_id}", response_model=BloodTestSchema)
-def update_blood_test(blood_test_id: str, blood_test_update: BloodTestUpdateSchema, db: Session = Depends(get_db)):
+def update_blood_test(blood_test_id: str, blood_test_update: BloodTestUpdateSchema, db: Session = Depends(get_sqlite_db_sync)):
     """
     Update a blood test by ID.
     """
@@ -65,7 +65,7 @@ def update_blood_test(blood_test_id: str, blood_test_update: BloodTestUpdateSche
     return db_blood_test
 
 @router.delete("/delete/{blood_test_id}", response_model=BloodTestSchema)
-def delete_blood_test(blood_test_id: str, db: Session = Depends(get_db)):
+def delete_blood_test(blood_test_id: str, db: Session = Depends(get_sqlite_db_sync)):
     """
     Delete a blood test by ID.
     """
@@ -78,7 +78,7 @@ def delete_blood_test(blood_test_id: str, db: Session = Depends(get_db)):
 
 # Metrics CRUD operations
 @router.post("/metric/add/{blood_test_id}/", response_model=MetricCreate, status_code=status.HTTP_201_CREATED)
-def create_metric(blood_test_id: str, metric: MetricCreate, db: Session = Depends(get_db)):
+def create_metric(blood_test_id: str, metric: MetricCreate, db: Session = Depends(get_sqlite_db_sync)):
     """
     Create a new metric for a specific blood test.
     """
@@ -94,7 +94,7 @@ def create_metric(blood_test_id: str, metric: MetricCreate, db: Session = Depend
 
 
 @router.get("/metric/{metric_id}", response_model=MetricSchema)
-def get_metric(metric_id: int, db: Session = Depends(get_db)):
+def get_metric(metric_id: int, db: Session = Depends(get_sqlite_db_sync)):
     """
     Get a single metric by ID.
     """
@@ -105,7 +105,7 @@ def get_metric(metric_id: int, db: Session = Depends(get_db)):
 
 
 @router.put("/metric/update/{metric_id}", response_model=MetricSchema)
-def update_metric(metric_id: int, metric_update: MetricUpdate, db: Session = Depends(get_db)):
+def update_metric(metric_id: int, metric_update: MetricUpdate, db: Session = Depends(get_sqlite_db_sync)):
     """
     Update a metric.
     """
@@ -122,7 +122,7 @@ def update_metric(metric_id: int, metric_update: MetricUpdate, db: Session = Dep
 
 
 @router.delete("/metric/delete/{metric_id}", response_model=MetricSchema)
-def delete_metric(metric_id: int, db: Session = Depends(get_db)):
+def delete_metric(metric_id: int, db: Session = Depends(get_sqlite_db_sync)):
     """
     Delete a metric.
     """

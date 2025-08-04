@@ -1,6 +1,6 @@
 from http.client import HTTPException
 from fastapi import APIRouter, Body
-from com.engine.smartFeatures import assess_risk, get_comparison_with_ranges
+from com.services.smartFeatures import assess_risk, get_comparison_with_ranges
 from com.schemas.smartFeatures import FriendlyAnalysisOutput, ToneAnalysisInput, TrendAnalysisOutput, HealthTrendInput, \
     RiskAssessmentOutput, RiskAssessmentInput, LifestyleRecommendationOutput, LifestyleRecommendationInput, \
     DoctorQuestionsOutput, DoctorQuestionsInput, MarkerDeepDiveOutput, MarkerDeepDiveInput, MarkerComparisonOutput, \

@@ -1,42 +1,51 @@
 # main.py
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Depends
 from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
+from starlette.concurrency import run_in_threadpool # Still needed for ALL sync DB ops
 import uvicorn
-from com.engine.auth.auth_backend import JWTAuthBackend
+
+# Import database connection functions and Base, services from config.py
+from config import (
+    connect_to_mongo, close_mongo_connection, get_mongo_db_sync, # For Synchronous MongoDB
+    create_sqlite_tables_sync, get_sqlite_db_sync, # For Synchronous SQLite
+    Base, engine # For SQLAlchemy Base and Engine in startup (synchronous)
+)
+
+# Import other components (ensure these paths are correct)
+from com.services.auth.auth_backend import JWTAuthBackend
 from com.utils.Logger import logger
 from middleware.log_middleware import LogRequestsMiddleware
-from routers import users_router, analysis_router, services_router, report_router, bloodtest_router, smartfeatures_router
-from config import Base, engine
+from routers import (
+    users_router, analysis_router, services_router, report_router,
+    bloodtest_router, smartfeatures_router, programs_router
+)
 
-
-# Create tables if not exist
-Base.metadata.create_all(bind=engine)
-
+# Load environment variables
 load_dotenv()
 
-# --- Environment Configuration for CORS ---
-# APP_ENV = os.getenv("APP_ENV", "development")
-# if APP_ENV == "production":
-#     allowed_origins = [
-#         "https://tahlyl-frontend.netlify.app",
-#     ]
-# else:
-#     allowed_origins = [
-#         "http://localhost:8080",
-#         "http://127.0.0.1:8080",
-#     ]
-# --- End Environment Configuration. ---
-
-
+# --- FastAPI Application Instance ---
 app = FastAPI(
     title="Tahlyl: AI-Powered Medical Test Analysis API Platform",
     description="API for understanding and managing medical test results with AI.",
     version="0.1.0"
 )
+
+
+# --- Middleware Registration Order ---
+app.add_middleware(LogRequestsMiddleware)
+app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins= ["*"], # Consider narrowing this down for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # --- Include Routers ---
 app.include_router(users_router)
@@ -45,18 +54,7 @@ app.include_router(services_router)
 app.include_router(report_router)
 app.include_router(bloodtest_router)
 app.include_router(smartfeatures_router)
-
-
-# --- Middleware Registration Order ---
-app.add_middleware(LogRequestsMiddleware)
-app.add_middleware(AuthenticationMiddleware, backend=JWTAuthBackend())
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins= ["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.include_router(programs_router)
 
 
 # --- Global Exception Handlers ---
@@ -79,7 +77,6 @@ async def custom_exception_handler(request: Request, exc: Exception):
         },
     )
 
-
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
     logger.warning(
@@ -95,10 +92,16 @@ async def http_exception_handler(request: Request, exc: HTTPException):
         content={"message": exc.detail, "request_id": getattr(request.state, "request_id", "N/A")},
     )
 
-
 @app.on_event("startup")
-async def startup():
-    pass
+def startup_event():
+    logger.info("FastAPI application startup event triggered.")
+    create_sqlite_tables_sync() # Ensure SQLite tables are created (can be here or at global scope)
+    connect_to_mongo() # Establish MongoDB connection for this worker process
+
+@app.on_event("shutdown")
+def shutdown_event():
+    logger.info("FastAPI application shutdown event triggered.")
+    close_mongo_connection()
 
 @app.get("/")
 def read_root():

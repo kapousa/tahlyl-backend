@@ -4,7 +4,7 @@ from reportlab.pdfgen import canvas
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from config import logger
-from com.engine.metric import create_metrics
+from com.services.metric import create_metrics
 from com.models.Report import Report as SQLReport
 from com.models.Result import Result as SQLResult
 from com.models.Metric import Metric as SQLMetric

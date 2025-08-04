@@ -3,7 +3,7 @@ from passlib.context import CryptContext
 from fastapi import Security, HTTPException, status, Depends
 from fastapi.security import APIKeyHeader
 from sqlalchemy.orm import Session
-from config import get_db
+from config import get_sqlite_db_sync
 from com.models.APIKey import APIKey
 import json
 
@@ -13,7 +13,7 @@ api_key_header = APIKeyHeader(name="X-API-Key", auto_error=True)  # Look for 'X-
 
 async def get_authorized_api_client(
         api_key: str = Security(api_key_header),
-        db: Session = Depends(get_db)
+        db: Session = Depends(get_sqlite_db_sync)
 ) -> APIKey:
     """
     Dependency to validate the API key and return the APIKey object.

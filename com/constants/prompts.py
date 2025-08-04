@@ -1,13 +1,64 @@
+# # prompts.py
+#
+# # General Tone (No specific status/range instructions added here as these are very general)
+# ARABIC_BLOOD_TEST_GENERAL_PROMPT = """
+# حلل نتائج اختبار الدم التالية وقدم باللغة العربية استجابة بتنسيق JSON.
+# يجب أن يحتوي JSON على المفاتيح التالية:
+# - "summary": ملخص موجز لنتائج اختبار الدم.
+# - "lifestyle_changes": قائمة بالتغييرات المقترحة في نمط الحياة لتحسين النتائج.
+# - "diet_routine": قائمة بالتوصيات الغذائية بناءً على النتائج.
+# - **"doctor_questions": قائمة بالأسئلة التي يمكن طرحها على الطبيب بناءً على تحليل التقرير.**
+#
+# نتائج اختبار الدم:
+# {blood_test_text}
+#
+# JSON:
+# """
+# ENGLISH_BLOOD_TEST_GENERAL_PROMPT = """
+# Analyze the following blood test results and provide a response in JSON format.
+# The JSON should contain the following keys:
+# - "summary": A concise summary of the blood test results.
+# - "lifestyle_changes": A list of suggested lifestyle changes to improve the results.
+# - "diet_routine": A list of dietary recommendations based on the results.
+# - **"doctor_questions": A list of questions to ask the doctor based on the report analysis.**
+#
+# Blood test results:
+# {blood_test_text}
+#
+# JSON:
+# """
+
 # prompts.py
 
 # General Tone (No specific status/range instructions added here as these are very general)
 ARABIC_BLOOD_TEST_GENERAL_PROMPT = """
 حلل نتائج اختبار الدم التالية وقدم باللغة العربية استجابة بتنسيق JSON.
-يجب أن يحتوي JSON على المفاتيح التالية:
+يجب أن يحتوي JSON على كل المفاتيح الممكنة من المفاتيح التالية:
 - "summary": ملخص موجز لنتائج اختبار الدم.
 - "lifestyle_changes": قائمة بالتغييرات المقترحة في نمط الحياة لتحسين النتائج.
 - "diet_routine": قائمة بالتوصيات الغذائية بناءً على النتائج.
-- **"doctor_questions": قائمة بالأسئلة التي يمكن طرحها على الطبيب بناءً على تحليل التقرير.**
+- "key_findings": النتائج الرئيسية التي تم استخلاصها من التقرير.
+- "potential_impact": التأثيرات المحتملة للنتائج على الصحة العامة.
+- "recommendations": توصيات عامة إضافية.
+- "detailed_analysis": تحليل مفصل لكل نتيجة اختبار.
+- "potential_causes": الأسباب المحتملة وراء أي نتائج غير طبيعية.
+- "next_steps": الخطوات التالية المقترحة بناءً على التحليل.
+- "disclaimer": إخلاء مسؤولية يوضح أن التحليل ليس بديلاً عن الاستشارة الطبية المتخصصة.
+- "result_explanations": شروحات مبسطة لمعنى كل نتيجة.
+- "reference_ranges": النطاقات المرجعية الطبيعية لكل اختبار.
+- "potential_implications": الآثار المحتملة على المدى القصير والطويل.
+- "wellness_assessment": تقييم عام للحالة الصحية بناءً على النتائج.
+- "preventative_recommendations": توصيات وقائية للحفاظ على الصحة.
+- "long_term_outlook": نظرة مستقبلية طويلة المدى بناءً على النتائج.
+- "detailed_lab_values": القيم المخبرية التفصيلية.
+- "scientific_references": مراجع علمية تدعم التحليل (إن وجدت).
+- "pathophysiological_explanations": تفسيرات فسيولوجية مرضية للنتائج.
+- "personal_summary": ملخص شخصي موجه للمستخدم.
+- "emotional_support": نصائح أو دعم عاطفي متعلق بالنتائج.
+- "individualized_recommendations": توصيات فردية بناءً على ملف تعريف المستخدم.
+- "date": تاريخ التحليل.
+- "detailed_results": نتائج مفصلة لكل عنصر تم تحليله.
+- "doctor_questions": قائمة بالأسئلة التي يمكن طرحها على الطبيب بناءً على تحليل التقرير.
 
 نتائج اختبار الدم:
 {blood_test_text}
@@ -16,11 +67,32 @@ JSON:
 """
 ENGLISH_BLOOD_TEST_GENERAL_PROMPT = """
 Analyze the following blood test results and provide a response in JSON format.
-The JSON should contain the following keys:
+The JSON should contain all possible from the following keys:
 - "summary": A concise summary of the blood test results.
 - "lifestyle_changes": A list of suggested lifestyle changes to improve the results.
 - "diet_routine": A list of dietary recommendations based on the results.
-- **"doctor_questions": A list of questions to ask the doctor based on the report analysis.**
+- "key_findings": Key findings extracted from the report.
+- "potential_impact": Potential impacts of the results on overall health.
+- "recommendations": Additional general recommendations.
+- "detailed_analysis": A detailed analysis of each test result.
+- "potential_causes": Potential causes behind any abnormal results.
+- "next_steps": Suggested next steps based on the analysis.
+- "disclaimer": A disclaimer stating that the analysis is not a substitute for professional medical advice.
+- "result_explanations": Simplified explanations of what each result means.
+- "reference_ranges": Normal reference ranges for each test.
+- "potential_implications": Potential short-term and long-term implications.
+- "wellness_assessment": A general wellness assessment based on the results.
+- "preventative_recommendations": Preventative recommendations to maintain health.
+- "long_term_outlook": A long-term outlook based on the results.
+- "detailed_lab_values": Detailed laboratory values.
+- "scientific_references": Scientific references supporting the analysis (if applicable).
+- "pathophysiological_explanations": Pathophysiological explanations for the results.
+- "personal_summary": A personalized summary tailored for the user.
+- "emotional_support": Advice or emotional support related to the results.
+- "individualized_recommendations": Individualized recommendations based on the user's profile.
+- "date": Date of the analysis.
+- "detailed_results": Detailed results for each analyzed item.
+- "doctor_questions": A list of questions to ask the doctor based on the report analysis.
 
 Blood test results:
 {blood_test_text}

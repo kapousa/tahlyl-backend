@@ -2,6 +2,7 @@ from datetime import datetime
 from pydantic import BaseModel, field_validator
 from typing import List, Optional, Dict, Union, Any, Literal
 
+from com.schemas.program import ProgramOffer
 
 arabic_status_map = {
     "مرتفع": "high",
@@ -53,3 +54,4 @@ class AnalysisResult(BaseModel):
     date: datetime = datetime.now()
     detailed_results: Optional[Dict[str, AnalysisDetailedResultItem]] = None
     doctor_questions: Optional[Union[str, Dict, List]] = None
+    matched_programs: List[ProgramOffer] = []

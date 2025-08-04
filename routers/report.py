@@ -3,13 +3,15 @@ from pydantic import BaseModel
 from fastapi import HTTPException, APIRouter, Depends
 import datetime
 
+from pymongo.synchronous.database import Database
 from sqlalchemy.orm import Session
 from starlette import status
 
-from com.engine.report import get_report_cards, get_parsed_report_analysis_for_user
-from com.engine.auth.jwt_security import get_current_user
+from com.services.programs import get_matching_programs
+from com.services.report import get_report_cards, get_parsed_report_analysis_for_user
+from com.services.auth.jwt_security import get_current_user
 from com.schemas.user import User
-from config import get_db
+from config import get_sqlite_db_sync, get_mongo_db_sync
 
 router = APIRouter(prefix="/report", tags=["report"])
 
@@ -144,7 +146,7 @@ async def share_blood_test(test_id: int):
     raise HTTPException(status_code=404, detail="Blood test not found")
 
 @router.get("/cards")
-async def fetch_report_cards_endpoint(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def fetch_report_cards_endpoint(db: Session = Depends(get_sqlite_db_sync), current_user: User = Depends(get_current_user)):
     user_id = current_user.id
     report_cards = get_report_cards(db, user_id)
     return report_cards
@@ -152,7 +154,8 @@ async def fetch_report_cards_endpoint(db: Session = Depends(get_db), current_use
     raise Exception(f"Cards Error ({e})")
 
 @router.get("/{report_id}/analysis")
-async def get_report_details(report_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def get_report_details(report_id: str, db: Session = Depends(get_sqlite_db_sync), current_user: User = Depends(get_current_user),  # Corrected: No ()
+        mongo_db: Database = Depends(get_mongo_db_sync) ):
     # Call the service function to get the parsed AnalysisResult object
     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id, False)
 
@@ -163,11 +166,13 @@ async def get_report_details(report_id: str, db: Session = Depends(get_db), curr
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Report analysis not found or not accessible."
         )
+    matched_programs = get_matching_programs(mongo_db, analysis_data)
+    analysis_data.matched_programs = matched_programs
 
     return analysis_data
 
 @router.get("/{report_id}/alltones")
-async def get_report_details(report_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+async def get_report_details(report_id: str, db: Session = Depends(get_sqlite_db_sync), current_user: User = Depends(get_current_user)):
     # Call the service function to get the parsed AnalysisResult object
     analysis_data = get_parsed_report_analysis_for_user(db, current_user.id, report_id, True)
 
