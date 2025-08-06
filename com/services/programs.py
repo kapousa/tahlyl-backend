@@ -3,9 +3,12 @@ import re
 from typing import List, Set
 from pymongo.database import Database
 from datetime import datetime
-from com.schemas.program import ProgramOffer  # Your Pydantic schema for offers
+from com.schemas.program import ProgramOffer, ProgramDetailResponseFlexible  # Your Pydantic schema for offers
 # Assuming AnalysisResult interface from src/schemas.py or similar
 from com.schemas.analysisResult import AnalysisResult  # Your AnalysisResult schema
+from pymongo.database import Database
+from bson import ObjectId
+from fastapi import HTTPException
 
 # A set of common English "stop words" to filter out from keywords
 STOP_WORDS = {
@@ -113,3 +116,109 @@ def get_matching_programs(
             print(f"Error parsing MongoDB document to ProgramOffer: {e}, Document: {doc}")
 
     return matching_programs_parsed
+
+def get_program_by_id(mongo_db: Database, program_id: str) -> ProgramOffer:
+    """
+    Retrieves a single program document from MongoDB by its ID.
+    This version correctly handles _id as string or ObjectId and parses the result.
+
+    Args:
+        mongo_db: The MongoDB database instance.
+        program_id: The string representation of the program's ObjectId or string ID.
+
+    Returns:
+        A ProgramOffer Pydantic model instance if found.
+
+    Raises:
+        HTTPException: If the program with the given ID is not found,
+                       if the program_id is not a valid format, or
+                       if there's an issue parsing the data.
+    """
+    programs_collection = mongo_db["programs"]
+
+    # --- 1. Attempt to find the document with the ID as a string ---
+    # This is the most common scenario if your _id is stored as a plain string.
+    program_doc = programs_collection.find_one({"_id": program_id})
+
+    # --- 2. If not found, and the ID looks like an ObjectId, try querying with ObjectId ---
+    # This handles cases where _id might be stored as a true MongoDB ObjectId type.
+    if not program_doc:
+        try:
+            obj_id = ObjectId(program_id)
+            program_doc = programs_collection.find_one({"_id": obj_id})
+        except Exception:
+            # If program_id isn't a valid ObjectId format, and no string match was found,
+            # then it's an invalid ID. Raise a 400 Bad Request.
+            raise HTTPException(status_code=400, detail=f"Invalid program ID format: {program_id}")
+
+    # --- 3. Process the found document or raise 404 ---
+    if program_doc:
+        try:
+            # ⭐ CRITICAL FIX: Directly validate the single 'program_doc' dictionary.
+            # There is NO need for a loop here because find_one() returns only one document.
+            return ProgramOffer.model_validate(program_doc)
+        except Exception as e:
+            # Log the error if Pydantic validation fails for a found document.
+            # This indicates an issue with the document's structure not matching the Pydantic model.
+            print(f"Error parsing program document with ID {program_id}: {e}, Document: {program_doc}")
+            # Raise a 500 Internal Server Error as the data is malformed.
+            raise HTTPException(status_code=500, detail="Failed to parse program data. Document structure mismatch.")
+    else:
+        # If 'program_doc' is still None after both query attempts, the program was not found.
+        raise HTTPException(status_code=404, detail=f"Program with ID {program_id} not found.")
+
+def get_program_by_id(mongo_db: Database, program_id: str) -> ProgramDetailResponseFlexible:
+    """
+    Retrieves a single program document from MongoDB by its ID and parses it
+    into the detailed response format expected by the frontend.
+
+    Args:
+        mongo_db: The MongoDB database instance.
+        program_id: The string representation of the program's ObjectId or string ID.
+
+    Returns:
+        A ProgramDetailResponseFlexible Pydantic model instance if found.
+
+    Raises:
+        HTTPException: If the program with the given ID is not found,
+                       if the program_id is not a valid format, or
+                       if there's an issue parsing the data.
+    """
+    programs_collection = mongo_db["programs"]
+
+    # --- 1. Attempt to find the document with the ID as a string ---
+    program_doc = programs_collection.find_one({"_id": program_id})
+
+    # --- 2. If not found, and the ID looks like an ObjectId, try querying with ObjectId ---
+    if not program_doc:
+        try:
+            obj_id = ObjectId(program_id)
+            program_doc = programs_collection.find_one({"_id": obj_id})
+        except Exception:
+            # If program_id isn't a valid ObjectId format, and no string match was found,
+            # then it's an invalid ID. Raise a 400 Bad Request.
+            raise HTTPException(status_code=400, detail=f"Invalid program ID format: {program_id}")
+
+    # --- 3. Process the found document or raise 404 ---
+    if program_doc:
+        try:
+            # ⭐ CRITICAL FIX: Validate against ProgramDetailResponseFlexible
+            # This model matches the frontend's ProgramDetail interface.
+            return ProgramDetailResponseFlexible.model_validate(program_doc)
+        except Exception as e:
+            # Log the error if Pydantic validation fails for a found document.
+            print(f"Error parsing program document with ID {program_id} into ProgramDetailResponseFlexible: {e}, Document: {program_doc}")
+            # Raise a 500 Internal Server Error as the data is malformed or doesn't match the schema.
+            raise HTTPException(status_code=500, detail="Failed to parse program data into detailed format. Document structure mismatch.")
+    else:
+        # If 'program_doc' is still None after both query attempts, the program was not found.
+        raise HTTPException(status_code=404, detail=f"Program with ID {program_id} not found.")
+
+
+
+
+
+
+
+
+

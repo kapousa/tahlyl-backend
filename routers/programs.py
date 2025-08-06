@@ -5,6 +5,8 @@ from starlette.concurrency import run_in_threadpool
 from pymongo.database import Database
 from pymongo.results import InsertOneResult
 from bson import ObjectId
+
+from com.services.programs import get_program_by_id
 from config import get_mongo_db_sync
 from com.models.Programs import Program
 
@@ -72,30 +74,20 @@ async def analyze_report(report_data: dict):
 
 
 @router.get("/{program_id}", response_model=Program, status_code=status.HTTP_200_OK)
-async def get_program_by_id(program_id: str, db: Database = Depends(get_mongo_session)):
+async def get_program_details(
+    program_id: str,
+    mongo_db: Database = Depends(get_mongo_session) # Correctly inject the MongoDB database instance
+):
     """
     Fetches the details of a single program by its ID.
     """
-    # The frontend is sending a simple string ID, but MongoDB uses ObjectId.
-    # In a real app, you would need to ensure the ID is a valid ObjectId format.
-    try:
-        object_id = ObjectId(program_id)
-    except Exception:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid program ID format."
-        )
+    # Call the get_program_by_id function, passing the full MongoDB database instance
+    # The get_program_by_id function will then access the 'programs' collection internally.
+    program = get_program_by_id(mongo_db, program_id)
 
-    def _find_program(collection, doc_id):
-        return collection.find_one({"_id": doc_id})
+    # The get_program_by_id function already raises HTTPException (404 or 400)
+    # if the program is not found or the ID is invalid.
+    # So, you can directly return the program here if no exception was raised.
+    return program
 
-    program = await run_in_threadpool(_find_program, db.programs, object_id)
-
-    if program:
-        return program
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Program not found."
-        )
 
