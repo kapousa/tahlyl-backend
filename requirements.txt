@@ -13,3 +13,4 @@ PyJWT
 pdfminer.six
 python-multipart
 fhir.resources
+pymongo
